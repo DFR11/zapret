@@ -135,13 +135,13 @@ install_binaries()
 
 ws_opt_validate()
 {
-	# ПРИМЕЧАНИЕ ДЛЯ РАСПРОСТРАНИТЕЛЕЙ КОПИПАСТЫ
-	# ЭТОТ КОД СДЕЛАН СПЕЦИАЛЬНО ДЛЯ ВАС, ЧТОБЫ ВЫ НЕ ПОСТИЛИ В СЕТЬ ПЛОХИЕ РЕЦЕПТЫ
-	# ЕСЛИ ВАМ ХОЧЕТСЯ ЕГО УДАЛИТЬ И НАПИСАТЬ ИНСТРУКЦИЮ КАК ЕГО УДАЛЯТЬ, ВЫ ДЕЛАЕТЕ ХРЕНОВУЮ УСЛУГУ. НАПИШИТЕ ЛУЧШЕ custom script.
-	# custom script - ЭТО ФАЙЛИК, КОТОРЫЙ ДОСТАТОЧНО СКОПИРОВАТЬ В НУЖНУЮ ДИРЕКТОРИЮ, ЧТОБЫ ОН СДЕЛАЛ ТОЖЕ САМОЕ, НО ЭФФЕКТИВНО.
-	# ФИЛЬТРАЦИЯ ПО IPSET В ЯДРЕ НЕСРАВНИМО ЭФФЕКТИВНЕЕ, ЧЕМ ПЕРЕКИДЫВАТЬ ВСЕ ПАКЕТЫ В nfqws И ТАМ ФИЛЬТРОВАТЬ
-	# --ipset СУЩЕСТВУЕТ ТОЛЬКО ДЛЯ ВИНДЫ И LINUX СИСТЕМ БЕЗ ipset (НАПРИМЕР, Android).
-	# И ТОЛЬКО ПО ЭТОЙ ПРИЧИНЕ ОНО НЕ ВЫКИНУТО ПОЛНОСТЬЮ ИЗ LINUX ВЕРСИИ
+	# NOTE FOR COPY-PASTE DISTRIBUTORS
+	# THIS CODE IS MADE SPECIALLY FOR YOU SO THAT YOU DON'T POST BAD RECIPES ON THE NETWORK
+	# IF YOU WANT TO DELETE IT AND WRITE INSTRUCTIONS ON HOW TO DELETE IT, YOU ARE DOING A GREAT SERVICE. WRITE A BETTER custom script.
+	# A custom script IS A FILE THAT IS ENOUGH TO COPY TO THE NECESSARY DIRECTORY SO THAT IT DOES THE SAME BUT EFFECTIVELY.
+	# FILTERING BY IPSET IN THE KERNEL IS INCOMPARABIBLY MORE EFFECTIVE THAN TRANSFERING ALL PACKETS TO nfqws AND FILTERING THERE
+	# --ipset ONLY EXISTS FOR WINDOW AND LINUX SYSTEMS WITHOUT ipset (E.G. Android).
+	# AND FOR THIS REASON ONLY IT HAS NOT BEEN COMPLETELY RUINED FROM THE LINUX VERSION
 	has_bad_ws_options "$1" && {
 		help_bad_ws_options
 		return 1

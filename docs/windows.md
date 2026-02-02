@@ -2,69 +2,69 @@
 
 ## tpws
 
-Запуск tpws возможен только в Linux варианте под **WSL** _(Windows Subsystem for Linux)_.
-Нативного варианта под Windows нет, поскольку он использует epoll, которого под windows не существует.
+Running tpws is only possible in the Linux version under **WSL** _(Windows Subsystem for Linux)_.
+There is no native option for Windows, since it uses epoll, which does not exist for Windows.
 
-tpws в режиме socks можно запускать под более-менее современными билдами windows 10 и windows server
-с установленным WSL. Совсем не обязательно устанавливать дистрибутив убунту, как вам напишут почти в каждой
-статье про WSL, которую вы найдете в сети. tpws - статический бинарик, ему дистрибутив не нужен.
+tpws in socks mode can be run under more or less modern builds of Windows 10 and Windows server
+with WSL installed. It is not at all necessary to install the Ubuntu distribution, as they will tell you in almost every
+article about WSL, which you will find on the Internet. tpws is a static binary, it does not need a distribution.
 
-Установить WSL : 
+Install WSL:
  `dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all`
 
-Из релиза скопировать на целевую систему `binaries/linux-x86_64/tpws_wsl.tgz`.
+From the release, copy `binaries/linux-x86_64/tpws_wsl.tgz` to the target system.
 
-Выполнить :
+Run:
  `wsl --import tpws "%USERPROFILE%\tpws" tpws_wsl.tgz`
 
-Запустить :
- `wsl -d tpws --exec /tpws --uid=1 --no-resolve --socks --bind-addr=127.0.0.1 --port=1080 <параметры_дурения>`
+Run:
+`wsl -d tpws --exec /tpws --uid=1 --no-resolve --socks --bind-addr=127.0.0.1 --port=1080 <fooling_options>`
 
-Прописать socks `127.0.0.1:1080` в браузер или другую программу.
+Register socks `127.0.0.1:1080` in a browser or other program.
 
-Удаление : `wsl --unregister tpws`
+Uninstall : `wsl --unregister tpws`
 
 
 > [!NOTE]
-> Проверено на windows 10 build 19041 (20.04) под WSL1. На WSL2 эти команды могут не сработать.
-Если у вас есть WSL2, значит у вас есть работающая виртуалка с linux.
-Если вы умеете с ней обращаться, tpws на ней запустить возможно без всяких проблем.
+> Tested on windows 10 build 19041 (20.04) under WSL1. On WSL2 these commands may not work.
+If you have WSL2, then you have a working Linux virtual machine.
+If you know how to handle it, you can run tpws on it without any problems.
 
 
-Возможные проблемы: 
-- Не работают функции `--oob` и `--mss` из-за ограничений реализации WSL.
-`--disorder` не работает из-за особенностей tcp/ip стека windows.
+Possible problems:
+- The `--oob` and `--mss` functions do not work due to WSL implementation limitations.
+`--disorder` does not work due to the peculiarities of the windows tcp/ip stack.
 
-- Может не срабатывать детект RST в autohostlist.
+- RST detection in autohostlist may not work.
 
-- WSL может глючить со splice, приводя к зацикливанию процесса. Может потребоваться `--nosplice`.
+- WSL can glitch with splice, causing the process to loop. `--nosplice` may be required.
 
-- Не поддерживается tcp user timeout.
-Чтобы избавиться от сообщений об ошибке добавляйте :
+- Tcp user timeout is not supported.
+To get rid of error messages add:
  `--local-tcp-user-timeout=0 --remote-tcp-user-timeout=0`.
-Эти сообщения только информативные, на работу они не влияют.
+These messages are for informational purposes only and do not affect operation.
 
 ## winws
 
-Это вариант пакетного фильтра nfqws для Windows, построенный на базе windivert.
-Все функции работоспособны, однако функционал ipset в ядре отсутствует. Он реализован в user mode. Фильтры по большому количеству IP адресов невозможны.
-Работа с проходящим трафиком, например в случае "расшаривания" соединения, невозможна.
-Для работы с windivert требуются права администратора.
-Специфические для unix параметры, такие как `--uid`, `--user` и тд, исключены. Все остальные параметры аналогичны nfqws и dvtws.
+This is a variant of the nfqws packet filter for Windows, built on top of windivert.
+All functions are functional, but the ipset functionality is missing in the kernel. It is implemented in user mode. Filters based on a large number of IP addresses are not possible.
+Working with passing traffic, for example in the case of “sharing” the connection, is impossible.
+Administrator rights are required to use windivert.
+Unix-specific options such as `--uid`, `--user`, etc. are excluded. All other parameters are similar to nfqws and dvtws.
 
-Работа с пакетным фильтром основана на двух действиях :
-1) Выделение перенаправляемого трафика в режиме ядра и передача его пакетному фильтру в user mode.
-2) Собственно обработка перенаправленных пакетов в пакетном фильтре.
+Working with a packet filter is based on two actions:
+1) Selecting redirected traffic in kernel mode and passing it to the packet filter in user mode.
+2) The actual processing of redirected packets in the packet filter.
 
-В windows отсутствуют встроенные средства для перенаправления трафика, такие как _iptables_, _nftables_, _pf_ или _ipfw_.
-Поэтому используется сторонний драйвер ядра windivert. Он работает, начиная с windows 7. На системах с включенным
-secure boot могут быть проблемы из-за подписи драйвера. В этом случае отключите `secureboot` или включите режим `testsigning`.
-На windows 7, вероятно, будут проблемы с загрузкой windivert. Читайте ниже соответствующий раздел.
+Windows does not have built-in traffic redirection tools such as _iptables_, _nftables_, _pf_ or _ipfw_.
+Therefore, a third-party windivert kernel driver is used. It works starting from windows 7. On systems with
+secure boot there may be problems due to driver signature. In this case, disable `secureboot` or enable `testsigning` mode.
+On windows 7 there will probably be problems loading windivert. Read the relevant section below.
 
-Задача _iptables_ в **winws** решается внутренними средствами через фильтры windivert.
-У windivert существует собственный язык фильтров, похожий на язык фильтров wireshark.
+The _iptables_ task in **winws** is solved internally through windivert filters.
+windivert has its own filter language, similar to wireshark's.
 [Документация по фильтрам windivert.](https://reqrypt.org/windivert-doc.html#filter_language)
-Чтобы не писать сложные фильтры вручную, предусмотрены различные упрощенные варианты автоматического построения фильтров.
+To avoid writing complex filters manually, various simplified options for automatically constructing filters are provided.
 
 ```
  --wf-iface=<int>[.<int>]               ; числовые индексы интерфейса и суб-интерфейса
@@ -80,200 +80,200 @@ secure boot могут быть проблемы из-за подписи дра
  --nlm-list[=all]                       ; вывести список сетей NLM. по умолчанию только подключенных, all - всех.
  ```
 
-Параметры `--wf-l3`, `--wf-tcp`, `--wf-udp` могут брать несколько значений через запятую.
+The parameters `--wf-l3`, `--wf-tcp`, `--wf-udp` can take multiple values ​​separated by commas.
 
-Номера интерфейсов можно узнать так : `netsh int ip show int`.
-Некоторых типы соединений там не увидеть. В этом случае запускайте **winws** с параметром `--debug` и смотрите IfIdx там.
-SubInterface используется windivert, но практически всегда **0**, его можно не указывать. Вероятно, он нужен в редких случаях.
+You can find out the interface numbers like this: `netsh int ip show int`.
+Some types of connections cannot be seen there. In this case, run **winws** with the `--debug` option and look at IfIdx there.
+SubInterface is used by windivert, but almost always **0**, it can be omitted. It is probably needed in rare cases.
 
-Конструктор стандартных фильтров автоматически включает входящие tcp пакеты с tcp synack и tcp rst для корректной работы функций
+The standard filter designer automatically includes incoming tcp packets with tcp synack and tcp rst for the functions to work correctly
 autottl и autohostlist. При включении autohostlist так же перенаправляются пакеты данных с http redirect с кодами 302 и 307.
-Если не указаное иное, добавляется фильтр на исключение не-интернет адресов ipv4 и ipv6.
-Для сложных нестандартных сценариев могут потребоваться свои фильтры. Полный фильтр --wf-raw замещает все остальное.
-Частичные фильтры `--wf-raw-part` совместимы друг с другом и `--wf-tcp` и `--wf-udp`. Они позволяют исключить написание
-громоздких полных фильтров, сосредоточившись лишь на добавлении какого-то особенного пейлоада.
-`--wf-save` позволяет записать итоговый windivert фильтр в файл. Максимальный размер фильтра - **16 Kb**.
+Unless otherwise specified, a filter is added to exclude non-Internet ipv4 and ipv6 addresses.
+Complex non-standard scenarios may require your own filters. The full --wf-raw filter overrides everything else.
+Partial filters `--wf-raw-part` are compatible with each other and `--wf-tcp` and `--wf-udp`. They allow you to avoid writing
+bulky full filters, focusing only on adding some special payload.
+`--wf-save` allows you to write the resulting windivert filter to a file. The maximum filter size is **16 Kb**.
 
-Фильтрация windivert производится в ядре. Это несравнимо легче по ресурсам, чем перенаправлять пакеты в пространство user mode,
-чтобы winws принимал решение. Поэтому пользуйтесь по максимуму возможностями windivert.
-Например, если вам нужно дурить wireguard на все порты, вам придется перенаправить все порты на winws. Или же написать windivert фильтр, который отсечет wireguard по содержимому пакета.
-Разница в нагрузке на процессор колоссальна. В первом случае - до 100% одного ядра cpu в зависимости от обьема исходящего udp трафика (привет, торрент и uTP), во втором - близко к 0.
-Кроме нагрузки на процессор еще можете порезать себе скорость, тк одно ядро не будет справляться с обработкой вашего гигабитного интернета. А на старых ноутах еще и получите самолетный вой системы охлаждения, приводящий к ее износу.
+windivert filtering is done in the kernel. This is incomparably easier in terms of resources than redirecting packets to the user mode space,
+for winws to make the decision. Therefore, make the most of windivert's capabilities.
+For example, if you need to fool wireguard on all ports, you will have to forward all ports to winws. Or write a windivert filter that will cut off wireguard based on the contents of the packet.
+The difference in processor load is colossal. In the first case - up to 100% of one core cpu depending on the volume of outgoing udp traffic (hello, torrent and uTP), in the second - close to 0.
+In addition to the load on the processor, you can also reduce your speed, as one core will not cope with processing your gigabit Internet. And on older laptops you will also get an airplane-like whine of the cooling system, leading to its wear.
 
-Можно запускать несколько процессов **winws** с разными стратегиями. Однако, не следует делать пересекающиеся фильтры.
+You can run multiple **winws** processes with different strategies. However, you should not make intersecting filters.
 
-В `--ssid-filter` можно через запятую задать неограниченное количество имен wifi сетей (**SSID**). Если задана хотя бы одна сеть,
-то winws включается только, если подключен указанный **SSID**. Если **SSID** исчезает, winws отключается. Если **SSID** появляется снова,
-winws включается. Это нужно, чтобы можно было применять раздельное дурение к каждой отдельной wifi сети.
-Названия сетей должны быть написаны в том регистре, в котором их видит система. Сравнение идет с учетом регистра!
-При этом нет никаких проверок куда реально идет трафик. Если одновременно подключен, допустим, ethernet, 
-и трафик идет туда, то дурение включается и выключается просто по факту наличия wifi сети, на которую трафик может и не идти.
-И это может сломать дурение на ethernet. Поэтому полезно так же будет добавить фильтр `--wf-iface` на индекс интерфейса wifi адаптера, 
-чтобы не трогать другой трафик.
+In `--ssid-filter` you can specify an unlimited number of wifi network names (**SSID**), separated by commas. If at least one network is specified,
+then winws is enabled only if the specified **SSID** is connected. If the **SSID** disappears, winws is disabled. If **SSID** appears again,
+winws is turned on. This is necessary so that you can apply separate fooling to each individual wifi network.
+Network names must be written in the case in which the system sees them. The comparison is case sensitive!
+At the same time, there are no checks of where the traffic actually goes. If, for example, ethernet is connected at the same time,
+and the traffic goes there, then the foolishness is turned on and off simply by the presence of a wifi network, to which the traffic may not go.
+And this can break the stupidity on ethernet. Therefore, it will also be useful to add the `--wf-iface` filter to the wifi adapter interface index,
+so as not to affect other traffic.
 
-`--nlm-filter` аналогичен `--ssid-filter`, но работает с именами или GUIDами сетей Network List Manager (NLM).
-Это те сети, которые вы видите в панели управления в разделе "Центр управления сетями и общим доступом".
-Под сетью подразумевается не конкретный адаптер, а именно сетевое окружение конкретного подключения.
-Обычно проверяется mac адрес шлюза. К сети можно подключиться через любой адаптер, и она останется той же самой.
-Если подключиться, допустим, к разными роутерам по кабелю, то будут разные сети.
-А если к одному роутеру через 2 разных сетевых карточки на том же компе - будет одна сеть.
-NLM абстрагирует типы сетевых адаптеров. Он работает как с wifi, так и с ethernet и любыми другими.
-Поэтому это более универсальный метод, чем **SSID** фильтр.
-Однако, есть и неприятная сторона. В windows 7 вы легко могли ткнуть на иконку сети и выбрать тип : private или public.
-Там же вы могли посмотреть список сетей и обьединить их. Чтобы, допустим, вы могли подключаться по кабелю и wifi
-к одному роутеру, и система эти подключения воспринимала как одну сеть.
-В следующих версиях windows они эти возможности сильно порезали. Похоже нет встроенных средств полноценно управлять
-network locations в win10/11. Кое-что есть в **powershell**.
-Можно поковыряться напрямую в реестре здесь : 
+`--nlm-filter` is similar to `--ssid-filter`, but works with Network List Manager (NLM) network names or GUIDs.
+These are the networks you see in Control Panel under Network and Sharing Center.
+The network does not mean a specific adapter, but rather the network environment of a specific connection.
+Usually the mac address of the gateway is checked. You can connect to the network through any adapter, and it will remain the same.
+If you connect, say, to different routers via cable, you will have different networks.
+And if you connect to one router through 2 different network cards on the same computer, there will be one network.
+NLM abstracts network adapter types. It works with both wifi and ethernet and any others.
+Therefore, this is a more universal method than the **SSID** filter.
+However, there is also an unpleasant side. In Windows 7, you could easily click on the network icon and select the type: private or public.
+There you could look at the list of networks and combine them. So that, for example, you can connect via cable and wifi
+to one router, and the system perceived these connections as one network.
+In subsequent versions of Windows they greatly reduced these features. It seems there are no built-in tools to fully manage
+network locations in win10/11. There is something in **powershell**.
+You can dig deeper into the registry here:
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList`
-Нужно менять ProfileGUID в `Signatures\Unmanaged`. Имена можно поменять в Profiles.
-Есть кое-какие сторонние утилиты. Кое-что находится, позволяющее посмотреть и удалить network profiles, но не обьединить.
-Факт, что в ms они это сильно испортили. Движок network list все тот же, и он способен на все то, что было в win7.
-Можно не бороться с этой проблемой, а просто указывать через запятую те названия сетей или GUIDы, которые выбрала система.
-Или если у вас только wifi, то использовать `--ssid-filter`. Там хотя бы есть гарантия, что **SSID** соответствуют реальности,
-а система их не назвала как-то по-своему.
+You need to change the ProfileGUID in `Signatures\Unmanaged`. Names can be changed in Profiles.
+There are some third party utilities. There is something that allows you to view and delete network profiles, but not merge them.
+The fact is that in MS they really messed it up. The network list engine is still the same, and it is capable of everything that was in win7.
+You don’t have to deal with this problem, but simply indicate, separated by commas, the names of the networks or GUIDs that the system has selected.
+Or if you only have wifi, then use `--ssid-filter`. At least there is a guarantee that the **SSID** corresponds to reality,
+but the system didn’t call them anything differently.
 
-Если в путях присутствуют национальные символы, то при вызове winws из `cmd` или `bat` кодировку нужно использовать **OEM**.
-Для русского языка это 866. Пути с пробелами нужно брать в кавычки.
-При использовании опции @<config_file> кодировка в файле должна быть **UTF-8** без **BOM mark**.
+If the paths contain national characters, then when calling winws from `cmd` or `bat` the encoding must be used **OEM**.
+For the Russian language this is 866. Paths with spaces must be enclosed in quotes.
+When using the @<config_file> option, the encoding in the file must be **UTF-8** without **BOM mark**.
 
-Существует неочевидный момент, каcаемый запуска **winws** из cygwin shell\`а. Если в директории, где находится winws, находится
-копия `cygwin1.dll`, **winws** не запустится.
-Если нужен запуск под cygwin, то следует удалить или переместить `cygwin1.dll` из `binaries/windows-x86_64`. Это нужно для работы blockcheck.
-Из cygwin шелла можно посылать winws сигналы через `kill` точно так же, как в `*nix`.
+There is a non-obvious point regarding launching **winws** from the cygwin shell. If in the directory where winws is located there is
+a copy of `cygwin1.dll`, **winws** will not start.
+If you need to run under cygwin, you should remove or move `cygwin1.dll` from `binaries/windows-x86_64`. This is necessary for blockcheck to work.
+From the cygwin shell you can send winws signals via `kill` in the same way as in `*nix`.
 
-Как получить совместимый с windows 7 и winws cygwin :
+How to get windows 7 and winws compatible cygwin:
 
 `curl -O https://www.cygwin.com/setup-x86_64.exe`
 
 `setup-x86_64.exe --allow-unsupported-windows --no-verify --site http://ctm.crouchingtigerhiddenfruitbat.org/pub/cygwin/circa/64bit/2024/01/30/231215`
 
 > [!IMPORTANT]
-> Следует выбрать установку curl.
+> You should choose to install curl.
 
-Для сборки из исходников требуется _gcc-core_,_make_,_zlib-devel_.
-Собирать из директории nfq командой `make cygwin64` или `make cygwin32` для 64 и 32 битных версий соответственно.
-**winws** требует `cygwin1.dll`, `windivert.dll`, `windivert64.sys` или `windivert32.sys`.
-Их можно взять из `binaries/win64` и `binaries/win32`.
+To build from source, _gcc-core_, _make_, _zlib-devel_ are required.
+Build from the nfq directory with the command `make cygwin64` or `make cygwin32` for 64 and 32 bit versions, respectively.
+**winws** requires `cygwin1.dll`, `windivert.dll`, `windivert64.sys` or `windivert32.sys`.
+They can be taken from `binaries/win64` and `binaries/win32`.
 
-Для _arm64_ windows нет подписанного драйвера windivert и нет cygwin.
-Однако, эмуляция x64 windows 11 позволяет использовать все, кроме WinDivert64.sys без изменений.
-Но при этом надо заменить WinDivert64.sys на неподписанную _arm64_ версию и установить режим testsigning.
+For _arm64_ windows there is no signed windivert driver and no cygwin.
+However, x64 Windows 11 emulation allows you to use everything except WinDivert64.sys without changes.
+But in this case, you need to replace WinDivert64.sys with the unsigned _arm64_ version and set the testsigning mode.
 
 ## Windows 7 и windivert
 
-Требования к подписи драйверов windows изменились в 2021 году.
-Официальные бесплатные обновления windows 7 закончились в 2020.
-После этого несколько лет продолжали идти платные обновления по программе **ESU**.
-Именно в этих **ESU** обновлениях находится обновление ядра windows 7, позволяющиее загрузить драйвер
-_windivert 2.2.2-A_, который идет в поставке zapret.
-Поэтому варианты следующие :
+Windows driver signing requirements have changed in 2021.
+Official free Windows 7 updates ended in 2020.
+After this, paid updates for the **ESU** program continued for several years.
+It is in these **ESU** updates that the Windows 7 kernel update is located, allowing you to load the driver
+_windivert 2.2.2-A_, which comes with zapret.
+Therefore the options are as follows:
 
 1) Взять `windivert64.sys` и `windivert.dll` версии _2.2.0-C_ или _2.2.0-D_ отсюда : https://reqrypt.org/download
-и заменить эти 2 файла.
+and replace these 2 files.
 В [zapret-win-bundle](https://github.com/bol-van/zapret-win-bundle) есть отдельных 2 места, где находится **winws** : [_zapret-winws_](https://github.com/bol-van/zapret-win-bundle/tree/master/zapret-winws) и [_blockcheck/zapret/nfq_](https://github.com/bol-van/zapret-win-bundle/tree/master/blockcheck).
-Надо менять в обоих местах.
-Альтернативный вариант при использовании win bundle - запустить `win7\install_win7.cmd`
+It needs to be changed in both places.
+An alternative option when using win bundle is to run `win7\install_win7.cmd`
 
 > [!NOTE]
-> Этот вариант проверен и должен работать. Тем не менее патч 10 летней давности, который включает SHA256 сигнатуры, все еще необходим.
+> This option has been tested and should work. However, the 10 year old patch that includes SHA256 signatures is still needed.
 
-2) Взломать **ESU** :
+2) Hack **ESU** :
 https://hackandpwn.com/windows-7-esu-patching/
 http://www.bifido.net/tweaks-and-scripts/8-extended-security-updates-installer.html
-и обновить систему
+and update the system
 
 3) Использовать UpdatePack7R2 от simplix : https://blog.simplix.info
 > [!WARNING]
-> Но с этим паком есть проблема. Автор из Украины, он очень обиделся на русских.
-> Если в панели управления стоит регион RU или BY, появляется неприятный диалог.
-> Чтобы эту проблему обойти, можно поставить временно любой другой регион, потом вернуть.
-> Так же нет никаких гарантий, что автор не насовал туда какой-то зловредный код.
-> Использовать на свой страх и риск.
+> But there is a problem with this pack. The author is from Ukraine, he was very offended by the Russians.
+> If the control panel is set to RU or BY, an unpleasant dialog appears.
+> To get around this problem, you can temporarily set any other region, then return it.
+> There is also no guarantee that the author did not put some malicious code there.
+> Use at your own risk.
 
-Более безопасный вариант - скачать последнюю нормальную довоенную версию : 22.2.10
+A safer option is to download the latest normal pre-war version: 22.2.10
 https://nnmclub.to/forum/viewtopic.php?t=1530323
-Ее достаточно, чтобы _windivert 2.2.2-A_ заработал на windows 7.
+It is enough for _windivert 2.2.2-A_ to work on Windows 7.
 
 ## blockcheck
 
-`blockcheck.sh` написан на _posix shell_ и требует некоторых стандартных утилит _posix_. В windows, естественно, этого нет.
-Потому просто так запустить `blockcheck.sh` невозможно.
-Для этого требуется скачать и установить _cygwin_ так , как описано в предыдущем разделе.
-Следует запустить от имени администратора _cygwin shell_ через `cygwin.bat`.
-В нем нужно пройти в директорию с zapret.
-Обратные слэши путей windows нужно удваивать, менять на прямые слэши, либо использовать отображение на unix path.
-Корректные варианты : 
+`blockcheck.sh` is written in the _posix shell_ and requires some standard _posix_ utilities. In Windows, of course, this is not the case.
+Therefore, it is impossible to just run `blockcheck.sh`.
+To do this, you need to download and install _cygwin_ as described in the previous section.
+Should be run as administrator _cygwin shell_ via `cygwin.bat`.
+In it you need to go to the directory with zapret.
+Windows path backslashes need to be doubled, replaced with forward slashes, or mapped to unix path.
+Correct options:
 - `cd C:\\Users\\vasya`
 - `cd C:/Users/vasya`
 - `cd /cygdrive/c/Users/vasya`
 
-Существует неочевидный момент, каcаемый запуска **winws** из _cygwin_ шелла. Если в директории, где находится **winws**, есть копия `cygwin1.dll`, **winws** не запустится. Нужно переименовать файл `cygwin1.dll`.
-Далее все как в _*nix_ : 1 раз `./install_bin.sh` , затем `./blockcheck.sh`.
-WSL использовать нельзя, это не то же самое.
+There is a non-obvious point regarding launching **winws** from the _cygwin_ shell. If there is a copy of `cygwin1.dll` in the directory where **winws** is located, **winws** will not start. You need to rename the `cygwin1.dll` file.
+Then everything is as in _*nix_: 1 time `./install_bin.sh`, then `./blockcheck.sh`.
+You can't use WSL, it's not the same.
 
-_cygwin_ для обычной работы **winws** не нужен.
+_cygwin_ is not needed for normal work. **winws** is not needed.
 
 Однако, хотя такой способ и работает, использование **winws** сильно облегчает [zapret-win-bundle](https://github.com/bol-van/zapret-win-bundle).
-Там нет проблемы с `cygwin.dll`.
+There is no problem with `cygwin.dll`.
 
 ## Zapret-win-bundle
 
 Можно не возиться с _cygwin_, а взять готовый пакет, включающий в себя _cygwin_ и _blockcheck_ : https://github.com/bol-van/zapret-win-bundle
-Там сделан максимум удобств для сосредоточения на самом zapret, исключая возню с установкой _cygwin_,
-заходами в директории, запусками под администратором и прочими сугубо техническими моментами, в которых могут быть
-ошибки и непонимания, а новичок без базиса знаний может и вовсе запутаться.
+There, maximum convenience has been made for focusing on the zapret itself, excluding fuss with installing _cygwin_,
+entries into directories, launches under administrator and other purely technical issues in which there may be
+mistakes and misunderstandings, and a beginner without a basis of knowledge can become completely confused.
 
-`/zapret-winws` - здесь все, что нужно для запуска winws в повседневном рабочем режиме. остальное не нужно.\
-`/zapret-winws/_CMD_ADMIN.cmd` - получить командную строку cmd в этой директории от имени администратора для тестирования **winws**
-с параметрами, вводимыми вручную\
-`/blockcheck/blockcheck.cmd` - достаточно кликнуть по нему, чтобы пошел _blockcheck_ с записью лога в `blockcheck/blockcheck.log`\
-`/cygwin/cygwin.cmd` - запуск среды _cygwin bash_ под текущим пользователем\
-`/cygwin/cygwin-admin.cmd` - запуск среды _cygwin bash_ под администратором
+`/zapret-winws` - ​​here is everything you need to run winws in everyday working mode. the rest is not needed.\
+`/zapret-winws/_CMD_ADMIN.cmd` - get the cmd command line in this directory as an administrator for testing **winws**
+with parameters entered manually\
+`/blockcheck/blockcheck.cmd` - just click on it to go to _blockcheck_ with a log entry in `blockcheck/blockcheck.log`\
+`/cygwin/cygwin.cmd` - launch the _cygwin bash_ environment under the current user\
+`/cygwin/cygwin-admin.cmd` - launch the _cygwin bash_ environment as an administrator
 
-В среде _cygwin_ уже настроены alias-ы на winws,blockcheck,ip2net,mdig. С путями возиться не нужно!
+In the _cygwin_ environment, aliases are already configured for winws, blockcheck, ip2net, mdig. No need to mess with paths!
 
 > [!TIP]
-> Из cygwin можно не только тестировать winws, но и посылать сигналы.
-> Доступны команды:
+> From cygwin you can not only test winws, but also send signals.
+> Available commands:
 >-  `pidof`
 >-  `kill`
 >-  `killall`
 >-  `pgrep`
 >-  `pkill`
 
-Но важно понимать, что таким образом не выйдет посылать сигналы **winws**, запущенному из _zapret-winws_,
-поскольку там свой `cygwin1.dll`, и они не разделяют общее пространство процессов unix.
-_zapret-winws_ - это отдельный комплект для повседневного использования, не требующий что-то еще, но и не связанный со _средой cygwin_.
-Специально для посылки сигналов winws в _zapret-winws_ присутствует killall.exe.
+But it is important to understand that in this way it will not be possible to send signals to **winws** launched from _zapret-winws_,
+because it has its own `cygwin1.dll`, and they do not share the common unix process space.
+_zapret-winws_ is a standalone kit for everyday use, not requiring anything else, but also not associated with the _cygwin_ environment.
+Killall.exe is present in _zapret-winws_ specifically for sending winws signals.
 
-Среду cygwin можно использовать для записи в файл дебаг-лога winws. Для этого пользуйтесь командой tee.
+The cygwin environment can be used to write to the winws debug log file. To do this, use the tee command.
 `winws --debug --wf-tcp=80,443 | tee winws.log`
-`winws.log` будет в `cygwin/home/<имя_пользователя>`
-Если у вас windows 7, то блокнот не поймет переводы строк в стиле unix. Воспользуйтесь командой
+`winws.log` will be in `cygwin/home/<username>`
+If you have Windows 7, then Notepad will not understand unix-style line breaks. Use the command
 `unix2dos winws.log`
 
 > [!CAUTION]
-> Поскольку 32-битные windows мало востребованы, _zapret-win-bundle_ существует только в варианте для windows _x64/arm64_.
+> Since 32-bit windows are in little demand, _zapret-win-bundle_ exists only in the version for windows _x64/arm64_.
 
-## Автозапуск winws
+## Autostart winws
 
-Для запуска **winws** вместе с windows есть 2 варианта. Планировщик задач или службы windows.
+To run **winws** along with windows there are 2 options. Task scheduler or windows services.
 
-Можно создавать задачи и управлять ими через консольную программу schtasks.
-В директории `binaries/windows-x86_64/winws` подготовлены файлы `task_*.cmd` .
-В них реализовано создание, удаление, старт и стоп одной копии процесса winws с параметрами из переменной `%WINWS1%`.
-Исправьте параметры на нужную вам стратегию. Если для разных фильтров применяется разная стратегия, размножьте код
-для задач _winws1_,_winws2_,_winws3_,_..._
+You can create and manage tasks through the schtasks console program.
+The `task_*.cmd` files are prepared in the `binaries/windows-x86_64/winws` directory.
+They implement the creation, deletion, start and stop of one copy of the winws process with parameters from the `%WINWS1%` variable.
+Correct the parameters to the strategy you need. If a different strategy is used for different filters, multiply the code
+for tasks _winws1_, _winws2_, _winws3_,_..._
 
-Аналогично настраивается вариант запуска через службы windows. Смотрите `service_*.cmd`.
+The launch option via windows services is configured in the same way. See `service_*.cmd`.
 
-Все батники требуется запускать от имени администратора.
+All batch files must be run as administrator.
 
-Управлять задачами можно так же из графической программы управления планировщиком `taskschd.msc`
+You can also manage tasks from the graphical scheduler management program `taskschd.msc`
 
-## Особенности Windows Server
+## Windows Server Features
 
-winws слинкован с wlanapi.dll, который по умолчанию не установлен в windows server.
-Для решения этой проблемы запустите power shell под администратором и выполните команду `Install-WindowsFeature -Name Wireless-Networking`.
-После чего перезагрузите систему.
+winws is linked with wlanapi.dll, which is not installed in windows server by default.
+To solve this problem, run the power shell as an administrator and run the command `Install-WindowsFeature -Name Wireless-Networking`.
+Then reboot the system.

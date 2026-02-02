@@ -1,10 +1,10 @@
 # zapret v72.3
 
-# ВНИМАНИЕ, остерегайтесь мошенников
+# ATTENTION, beware of scammers
 
-zapret является свободным и open source.
-Всякий, кто понуждает вас скачивать zapret только с его ресурса, требует удалить ссылки, видео, файлы, обосновывая эти требования авторскими правами, сам нарушает [лицензию](./LICENSE.txt).
-Однако, это не исключает [добровольные пожертвования](#поддержать-разработчика).
+zapret is free and open source.
+Anyone who forces you to download zapret only from its resource, demands to remove links, videos, files, justifying these demands with copyright, is violating the [license](./LICENSE.txt).
+However, this does not exclude [voluntary donations](#support-developer).
 
 # Multilanguage README
 
@@ -13,155 +13,155 @@ zapret является свободным и open source.
 
 ***
 
-  - [Зачем это нужно](#зачем-это-нужно)
-  - [Быстрый старт](#быстрый-старт)
-  - [Как это работает](#как-это-работает)
-  - [Что сейчас происходит в России](#что-сейчас-происходит-в-россии)
-  - [Как это реализовать на практике в системе linux](#как-это-реализовать-на-практике-в-системе-linux)
-  - [Когда это работать не будет](#когда-это-работать-не-будет)
+  - [Why is this necessary](#why is this necessary)
+  - [Quick start](#quick start)
+  - [How it works](#how-it-works)
+  - [What's happening in Russia now](#what-is-happening-in-Russia now)
+  - [How to implement this in practice on a linux system](#how-to-implement this in practice on a linux system)
+  - [When it won't work](#when-it-won't-work)
   - [nfqws](#nfqws)
-    - [АТАКА ДЕСИНХРОНИЗАЦИИ DPI](#атака-десинхронизации-dpi)
-    - [ФЕЙКИ](#фейки)
-    - [МОДИФИКАЦИЯ ФЕЙКОВ](#модификация-фейков)
-    - [TCP СЕГМЕНТАЦИЯ](#tcp-сегментация)
-    - [ПЕРЕКРЫТИЕ SEQUENCE NUMBERS](#перекрытие-sequence-numbers)
-    - [НАЗНАЧЕНИЕ IP_ID](#назначение-ip_id)
-    - [СПЕЦИФИЧЕСКИЕ РЕЖИМЫ IPV6](#специфические-режимы-ipv6)
-    - [МОДИФИКАЦИЯ ОРИГИНАЛА](#модификация-оригинала)
-    - [ДУБЛИКАТЫ](#дубликаты)
-    - [КОМБИНИРОВАНИЕ МЕТОДОВ ДЕСИНХРОНИЗАЦИИ](#комбинирование-методов-десинхронизации)
-    - [КЭШ IP](#кэш-ip)
-    - [РЕАКЦИЯ DPI НА ОТВЕТ СЕРВЕРА](#реакция-dpi-на-ответ-сервера)
-    - [РЕЖИМ SYNACK](#режим-synack)
-    - [РЕЖИМ SYNDATA](#режим-syndata)
-    - [ВИРТУАЛЬНЫЕ МАШИНЫ](#виртуальные-машины)
+    - [DPI DESYNCHRONIZATION ATTACK](#dpi-desynchronization-attack)
+    - [FAKES](#fake)
+    - [MODIFICATION OF FAKES](#modification-fake)
+    - [TCP SEGMENTATION](#tcp-segmentation)
+    - [OVERLAP SEQUENCE NUMBERS](#overlap-sequence-numbers)
+    - [IP_ID DESTINATION](#destination-ip_id)
+    - [IPV6 SPECIFIC MODES](#ipv6-specific-modes)
+    - [MODIFICATION OF ORIGINAL](#modification-of-original)
+    - [DUPLICATES](#duplicates)
+    - [COMBINING DESYNCHRONIZATION METHODS](#combining-desynchronization-methods)
+    - [CACHE IP](#cache-ip)
+    - [DPI RESPONSE TO SERVER RESPONSE](#dpi-reaction-to-server-response)
+    - [SYNACK MODE](#synack mode)
+    - [SYNDATA MODE](#mode-syndata)
+    - [VIRTUAL MACHINES](#virtual-machines)
     - [CONNTRACK](#conntrack)
-    - [РЕАССЕМБЛИНГ](#реассемблинг)
-    - [ПОДДЕРЖКА UDP](#поддержка-udp)
-    - [IP ФРАГМЕНТАЦИЯ](#ip-фрагментация)
-    - [МНОЖЕСТВЕННЫЕ СТРАТЕГИИ](#множественные-стратегии)
-    - [ФИЛЬТРАЦИЯ ПО WIFI](#фильтрация-по-wifi)
-    - [IPTABLES ДЛЯ NFQWS](#iptables-для-nfqws)
-    - [NFTABLES ДЛЯ NFQWS](#nftables-для-nfqws)
+    - [REASSEMBLING](#reassembling)
+    - [UDP SUPPORT](#support-udp)
+    - [IP FRAGMENTATION](#ip-fragmentation)
+    - [MULTIPLE STRATEGIES](#multiple-strategies)
+    - [FILTERING BY WIFI](#filtering-by-wifi)
+    - [IPTABLES FOR NFQWS](#iptables-for-nfqws)
+    - [NFTABLES FOR NFQWS](#nftables-for-nfqws)
     - [FLOW OFFLOADING](#flow-offloading)
-    - [ОСОБЕННОСТИ ЖЕЛЕЗОК](#особенности-железок)
-    - [ДУРЕНИЕ СО СТОРОНЫ СЕРВЕРА](#дурение-со-стороны-сервера)
+    - [FEATURES OF GARDENS](#features of hardware)
+    - [FOOLING ON THE SERVER'S SIDE](#fooling-on-the-server's side)
   - [tpws](#tpws)
-    - [TCP СЕГМЕНТАЦИЯ В TPWS](#tcp-сегментация-в-tpws)
+    - [TCP SEGMENTATION IN TPWS](#tcp-segmentation-in-tpws)
     - [TLSREC](#tlsrec)
     - [MSS](#mss)
-    - [ДРУГИЕ ПАРАМЕТРЫ ДУРЕНИЯ](#другие-параметры-дурения)
-    - [МНОЖЕСТВЕННЫЕ СТРАТЕГИИ](#множественные-стратегии-1)
-    - [СЛУЖЕБНЫЕ ПАРАМЕТРЫ](#служебные-параметры)
-    - [IPTABLES ДЛЯ TPWS](#iptables-для-tpws)
-    - [NFTABLES ДЛЯ TPWS](#nftables-для-tpws)
+    - [OTHER DUMPING PARAMETERS](#other-fooling-parameters)
+    - [MULTIPLE STRATEGIES](#multiple-strategies-1)
+    - [SERVICE PARAMETERS](#service-parameters)
+    - [IPTABLES FOR TPWS](#iptables-for-tpws)
+    - [NFTABLES FOR TPWS](#nftables-for-tpws)
   - [ip2net](#ip2net)
   - [mdig](#mdig)
-  - [Способы получения списка заблокированных IP](#способы-получения-списка-заблокированных-ip)
-  - [Фильтрация по именам доменов](#фильтрация-по-именам-доменов)
-  - [Режим фильтрации autohostlist](#режим-фильтрации-autohostlist)
-  - [Проверка провайдера](#проверка-провайдера)
-  - [Выбор параметров](#выбор-параметров)
-  - [Прикручивание к системе управления фаерволом или своей системе запуска](#прикручивание-к-системе-управления-фаерволом-или-своей-системе-запуска)
-  - [Вариант custom](#вариант-custom)
-  - [Простая установка](#простая-установка)
-  - [Установка под systemd](#установка-под-systemd)
-  - [Простая установка на openwrt](#простая-установка-на-openwrt)
-  - [Установка на openwrt в режиме острой нехватки места на диске](#установка-на-openwrt-в-режиме-острой-нехватки-места-на-диске)
+  - [Ways to get a list of blocked IPs](#ways-to-get-a-list-of-blocked-ips)
+  - [Filtering by domain names](#filtering-by-domain-names)
+  - [autohostlist filtering mode](#filtering-mode-autohostlist)
+  - [Provider check](#provider check)
+  - [Select parameters](#select-parameters)
+  - [Screwing to the firewall management system or your launch system](#screwing-to-the firewall management system or your launch system)
+  - [option custom](#option-custom)
+  - [Easy installation](#easy-installation)
+  - [Installation under systemd](#installation-under-systemd)
+  - [Simple openwrt installation](#simple-openwrt-installation)
+  - [Installation on openwrt in severely low disk space mode](#installation-on-openwrt in severely low-disk-space mode)
   - [Android](#android)
-  - [Мобильные модемы и роутеры huawei](#мобильные-модемы-и-роутеры-huawei)
+  - [Mobile modems and routers huawei](#mobile-modems-and-routers-huawei)
   - [FreeBSD, OpenBSD, MacOS](#freebsd-openbsd-macos)
   - [Windows](#windows)
-  - [Другие прошивки](#другие-прошивки)
-  - [Обход блокировки через сторонний хост](#обход-блокировки-через-сторонний-хост)
-  - [Почему стоит вложиться в покупку VPS](#почему-стоит-вложиться-в-покупку-vps)
-  - [Поддержать разработчика](#поддержать-разработчика)
+  - [Other firmware](#other-firmware)
+  - [Bypassing blocking through a third-party host](#bypassing-blocking-through-third-party-host)
+  - [Why is it worth investing in a VPS](#why is it worth investing in a VPS)
+  - [Support the developer](#support-developer)
 ***
 
-## Зачем это нужно
+## Why is this necessary?
 
-Автономное средство противодействия DPI, которое не требует подключения каких-либо сторонних серверов. Может помочь
-обойти блокировки или замедление сайтов HTTP(S), сигнатурный анализ TCP и UDP протоколов, например, с целью блокировки
+A standalone DPI countermeasure that does not require the connection of any third party servers. May help
+bypass blocking or slowdown of HTTP(S) sites, signature analysis of TCP and UDP protocols, for example, for the purpose of blocking
 VPN.
 
-Проект нацелен прежде всего на маломощные embedded устройства - роутеры, работающие под OpenWrt. Поддерживаются
-традиционные Linux-системы, FreeBSD, OpenBSD, частично macOS. В некоторых случаях возможна самостоятельная прикрутка
-решения к различным прошивкам.
+The project is aimed primarily at low-power embedded devices - routers running OpenWrt. Supported
+traditional Linux systems, FreeBSD, OpenBSD, partially macOS. In some cases, self-screwing is possible
+solutions for various firmwares.
 
-Большая часть функционала работает на Windows.
+Most of the functionality works on Windows.
 
-## Быстрый старт
+## Quick start
 
 - [Linux/openWrt](./quick_start.md)
 - [Windows](./quick_start_windows.md)
 
-## Как это работает
+## How does this work
 
-В самом простейшем случае вы имеете дело с пассивным DPI. Пассивный DPI может читать трафик из потока, может инжектить
-свои пакеты, но не может блокировать проходящие пакеты. Если запрос "плохой", пассивный DPI инжектит пакет RST,
-опционально дополняя его пакетом HTTP redirect. Если фейк пакет инжектится только для клиента, в этом случае можно
-обойтись командами iptables для дропа RST и/или редиректа на заглушку по определённым условиям, которые нужно подбирать
-для каждого провайдера индивидуально. Так мы обходим последствия срабатывания триггера запрета. Если пассивный DPI
-направляет пакет RST в том числе и серверу, то вы ничего с этим не сможете сделать. Ваша задача — не допустить
-срабатывания триггера запрета. Одними iptables уже не обойтись. Этот проект нацелен именно на предотвращение
-срабатывания запрета, а не ликвидацию его последствий.
+In the simplest case, you are dealing with passive DPI. Passive DPI can read traffic from the stream, can inject
+its own packets, but cannot block passing packets. If the request is "bad", passive DPI will inject an RST packet,
+optionally supplementing it with an HTTP redirect package. If the fake packet is injected only for the client, in this case you can
+use iptables commands to drop RST and/or redirect to a stub according to certain conditions that need to be selected
+for each provider individually. This way we bypass the consequences of the ban trigger. If passive DPI
+sends the RST packet to the server as well, then you cannot do anything about it. Your task is to prevent
+activation of the prohibition trigger. Iptables alone are no longer enough. This project is aimed specifically at preventing
+triggering the ban, rather than eliminating its consequences.
 
-Активный DPI ставится в разрез провода и может дропать пакеты по любым критериям, в том числе распознавать TCP-потоки и
-блокировать любые пакеты, принадлежащие потоку.
+Active DPI is placed in the wire section and can drop packets according to any criteria, including recognizing TCP streams and
+block any packets belonging to the thread.
 
-Как не допустить срабатывания триггера запрета? Послать то, на что DPI не рассчитывает и что ломает ему алгоритм
-распознавания запросов и их блокировки.
+How to prevent the ban trigger from being triggered? Send something that DPI does not count on and that breaks its algorithm
+recognition of requests and their blocking.
 
-Некоторые DPI не могут распознать HTTP-запрос, если он разделен на TCP-сегменты. Например, запрос
-вида `GET / HTTP/1.1\r\nHost: kinozal.tv......`
-мы посылаем двумя частями: сначала идет `GET`, затем `/ HTTP/1.1\r\nHost: kinozal.tv.....`. Другие DPI спотыкаются, когда
-заголовок `Host:` пишется в другом регистре: например, `host:`. Кое-где работает добавление дополнительного пробела
-после метода: `GET /` → `GET /`
-или добавление точки в конце имени хоста: `Host: kinozal.tv.`
+Some DPIs cannot recognize an HTTP request if it is divided into TCP segments. For example, request
+vida `GET / HTTP/1.1\r\nHost: kinozal.tv......`
+we send in two parts: first comes `GET`, then `/ HTTP/1.1\r\nHost: kinozal.tv.....`. Other DPIs stumble when
+the `Host:` header is written in a different case: for example, `host:`. Adding an extra space works in some places
+after the method: `GET /` → `GET /`
+or adding a dot at the end of the host name: `Host: kinozal.tv.`
 
-Существует и более продвинутая магия, направленная на преодоление DPI на пакетном уровне.
+There is also more advanced magic aimed at overcoming DPI at the batch level.
 
-Подробнее про DPI:\
+More details about DPI:\
 https://habr.com/ru/post/335436 или https://web.archive.org/web/20230331233644/https://habr.com/ru/post/335436/ \
 https://geneva.cs.umd.edu/papers/geneva_ccs19.pdf
 
-## Что сейчас происходит в России
+## What's happening in Russia now
 
-Раньше, до внедрения повсеместных систем ТСПУ, использовался зоопарк различных DPI у провайдеров. Какие-то были
-активными, какие-то пассивными. Сейчас время простых iptables окончательно ушло. Везде активный DPI ТСПУ, но кое-где
-могут оставаться невыключенными дополнительные старые DPI из зоопарка. В этом случае приходится обходить сразу несколько
-DPI. Все больше становится внереестровых блокировок, о которых вы узнаете только по факту недоступности чего-либо, в
-списках этого нет. Применяются блокировки некоторых диапазонов ip адресов (автономный обход невозможен)
-и протоколов (VPN). На некоторых диапазонах IP используется более строгий фильтр, распознающий попытки обмана через
-сегментацию. Должно быть это связано с некоторыми сервисами, которые пытаются таким образом обмануть DPI.
+Previously, before the introduction of widespread TSPU systems, a zoo of different DPIs from providers was used. There were some
+active, some passive. Now the time for simple iptables is completely gone. Active DPI TSPU is active everywhere, but in some places
+Additional old DPIs from the zoo may remain unchecked. In this case, you have to go around several at once
+DPI. There are more and more off-registry blockings, which you only learn about when something is unavailable, in
+there are no lists of this. Some ranges of IP addresses are blocked (offline bypass is not possible)
+and protocols (VPN). On some IP bands, a more stringent filter is used to detect attempts to deceive through
+segmentation. This must be due to some services that try to cheat DPI in this way.
 
-## Как это реализовать на практике в системе linux
+## How to implement this in practice on a Linux system
 
-Если кратко, то варианты можно классифицировать по следующей схеме :
+In short, the options can be classified according to the following scheme:
 
-1) Пассивный DPI, не отправляющий RST серверу. Помогут индивидуально настраиваемые под провайдера команды iptables. На
-   rutracker в разделе "обход блокировок - другие способы" по этому вопросу существует отдельная тема. В данном проекте
-   не рассматривается. Если вы не допустите срабатывание триггера запрета, то и не придется бороться с его
-   последствиями.
-2) Модификация TCP соединения на уровне потока. Реализуется через proxy или transparent proxy.
-3) Модификация TCP соединения на уровне пакетов. Реализуется через обработчик очереди NFQUEUE и raw сокеты.
+1) Passive DPI that does not send RST to the server. iptables commands individually customized for the provider will help. On
+rutracker in the section "bypassing blocking - other methods" there is a separate topic on this issue. In this project
+not considered. If you don't allow the banning trigger to go off, then you won't have to fight it.
+consequences.
+2) Modification of TCP connection at the flow level. Implemented via proxy or transparent proxy.
+3) Modification of TCP connection at the packet level. Implemented through the NFQUEUE queue handler and raw sockets.
 
-Для вариантов 2 и 3 реализованы программы tpws и nfqws соответственно. Чтобы они работали, необходимо их запустить с
-нужными параметрами и перенаправить на них определенный трафик средствами iptables или nftables.
+For options 2 and 3, the tpws and nfqws programs are implemented, respectively. For them to work, you need to start them with
+the necessary parameters and redirect certain traffic to them using iptables or nftables.
 
-## Когда это работать не будет
+## When it won't work
 
-* Если подменяется DNS. С этой проблемой легко справиться.
-* Если блокировка осуществляется по IP.
-* Если соединение проходит через фильтр, способный реконструировать TCP соединение, и который следует всем стандартам.
-  Например, нас заворачивают на squid. Соединение идет через полноценный стек tcpip операционной системы.
-  Проект нацелен на обман DPI, который всилу ограниченности ресурсов и большого трафика вынужден интерпретировать его лишь ограниченно.
-  Обмануть полноценный стек ОС и полноценные серверные приложения не получится.
+* If DNS is changed. This problem is easy to deal with.
+* If blocking is carried out by IP.
+* If the connection passes through a filter that can reconstruct the TCP connection and that follows all standards.
+For example, we are being turned into squid. The connection goes through a full tcpip stack of the operating system.
+The project is aimed at deceiving DPI, which, due to limited resources and high traffic, is forced to interpret it only in a limited way.
+It will not be possible to deceive a full-fledged OS stack and full-fledged server applications.
 
 ## nfqws
 
-Эта программа - модификатор пакетов и обработчик очереди NFQUEUE. Для BSD систем существует адаптированный вариант -
-dvtws, собираемый из тех же исходников (см. [документация BSD](./bsd.md)).
+This program is a packet modifier and NFQUEUE queue handler. For BSD systems there is an adapted version -
+dvtws, compiled from the same sources (see [BSD documentation](./bsd.md)).
 
 ```
 @<config_file>|$<config_file>                             ; читать конфигурацию из файла. опция должна быть первой. остальные опции игнорируются.
@@ -281,542 +281,542 @@ dvtws, собираемый из тех же исходников (см. [док
 --ipset-exclude-ip=<ip_list>                              ; фиксированный список подсетей через запятую. можно использовать # в начале для комментирования отдельных подсетей.
 ```
 
-`--debug` позволяет выводить подробный лог действий на консоль, в syslog или в файл. Может быть важен порядок следования
-опций. `--debug` лучше всего указывать в самом начале. Опции анализируются последовательно. Если ошибка будет при
-проверке опции, а до анализа `--debug` еще дело не дошло, то сообщения не будут выведены в файл или syslog. При
-логировании в файл процесс не держит файл открытым. Ради каждой записи файл открывается и потом закрывается. Так что
-файл можно удалить в любой момент, и он будет создан заново при первом же сообщении в лог. Но имейте в виду, что если вы
-запускаете процесс под root, то будет сменен UID на не-root. В начале на лог файл меняется owner, иначе запись будет
-невозможна. Если вы потом удалите файл, и у процесса не будет прав на создание файла в его директории, лог больше не
-будет вестись. Вместо удаления лучше использовать truncate. В шелле это можно сделать через команду ": >filename"
+`--debug` allows you to output a detailed log of actions to the console, syslog or file. The order may be important.
+options. `--debug` is best specified at the very beginning. Options are analyzed sequentially. If the error occurs when
+checking the option, but it has not yet come to the analysis of `--debug`, then the messages will not be output to the file or syslog. At
+When logging to a file, the process does not keep the file open. For each entry, the file is opened and then closed. So
+the file can be deleted at any time, and it will be created again at the first message to the log. But keep in mind that if you
+If you run the process as root, the UID will be changed to non-root. At the beginning, the owner is changed to the log file, otherwise the entry will be
+impossible. If you later delete a file and the process does not have rights to create a file in its directory, the log will no longer be
+will be conducted. Instead of deleting, it is better to use truncate. In the shell this can be done using the command ": >filename"
 
-Многие параметры, загружающие двоичные данные из файлов, поддерживают загрузку из hex-строки или из файла.
-hex строка начинается с "0x". Имя файла можно писать как есть или использовать префикс "@".
-Если перед префиксом "@" указано "+<число>", то это означает смещение полезных данных внутри файла.
-Файл может загружаться целиком с нулевой позиции, к нему могут применяться модификации, требующие полного файла (TLS),
-но передача пойдет с позиции offset. offset должен быть меньше длины файла. Если к блоку данных применяется мод,
-который уменьшает размер данных, и offset окажется не меньше новой длины данных, будет ошибка.
+Many options that load binary data from files support loading from a hex string or from a file.
+hex string starts with "0x". You can write the file name as is or use the "@" prefix.
+If "+<number>" is specified before the "@" prefix, then this means an offset of the payload within the file.
+The file can be loaded entirely from position zero, modifications can be applied to it, requiring the complete file (TLS),
+but the transmission will go from the offset position. offset must be less than the file length. If a mod is applied to a data block,
+which reduces the data size, and offset is not less than the new data length, there will be an error.
 
-### АТАКА ДЕСИНХРОНИЗАЦИИ DPI
+### DPI DESYNCHRONIZATION ATTACK
 
-Суть ее в следующем. Берется оригинальный запрос, модифицируется, добавляется поддельная информация (фейки)
-таким образом, чтобы ОС сервера передала серверному процессу оригинальный запрос в неизменном виде, а DPI увидел другое.
-То, что он блокировать не станет. Сервер видит одно, DPI - другое. DPI не понимает, что передается запрещенный запрос и не блокирует его.
+Its essence is as follows. The original request is taken, modified, and fake information is added (fakes)
+in such a way that the server OS transmits the original request unchanged to the server process, and DPI sees something else.
+Something he won't block. The server sees one thing, DPI - another. DPI does not understand that a prohibited request is being sent and does not block it.
 
-Есть арсенал возможностей, чтобы достичь такого результата.
-Это может быть передача фейк пакетов, чтобы они дошли до DPI, но не дошли до сервера. Может использоваться фрагментация на уровне TCP (сегментация) или на уровне IP.
-Есть атаки, основанные на игре с tcp sequence numbers или с перепутыванием порядка следования tcp сегментов.
-Методы могут сочетаться в различных вариантах.
+There are an arsenal of possibilities to achieve such a result.
+This could be the transmission of fake packets so that they reach the DPI, but do not reach the server. Fragmentation can be used at the TCP level (segmentation) or at the IP level.
+There are attacks based on playing with tcp sequence numbers or mixing up the order of tcp segments.
+The methods can be combined in various ways.
 
-### ФЕЙКИ
+### FAKES
 
-Фейки - это отдельные сгенерированные nfqws пакеты, несущие ложную информацию для DPI.
-Они либо не должны дойти до сервера, либо могут дойти, но должны быть им отброшены.
-Иначе получается слом tcp соединения или нарушение целостности передаваемого потока, что гарантированно приводит к поломке ресурса.
-Есть ряд методов для решения этой задачи.
+Fakes are individual packets generated by nfqws that carry false information for DPI.
+They either should not reach the server, or they can reach it, but must be discarded by it.
+Otherwise, the TCP connection is broken or the integrity of the transmitted stream is violated, which is guaranteed to lead to a breakdown of the resource.
+There are a number of methods to solve this problem.
 
-* `md5sig` добавляет TCP опцию **MD5 signature**. Работает не на всех серверах. Пакеты с md5 обычно отбрасывают только linux.
-  Требуется значительное увеличение длины tcp пакета, чтобы вместить tcp option. При обработке многосегментных запросов (TLS Kyber)
-  первый пакет идет полный под MTU. При fakedsplit/fakeddisorder на небольших позициях отдельные tcp сегменты достаточно велики, чтобы внедрение
-  md5 tcp option вызвало переполнение MTU и ошибку отправки "message too long". `nfqws` не умеет перераспределять данные между tcp сегментами,
-  поэтому надо или отказываться от kyber, или увеличивать сплит-позицию, или отказываться от fakedsplit/fakeddisorder.
-* `badsum` портит контрольную сумму TCP. Не сработает, если ваше устройство за NAT, который не пропускает пакеты с инвалидной суммой. Наиболее
-  распространенная настройка NAT роутера в Linux их не пропускает. На Linux построено большинство домашних роутеров.
-  Непропускание обеспечивается так : настройка ядра sysctl по умолчанию
-  `net.netfilter.nf_conntrack_checksum=1` заставляет conntrack проверять tcp и udp чексуммы входящих пакетов и
-  выставлять state INVALID для пакетов с инвалидной суммой. Обычно в правилах iptables вставляется правило для дропа
-  пакетов с состоянием INVALID в цепочке FORWARD. Совместное сочетание этих факторов приводит к непрохождению badsum
-  через такой роутер. В OpenWrt из коробки `net.netfilter.nf_conntrack_checksum=0`, в других роутерах часто нет, и не
-  всегда это можно изменить. Чтобы nfqws мог работать через роутер, нужно на нем выставить указанное значение sysctl в 0.
-  nfqws на самом роутере будет работать и без этой настройки, потому что чексумма локально созданных пакетов не
-  проверяется никогда. Если роутер за другим NAT, например провайдерским, и он не пропускает invalid packets вы ничего
-  не сможете с этим сделать. Но обычно провайдеры все же пропускают badsum. На некоторых адаптерах/свитчах/драйверах
-  принудительно включен rx-checksum offload, badsum пакеты отсекаются еще до получения в ОС. В этом случае если что-то и
-  можно сделать, то только модифицировать драйвер, что представляется задачей крайне нетривиальной. Установлено, что так
-  себя ведут некоторые роутеры на базе mediatek. badsum пакеты уходят с клиентской ОС, но роутером не видятся в br-lan
-  через tcpdump. При этом если nfqws выполняется на самом роутере, обход может работать. badsum нормально уходят с
-  внешнего интерфейса.
-* `badseq` увеличивает TCP sequence number на определенное значение, выводя его тем самым из TCP window.
-  Такие пакеты будут наверняка отброшены принимающим узлом, но так же и DPI, если он ориентируется на sequence
-  numbers. По умолчанию смещение seq выбирается -10000. Практика показала, что некоторые DPI не пропускают seq вне
-  определенного окна. Однако, такое небольшое смещение может вызвать проблемы при существенной потоковой передаче и
-  потере пакетов. Если вы используете `--dpi-desync-any-protocol`, может понадобиться установить badseq increment
-  0x80000000. Это обеспечит надежную гарантию, что поддельный пакет не вклинится в tcp window на сервере. Так же было
+* `md5sig` adds the TCP option **MD5 signature**. Does not work on all servers. Packages with md5 are usually only dropped by linux.
+A significant increase in tcp packet length is required to accommodate the tcp option. When processing multi-hop requests (TLS Kyber)
+the first packet is full under MTU. With fakedsplit/fakeddisorder at small positions, individual TCP segments are large enough for injection
+md5 tcp option caused an MTU overflow and a "message too long" sending error. `nfqws` does not know how to redistribute data between tcp segments,
+Therefore, we must either abandon kyber, or increase the split position, or abandon fakedsplit/fakeddisorder.
+* `badsum` corrupts the TCP checksum. It will not work if your device is behind a NAT that does not allow packets with an invalid amount to pass through. Most
+The common NAT router configuration in Linux does not allow them to pass through. Most home routers are built on Linux.
+Non-passing is ensured like this: default sysctl kernel setting
+`net.netfilter.nf_conntrack_checksum=1` causes conntrack to check tcp and udp checksums of incoming packets and
+set state INVALID for packages with an invalid amount. Usually in iptables rules a rule for drop is inserted
+packets with the INVALID state in the FORWARD chain. The combined combination of these factors leads to failure of badsum
+through such a router. In OpenWrt out of the box `net.netfilter.nf_conntrack_checksum=0`, in other routers there is often no, and not
+this can always be changed. In order for nfqws to work through a router, you need to set the specified sysctl value to 0.
+nfqws on the router itself will work without this setting, because the checksum of locally created packets is not
+never checked. If the router is behind another NAT, for example the provider's, and it does not allow invalid packets, you will do nothing
+you can't do anything about it. But usually providers still skip badsum. On some adapters/switches/drivers
+rx-checksum offload is forcibly enabled, badsum packets are cut off before they are received in the OS. In this case, if something
+can only be done by modifying the driver, which seems to be an extremely non-trivial task. It has been established that it is so
+Some routers based on mediatek behave. badsum packets leave the client OS, but are not seen by the router in br-lan
+via tcpdump. However, if nfqws is executed on the router itself, the bypass can work. badsum leave normally
+external interface.
+* `badseq` increases the TCP sequence number by a certain value, thereby displaying it from the TCP window.
+Such packets will most likely be discarded by the receiving node, but so will DPI if it is sequence oriented
+numbers. By default, the seq offset is set to -10000. Practice has shown that some DPIs do not pass seq outside
+specific window. However, such a small offset can cause problems with significant streaming and
+packet loss. If you use `--dpi-desync-any-protocol` you may need to set badseq increment
+0x80000000. This will provide a reliable guarantee that a fake packet will not wedge itself into the tcp window on the server. It was the same
   замечено, что badseq ломает логику некоторых DPI при анализе http, вызывая зависание соединения. Причем на тех же DPI
-  TLS с badseq работает нормально.
-* `TTL` казалось бы - лучший вариант, но он требует индивидуальной настройки под каждого провайдера. Если DPI находится
-  дальше локальных сайтов провайдера, то вы можете отрезать себе доступ к ним. Ситуация усугубляется наличием ТСПУ на
-  магистралах, что вынуждает делать TTL достаточно высоким, увеличивая риск пробоя фейка до сервера. Необходим ip
-  exclude list, заполняемый вручную. Вместе с ttl можно применять md5sig. Это ничего не испортит, зато дает неплохой
-  шанс работы сайтов, до которых "плохой" пакет дойдет по TTL. Если не удается найти автоматическое решение,
-  воспользуйтесь файлом `zapret-hosts-user-exclude.txt`. Некоторые стоковые прошивки роутеров фиксируют исходящий TTL,
-  без отключения этой опции через них работать не будет. КАКИМ СТОИТ ВЫБИРАТЬ TTL : найдите минимальное значение, при
-  котором обход еще работает. Это и будет номер хопа вашего DPI.
-* `hopbyhop` относится только к ipv6. Добавляется ipv6 extenstion header `hop-by-hop options`. В варианте `hopbyhop2`
-  добавляются 2 хедера, что является нарушением стандарта и гарантированно отбрасывается стеком протоколов во всех ОС.
-  Один хедер hop-by-hop принимается всеми ОС, однако на некоторых каналах/провайдерах такие пакеты могут фильтроваться и
-  не доходить. Расчет идет на то, что DPI проанализирует пакет с hop-by-hop, но он либо не дойдет до адресата в силу
-  фильтров провайдера, либо будет отброшен сервером, потому что хедера два.
-* `datanoack` высылает фейки со снятым tcp флагом ACK. Сервера такое не принимают, а DPI может принять. Эта техника
-  может ломать NAT и не всегда работает с iptables, если используется masquerade, даже с локальной системы (почти всегда
-  на роутерах ipv4). На системах c iptables без masquerade и на nftables работает без ограничений. Экспериментально
-  выяснено, что многие провайдерские NAT не отбрасывают эти пакеты, потому работает даже с внутренним провайдерским IP.
-  Но linux NAT оно не пройдет, так что за домашним роутером эта техника скорее всего не сработает, но может сработать с него.
-  Может сработать и через роутер, если подключение по проводу, и на роутере включено аппаратное ускорение.
-* Манипуляция tcp флагами с помощью `--dpi-desync-tcp-flags-set` и `--dpi-desync-tcp-flags-unset`. Можно сделать инвалидное
-  сочетание флагов, которое сервер не примет, а DPI - примет. Например, установить SYN в фейках. Но это может работать не на всех серверах.
-  `datanoack` может быть заменен `--dpi-desync-tcp-flags-unset=ACK`.
-  Пакеты с инвалидными флагами могут отбрасываться, проходя через NAT.
-* `ts` прибавляет к значению TSval таймштампа tcp значение ts increment (по умолчанию -600000). Сервера отбрасывают пакеты
-  с TSval в определенных пределах. По практическим тестам инкремент должен быть где-то от -100 до -0x80000000.
-  timestamps генерирует клиентская ОС. В linux таймштампы включены по умолчанию, в windows выключены по умолчанию.
-  Можно включить через команду `netsh interface tcp set global timestamps=enabled`.
-  ts fooling требует, чтобы таймштампы были включены, иначе работать не будет. Включать надо на каждом клиентском устройстве.
-  TSecr оставляется без изменений. Так же требуется, чтобы сервер понимал timestamps, но это в большинстве случаев так.
-* `autottl`. Суть режима в автоматическом определении TTL, чтобы пакет почти наверняка прошел DPI и немного не дошел до
-  сервера (`--dpi-desync-autottl`). Или наоборот - TTL едва хватило, чтобы он все-таки дошел до сервера (см `--dup-autottl`, `--orig-autottl`).
-  Берутся базовые значения TTL 64,128,255, смотрится входящий пакет (да, требуется направить первый входящий пакет на nfqws !).
-  Вычисляется длина пути, прибавляется `delta`. delta может быть положительной или отрицательной.
-  Чтобы задать положительную дельту, нужно указать унарный знак **+** перед числом.
-  В случае его отсутствия или при наличии унарного знака **-** дельта считается отрицательной.
-  Если TTL вне диапазона min,max, то берутся значения min,max, чтобы вписаться в
-  диапазон. Если при этом дельта отрицательная и полученный TTL больше длины пути или дельта положительная и полученный TTL меньше длины пути,
-  то автоматизм не сработал и берутся фиксированные значения : `--dpi-desync-ttl`, `--orig-ttl`, `--dup-ttl`.
-  Техника позволяет решить вопрос, когда вся сеть перегорожена шлагбаумами (DPI, ТСПУ) везде где только
-  можно, включая магистралов. Но потенциально может давать сбои. Например, при асимметрии входящего и исходящего канала
-  до конкретного сервера. Некоторые сервера выдают нестандартный TTL (google), потому на них получается полная ерунда.
-  Если не учитывать подобные исключения, то на каких-то провайдерах эта техника будет работать неплохо, на других доставит больше проблем,
-  чем пользы. Где-то может потребоваться тюнинг параметров. Лучше использовать с дополнительным ограничителем.
+TLS with badseq works fine.
+* `TTL` would seem to be the best option, but it requires individual configuration for each provider. If the DPI is
+further than the provider’s local sites, then you can cut off your access to them. The situation is aggravated by the presence of TSPU on
+highways, which forces the TTL to be quite high, increasing the risk of a fake reaching the server. IP required
+exclude list, filled in manually. Together with ttl you can use md5sig. It won't spoil anything, but it will give a good
+chance of operation of sites to which a “bad” packet will reach via TTL. If you can't find an automatic solution,
+use the file `zapret-hosts-user-exclude.txt`. Some stock router firmware fixes the outgoing TTL,
+Without disabling this option it will not work through them. WHAT SHOULD YOU CHOOSE TTL: find the minimum value when
+which bypass still works. This will be your DPI hop number.
+* `hopbyhop` only applies to ipv6. Added ipv6 extension header `hop-by-hop options`. In the `hopbyhop2` variant
+2 headers are added, which is a violation of the standard and is guaranteed to be discarded by the protocol stack in all operating systems.
+One hop-by-hop header is accepted by all operating systems, however, on some channels/providers such packets may be filtered and
+don't reach. The calculation is that DPI will analyze the hop-by-hop packet, but it will either not reach the recipient due to
+provider filters, or will be discarded by the server, because there are two headers.
+* `datanoack` sends fakes with the tcp ACK flag removed. Servers don’t accept this, but DPI can. This technique
+can break NAT and does not always work with iptables if masquerade is used, even from the local system (almost always
+on ipv4 routers). On systems with iptables without masquerade and on nftables it works without restrictions. Experimentally
+It turned out that many provider NATs do not discard these packets, so it even works with the provider’s internal IP.
+But it will not pass Linux NAT, so this technique most likely will not work behind a home router, but it may work from it.
+It can also work through a router if the connection is via a wire and hardware acceleration is enabled on the router.
+* Manipulate tcp flags using `--dpi-desync-tcp-flags-set` and `--dpi-desync-tcp-flags-unset`. You can make it disabled
+a combination of flags that the server will not accept, but DPI will accept. For example, set SYN in fakes. But this may not work on all servers.
+`datanoack` can be replaced by `--dpi-desync-tcp-flags-unset=ACK`.
+Packets with invalid flags may be discarded while traversing NAT.
+* `ts` adds the value ts increment (default -600000) to the TSval value of the tcp timestamp. Servers are dropping packets
+with TSval within certain limits. According to practical tests, the increment should be somewhere from -100 to -0x80000000.
+timestamps are generated by the client OS. In Linux, timestamps are enabled by default, in Windows they are disabled by default.
+Can be enabled via the command `netsh interface tcp set global timestamps=enabled`.
+ts fooling requires that timestamps be enabled, otherwise it will not work. It must be enabled on each client device.
+TSecr is left unchanged. It is also required that the server understands timestamps, but this is true in most cases.
+* `autottl`. The essence of the mode is to automatically determine the TTL so that the packet almost certainly passes the DPI and does not reach the
+server (`--dpi-desync-autottl`). Or vice versa - the TTL was barely enough for it to reach the server (see `--dup-autottl`, `--orig-autottl`).
+The base TTL values ​​of 64,128,255 are taken and the incoming packet is looked at (yes, you need to send the first incoming packet to nfqws!).
+The path length is calculated and `delta` is added. delta can be positive or negative.
+To specify a positive delta, you need to specify the unary sign **+** in front of the number.
+If it is absent or if the unary sign **-** is present, the delta is considered negative.
+If the TTL is outside the min,max range, then the min,max values ​​are taken to fit within
+range. If the delta is negative and the received TTL is greater than the path length, or the delta is positive and the received TTL is less than the path length,
+then the automation did not work and fixed values ​​are taken: `--dpi-desync-ttl`, `--orig-ttl`, `--dup-ttl`.
+The technique allows us to solve the problem when the entire network is blocked by barriers (DPI, TSPU) everywhere
+possible, including highways. But it can potentially fail. For example, if there is an asymmetry between the incoming and outgoing channels
+to a specific server. Some servers issue a non-standard TTL (google), so they turn out to be complete nonsense.
+If you do not take into account such exceptions, then this technique will work well on some providers, but on others it will cause more problems,
+than good. Somewhere you may need to tune parameters. It is better to use with an additional limiter.
 
-Режимы дурения могут сочетаться в любых комбинациях. `--dpi-desync-fooling` берет множество значений через запятую.
+Fooling modes can be combined in any combination. `--dpi-desync-fooling` takes multiple values ​​separated by commas.
 
-Возможно задание множества фейков через повторение парамеров `--dpi-desync-fake-???`, кроме `--dpi-desync-fake-syndata`.
-Фейки будут отосланы в указанном порядке. `--dpi-desync-repeats` повторяет каждый отосланный фейк.
-Итоговый порядок будет такой : `fake1 fake1 fake1 fake2 fake2 fake2 fake3 fake3 fake3 .....`
+It is possible to specify multiple fakes by repeating the `--dpi-desync-fake-???` parameters, except for `--dpi-desync-fake-syndata`.
+Fakes will be sent in the order specified. `--dpi-desync-repeats` repeats every fake sent.
+The final order will be like this: `fake1 fake1 fake1 fake2 fake2 fake2 fake3 fake3 fake3 .....`
 
-### МОДИФИКАЦИЯ ФЕЙКОВ
+### MODIFICATION OF FAKES
 
-Любые tcp фейки отправляются с исходным sequence по умолчанию, даже если их несколько.
-Если задать `--dpi-desync-fake-tcp-mod=seq`, то несколько фейков будут отправлены с увеличением sequence number таким образом,
-как будто они являются tcp сегментами одного фейка.
+Any tcp fakes are sent with the original sequence by default, even if there are several of them.
+If you set `--dpi-desync-fake-tcp-mod=seq`, then several fakes will be sent with increasing sequence number in this way,
+as if they were tcp segments of one fake.
 
-В nfqws зашит базовый вариант фейка для TLS. Его можно переопределить опцией `--dpi-desync-fake-tls`.
-Переопределение фейков дает возможность использовать любые данные в качестве фейка для TLS.
-Можно использовать фейковый Client Hello с любым фингерпринтом и с любым SNI.
+nfqws has a basic fake version for TLS built into it. It can be overridden with the `--dpi-desync-fake-tls` option.
+Overriding fakes makes it possible to use any data as a fake for TLS.
+You can use a fake Client Hello with any fingerprint and any SNI.
 
-Некоторые модификации можно делать в процессе выполнения с помощью `--dpi-desync-fake-tls-mod`.
-Часть из них работает при обработке каждого TLS Client Hello и может подстраиваться под отправляемые данные.
-Модификации требуют наличия полного валидного TLS Client Hello в качестве фейка, они не работают с произвольными данными.
+Some modifications can be made at runtime using `--dpi-desync-fake-tls-mod`.
+Some of them work when processing each TLS Client Hello and can be adjusted to the data being sent.
+Modifications require a fully valid TLS Client Hello as a fake, they do not work with arbitrary data.
 
- * `none`. Не применять никакие модификации.
- * `rnd`. Рандомизировать поля `random` и `session id`. Выполняется на каждый запрос.
- * `dupsid`. Копировать `session ID` из передаваемого TLS Client Hello. Имеет приоритет над `rnd`. Выполняется на каждый запрос.
- * `rndsni`. Рандомизировать SNI. Если SNI >=7 символов, применяется случайный домен 2 уровня с известным TLD, иначе заполняется случайными символами без точки. Выполняется один раз при старте.
- * `sni=<sni>`. Заменить sni на указанное значение. Макс длина SNI - 63 байта. Общая длина TLS фейка и длины в структуре TLS Client Hello меняются. Выполняется один раз при старте. Если сочетается с `rndsni`, выполняется до него.
- * `padencap`. Расширяется padding extension на размер передаваемого TLS Client Hello (включая многопакетный вариант с kyber). Если padding отсутствует, он добавляется в конец. Если присутствует - требуется, чтобы padding шел последним extension. Правятся все длины, чтобы создать видимость включения передаваемого TLS Client Hello в padding extension. Размер фейка не изменяется. Расчет идет на DPI, который не анализирует sequence numbers должным образом. Выполняется на каждый запрос.
+ * `none`. Do not apply any modifications.
+ * `rnd`. Randomize the `random` and `session id` fields. Executed for every request.
+ * `dupsid`. Copy the `session ID` from the transmitted TLS Client Hello. Takes precedence over `rnd`. Executed for every request.
+ * `rndsni`. Randomize SNI. If SNI >=7 characters, a random level 2 domain with a known TLD is used, otherwise it is filled with random characters without a dot. Executes once at startup.
+ * `sni=<sni>`. Replace sni with the specified value. Max SNI length is 63 bytes. The total length of the TLS fake and the lengths in the TLS Client Hello structure change. Executes once at startup. If combined with `rndsni`, executed before it.
+ * `padencap`. The padding extension is extended to the size of the transmitted TLS Client Hello (including the multi-packet version with kyber). If padding is missing, it is added to the end. If present, padding is required to come last extension. All lengths are corrected to create the appearance of including the transmitted TLS Client Hello in the padding extension. The size of the fake does not change. The calculation is based on DPI, which does not analyze sequence numbers properly. Executed for every request.
 
-По умолчанию если не задан собственный фейк для TLS используются модификации `rnd,rndsni,dupsid`. Если фейк задан, используется `none`.
-Это соответствует поведению программы более старых версий с добавлением функции `dupsid`.
+By default, if your own fake for TLS is not specified, the `rnd,rndsni,dupsid` modifications are used. If fake is specified, `none` is used.
+This matches the behavior of older versions of the program with the addition of the `dupsid` function.
 
-Если задан режим модификации и имеется множество TLS фейков, к каждому из них применяется последний режим модификации.
-Если режим модификации задан после фейка, то он замещает предыдущий режим.
-Таким образом можно использовать разные режимы модификации для разных фейков.
-При невозможности модифицировать фейк на этапе запуска программа завершается с ошибкой.
+If a modification mode is specified and there are many TLS fakes, the latest modification mode is applied to each of them.
+If the modification mode is set after the fake, then it replaces the previous mode.
+This way you can use different modification modes for different fakes.
+If it is impossible to modify the fake at the launch stage, the program ends with an error.
 
-Если сначала идет TLS фейк, для него задан режим однократной модификации, затем идет не TLS фейк, то будет ошибка.
-Нужно использовать `--dpi-desync-fake-tls-mod=none'.
+If a TLS fake comes first, the one-time modification mode is set for it, then a non-TLS fake comes, then there will be an error.
+You need to use `--dpi-desync-fake-tls-mod=none'.
 
 Пример : `--dpi-desync-fake-tls=iana_org.bin --dpi-desync-fake-tls-mod=rndsni --dpi-desync-fake-tls=0xaabbccdd --dpi-desync-fake-tls-mod=none'
 
-### TCP СЕГМЕНТАЦИЯ
+### TCP SEGMENTATION
 
- * `multisplit`. нарезаем запрос на указанных в `--dpi-desync-split-pos` позициях.
- * `multidisorder`. нарезаем запрос на указанных в `--dpi-desync-split-pos` позициях и отправляем в обратном порядке.
- * `fakedsplit`. различные варианты замешивания фейков и оригиналов в прямом порядке
- * `fakeddisorder`. различные варианты замешивания фейков и оригиналов в обратном порядке
- * `hostfakesplit` (altorder=0). фейкование части запроса с хостом : оригинал до хоста, фейк хоста, оригинал хоста (+ опционально нарезка маркером midhost), фейк хоста, оригинал после хоста
- * `hostfakesplit` (altorder=1). фейкование части запроса с хостом : оригинал до хоста, фейк хоста, оригинал после хоста, оригинал хоста (+опционально нарезка маркером midhost)
- * `fakeddisorder`. аналогично `fakedsplit`, только в обратном порядке : фейк 2-й части, 2 часть, фейк 2-й части, фейк 1-й части, 1 часть, фейк 1 части.
+ * `multisplit`. we cut the request at the positions specified in `--dpi-desync-split-pos`.
+ * `multidisorder`. we cut the request at the positions specified in `--dpi-desync-split-pos` and send it in reverse order.
+ * `fakedsplit`. various options for mixing fakes and originals in direct order
+ * `fakeddisorder`. various options for mixing fakes and originals in reverse order
+ * `hostfakesplit` (altorder=0). faking part of the request with the host: original before the host, fake host, original host (+ optional cutting with a midhost marker), fake host, original after the host
+ * `hostfakesplit` (altorder=1). faking part of the request with the host: original before the host, fake host, original after the host, original host (+ optional cutting with a midhost marker)
+ * `fakeddisorder`. similar to `fakedsplit`, only in reverse order: fake 2nd part, 2nd part, fake 2nd part, fake 1st part, 1st part, fake 1st part.
 
-Для `fakedsplit` и `fakeddisorder` предусмотрены вариации порядка следования сегментов.
-Параметр `--dpi-desync-fakedsplit-mod=altorder=N` задает число, влияющее на наличие отдельных фейков :
+For `fakedsplit` and `fakeddisorder` there are variations in the order of the segments.
+The `--dpi-desync-fakedsplit-mod=altorder=N` parameter specifies a number that affects the presence of individual fakes:
 
-Режимы altorder для `fakedsplit` для части многопакетного запроса, где есть сплит-позиция :
- * `altorder=0`. фейк 1-й части, 1 часть, фейк 1-й части, фейк 2-й части, 2 часть, фейк 2-й части
- * `altorder=1`. 1 часть, фейк 1-й части, фейк 2-й части, 2 часть, фейк 2-й части
- * `altorder=2`. 1 часть, фейк 2-й части, 2 часть, фейк 2-й части
- * `altorder=3`. 1 часть, фейк 2-й части, 2 часть
+Altorder modes for `fakedsplit` for the part of a multi-batch request where there is a split position:
+ * `altorder=0`. fake part 1, part 1, fake part 1, fake part 2, part 2, fake part 2
+ * `altorder=1`. Part 1, part 1 fake, part 2 fake, part 2, part 2 fake
+ * `altorder=2`. Part 1, fake part 2, part 2, fake part 2
+ * `altorder=3`. Part 1, fake part 2, part 2
 
-Режимы altorder для `fakeddisorder` для части многопакетного запроса, где есть сплит-позиция :
- * `altorder=0`. фейк 2-й части, 2 часть, фейк 2-й части, фейк 1-й части, 1 часть, фейк 1-й части
- * `altorder=1`. 2 часть, фейк 2-й части, фейк 1-й части, 1 часть, фейк 1-й части
- * `altorder=2`. 2 часть, фейк 1-й части, 1 часть, фейк 1-й части
- * `altorder=3`. 2 часть, фейк 1-й части, 1 часть
+Altorder modes for `fakeddisorder` for part of a multi-batch request where there is a split position:
+ * `altorder=0`. fake part 2, part 2, fake part 2, fake part 1, part 1, fake part 1
+ * `altorder=1`. Part 2, fake part 2, fake part 1, part 1, fake part 1
+ * `altorder=2`. Part 2, fake part 1, part 1, fake part 1
+ * `altorder=3`. Part 2, fake part 1, part 1
 
-Режимы altorder для `fakedsplit` и `fakeddisorder` для части многопакетного запроса, где нет сплит-позиции :
- * `altorder=0`. фейк, оригинал, фейк
- * `altorder=8`. оригинал, фейк
- * `altorder=16`. оригинал
+Altorder modes for `fakedsplit` and `fakeddisorder` for the part of a multi-batch request where there is no split position:
+ * `altorder=0`. fake, original, fake
+ * `altorder=8`. original, fake
+ * `altorder=16`. original
 
-Итоговое число `altorder=N` вычисляется как сумма чисел из этих двух групп. По умолчанию `altorder=0`.
+The final number `altorder=N` is calculated as the sum of the numbers from these two groups. Default is `altorder=0`.
 
-Содержимое фейков в `fakedsplit`/`fakeddisorder` определяется параметром `--dpi-desync-fakedsplit-pattern` (по умолчанию 0x00).
-Данные фейков берутся из паттерна со смещением, соответствующим смещению отсылаемых частей, учитывая смещения пакетов в многопакетных запросах.
-Размеры фейков соответствуют длинам отсылаемых частей.
-Цель этих режимов - максимально усложнить выявление оригинальных данных среди фейков.
+The content of fakes in `fakedsplit`/`fakeddisorder` is determined by the parameter `--dpi-desync-fakedsplit-pattern` (default 0x00).
+Fake data is taken from the pattern with an offset corresponding to the offset of the sent parts, taking into account packet offsets in multi-packet requests.
+The dimensions of the fakes correspond to the lengths of the parts being sent.
+The purpose of these modes is to make it as difficult as possible to identify original data among fakes.
 
-Использование `fakedsplit` или `fakeddisorder` на TLS kyber с md5sig fooling может привести к ошибкам "message too long", если позиция сплита мала,
-поскольку будет превышение MTU из-за md5 tcp option.
+Using `fakedsplit` or `fakeddisorder` on TLS kyber with md5sig fooling may result in "message too long" errors if the split position is small,
+because there will be MTU overshoot due to md5 tcp option.
 
-Режим 'hostfakesplit' имеет задачу минимального вмешательства фейком - как раз по той части запроса, на основании которой DPI принимает решение о блокировке. Конкретно - имени хоста.
-По умолчанию фейк хоста генерируется каждый раз случайно из набора `[a-z0-9]`. При длине более 7 символов за 3 символа до конца ставится точка, имитируя TLD, а последние 3 символа заполняются одним из нескольких известных TLD.
+The 'hostfakesplit' mode has the task of minimal interference by a fake - precisely on that part of the request, on the basis of which DPI makes a decision to block. Specifically, the host name.
+By default, a fake host is generated randomly each time from the set `[a-z0-9]`. If the length is more than 7 characters, a period is added 3 characters before the end, simulating a TLD, and the last 3 characters are filled with one of several well-known TLDs.
 
-Можно переопределить шаблон генерации с помощью `--dpi-desync-hostfakesplit-mod=host=<hostname>`. В последнем случае справа всегда будет указанный hostname.
-Слева он будет дополнен до размера оригинального хоста как поддомен со случайными символами. Пример : "www.networksolutions.com" -> "h8xmdba4tv7a8.google.com".
-Если размер оригинального хоста меньше шаблона, шаблон будет порезан : "habr.com" -> "ogle.com".
-Если размер оригинального хоста больше шаблона на 1, получится инвалидный пустой поддомен : "www.xxx.com" => ".google.com".
-Поэтому стоит использовать максимально короткие хосты из разрешенных : "ya.ru", "vk.com".
+You can override the generation template using `--dpi-desync-hostfakesplit-mod=host=<hostname>`. In the latter case, the specified hostname will always be on the right.
+On the left it will be padded to the size of the original host as a subdomain with random characters. Example: "www.networksolutions.com" -> "h8xmdba4tv7a8.google.com".
+If the size of the original host is smaller than the template, the template will be cut: "habr.com" -> "ogle.com".
+If the size of the original host is larger than the template by 1, you will get an invalid empty subdomain: "www.xxx.com" => ".google.com".
+Therefore, it is worth using the shortest possible hosts from those allowed: “ya.ru”, “vk.com”.
 
-`--dpi-desync-hostfakesplit-mod=altorder=1` позволяет сменить порядок следования частей на альтернативный вариант.
-`altorder=1` шлет фрагменты в таком порядке, чтобы при последовательной сборке сегментов на DPI он получил полностью собранный оригинал запроса с подмененным хостом.
-Реальный хост идет отдельным сегментом уже после. То есть в этом варианте применяется разновидность disorder. Сервер принимает фрагменты с нарушенным порядком sequence.
+`--dpi-desync-hostfakesplit-mod=altorder=1` allows you to change the order of parts to an alternative option.
+`altorder=1` sends fragments in such an order that when sequentially assembling segments on DPI, it receives a fully assembled original request with a spoofed host.
+The real host comes in a separate segment after. That is, in this version the disorder variety is used. The server accepts fragments with a broken sequence order.
 
-Опционально можно разрезать оригинальный хост. Например, `--dpi-desync-hostfakesplit-midhost=midsld`. Позиция нарезки должна попадать внутрь хоста.
-Многопакетные запросы поддерживаются только, если исходная нарезка пакетов не включает позиции имени хоста. В последнем случае дурение отменяется.
+Optionally, you can cut the original host. For example, `--dpi-desync-hostfakesplit-midhost=midsld`. The cutting position must fall inside the host.
+Multi-packet requests are only supported if the initial packet slicing does not include hostname positions. In the latter case, the foolishness is canceled.
 
-Вариант `fakedsplit` имеет несколько альтернативных порядков нарезки - от 0 до 3. Режим задается в параметре `--dpi-desync-fakedsplit-mod=altorder=N`.
-Каждый следующий altorder убирает часть фейков.
+The `fakedsplit` option has several alternative slicing orders - from 0 to 3. The mode is set in the `--dpi-desync-fakedsplit-mod=altorder=N` parameter.
+Each subsequent altorder removes some of the fakes.
 
-Для определения позиций нарезки используются маркеры.
+Markers are used to determine cutting positions.
 
-* **Абсолютный положительный маркер** - числовое смещение внутри пакета или группы пакетов от начала.
-* **Абсолютный отрицательный маркер** - числовое смещение внутри пакета или группы пакетов от следующего за концом байта. -1 указывает на последний байт.
-* **Относительный маркер** - положительное или отрицательное смещение относительно логической позиции внутри пакета или группы пакетов.
+* **Absolute positive marker** - numerical offset within a packet or group of packets from the beginning.
+* **Absolute negative marker** is a numeric offset within a packet or group of packets from the next byte. -1 indicates the last byte.
+* **Relative marker** - a positive or negative offset relative to a logical position within a packet or group of packets.
 
-Относительные позиции :
+Relative positions:
 
-* **method** - начало метода HTTP ('GET', 'POST', 'HEAD', ...). Метод обычно всегда находится на позиции 0, но может сместиться из-за `--methodeol`. Тогда позиция может стать 1 или 2.
+* **method** - start of the HTTP method ('GET', 'POST', 'HEAD', ...). The method is usually always at position 0, but may move due to `--methodeol`. Then the position can become 1 or 2.
 * **host** - начало имени хоста в известном протоколе (http, TLS)
-* **endhost** - байт, следующий за последним байтом имени хоста
-* **sld** - начало домена 2 уровня в имени хоста
-* **endsld** - байт, следующий за последним байтом домена 2 уровня в имени хоста
-* **midsld** - середина домена 2 уровня в имени хоста
-* **sniext** - начало поля данных SNI extension в TLS. Любой extension состоит из 2-байтовых полей type и length, за ними идет поле данных.
+* **endhost** - the byte following the last byte of the host name
+* **sld** - the beginning of the 2nd level domain in the host name
+* **endsld** - the byte following the last byte of the 2nd level domain in the host name
+* **midsld** - middle of the 2nd level domain in the host name
+* **sniext** - the beginning of the SNI extension data field in TLS. Any extension consists of 2-byte fields type and length, followed by a data field.
 
-Пример списка маркеров : `100,midsld,sniext+1,endhost-2,-10`.
+Example of a list of markers: `100,midsld,sniext+1,endhost-2,-10`.
 
-При разбиении пакета первым делом происходит ресолвинг маркеров - нахождение всех указанных относительных позиций и применение смещений.
-Если относительная позиция отсутствует в текущем протоколе, такие позиции не применяются и отбрасываются.
-Дальше происходит нормализация позиций относительно смещения текущего пакета в группе пакетов (многопакетные запросы TLS с kyber, например).
-Выкидываются все позиции, выходящие за пределы текущего пакета. Оставшиеся сортируются в порядке возрастания и удаляются дубли.
-В вариантах `multisplit` и `multidisorder` если не осталось ни одной позиции, разбиение не происходит.
+When a packet is split, the first step is to resolve the markers - finding all the specified relative positions and applying offsets.
+If a relative position is not present in the current protocol, such positions are not applied and are discarded.
+Next, positions are normalized relative to the offset of the current packet in a group of packets (multi-packet TLS requests with kyber, for example).
+All positions beyond the current package are discarded. The remaining ones are sorted in ascending order and duplicates are removed.
+In the `multisplit` and `multidisorder` options, if there are no positions left, no splitting occurs.
 
-Варианты `fakedsplit` и `fakeddisorder` применяют только одну позицию сплита. Ее поиск среди списка `--dpi-desync-split-pos` осуществляется особым образом.
-Сначала сверяются все относительные маркеры. Если среди них найден подходящий, применяется он. В противном случае сверяются все абсолютные маркеры.
-Если и среди них ничего не найдено, применяется позиция 1.
+The `fakedsplit` and `fakeddisorder` options apply only one split position. Its search among the list `--dpi-desync-split-pos` is carried out in a special way.
+First, all relative markers are checked. If a suitable one is found among them, it is applied. Otherwise, all absolute markers are checked.
+If nothing is found among them, position 1 is applied.
 
 Например, можно написать `--dpi-desync-split-pos=method+2,midsld,5`. Если протокол http, разбиение будет на позиции `method+2`.
-Если протокол TLS - на позиции `midsld`. Если протокол неизвестен и включено `--dpi-desync-any-protocol`, разбиение будет на позиции 5.
-Чтобы все было однозначнее, можно использовать разные профили для разных протоколов и указывать только одну позицию, которая точно есть в этом протоколе.
+If the TLS protocol is at the `midsld` position. If the protocol is unknown and `--dpi-desync-any-protocol` is enabled, the split will be at position 5.
+To make everything more clear, you can use different profiles for different protocols and indicate only one position that is definitely in this protocol.
 
-### ПЕРЕКРЫТИЕ SEQUENCE NUMBERS
+### OVERLAPPING SEQUENCE NUMBERS
 
-`seqovl` добавляет в начало одного из TCP сегментов `seqovl` байт со смещенным в минус sequence number на величину `seqovl`.
-Для `split` - в начало первого сегмента, для `disorder` - в начало предпоследнего отсылаемого сегмента (второго в оригинальном порядке следования).
+`seqovl` adds a byte to the beginning of one of the TCP segments `seqovl` with the sequence number shifted negatively by the amount `seqovl`.
+For `split` - to the beginning of the first segment, for `disorder` - to the beginning of the penultimate segment sent (the second in the original order).
 
-В случае `split` расчет идет на то, что предыдущий отсыл, если он был, уже попал в сокет серверного приложения, поэтому новая пришедшая часть лишь частично находится в
-пределах текущего окна (in-window). Спереди фейковая часть отбрасывается, а оставшаяся часть содержит оригинал и
-начинается с начала window, поэтому попадает в сокет. Серверное приложение получает все, что реально отсылает клиент,
-отбрасывая фейковую out-of-window часть. Но DPI не может этого понять, поэтому у него происходит sequence десинхронизация.
-Обязательно, чтобы первый сегмент вместе с `seqovl` не превысили длину MTU. Эта ситуация распознается автоматически в Linux, и `seqovl` отменяется.
-В остальных системах ситуация не распознается, и это приведет к поломке соединения. Поэтому выбирайте первую позицию сплита и `seqovl` таким образом, чтобы MTU не был превышен в любом случае.
-Иначе дурение может не работать или работать хаотично.
+In the case of `split`, the calculation is based on the fact that the previous send, if there was one, has already entered the server application socket, so the new incoming part is only partially in
+within the current window (in-window). At the front, the fake part is discarded, and the remaining part contains the original and
+starts at the beginning of window, so it ends up on the socket. The server application receives everything that the client actually sends,
+discarding the fake out-of-window part. But DPI cannot understand this, so it experiences sequence desynchronization.
+It is mandatory that the first segment together with `seqovl` does not exceed the MTU length. This situation is recognized automatically on Linux and `seqovl` is canceled.
+In other systems the situation will not be recognized and this will result in a broken connection. Therefore, choose the first split position and `seqovl` such that the MTU is not exceeded in any case.
+Otherwise, the foolishness may not work or work chaotically.
 
-Для `disorder` overlap идет на предпоследнюю отсылаемую часть пакета. 
-Для простоты будем считать, что разбиение идет на 2 части, шлются они в порядке "2 1" при оригинальном порядке "1 2".
-Обязательно, чтобы `seqovl` был меньше позиции первого сплита, иначе все отосланное будет передано в сокет сразу же, включая фейк, ломая протокол прикладного уровня.
-Такая ситуация легко обнаруживается программой, и `seqovl` отменяется. Увеличение размера пакета невозможно в принципе.
-При соблюдении условия 2-я часть пакета является полностью in-window, поэтому серверная ОС принимает ее целиком, включая фейк.
-Но поскольку начальная часть данных из 1 пакета еще не принята, то фейк и реальные данные остаются в памяти ядра, не отправляясь в серверное приложение.
-Как только приходит 1-я часть пакета, она переписывает фейковую часть в памяти ядра.
-Ядро получает данные из 1 и 2 части, поэтому далее идет отправка в сокет приложения.
-Таково поведение всех unix ОС, кроме solaris - оставлять последние принятые данные.
-Windows оставляет старые данные, поэтому disorder с seqovl будет приводить к зависаниям соединения
-при работе с Windows серверами. Solaris практически мертв, windows серверов очень немного.
-Можно использовать листы при необходимости.
-Метод позволяет обойтись без fooling и TTL. Фейки перемешаны с реальным данными.
-`fakedsplit/fakeddisorder` по-прежнему добавляют дополнительные отдельные фейки.
+For `disorder` overlap goes to the penultimate part of the packet sent.
+For simplicity, we will assume that the split is into 2 parts; they are sent in the order “2 1” with the original order “1 2”.
+It is imperative that `seqovl` be less than the position of the first split, otherwise everything sent will be transferred to the socket immediately, including the fake, breaking the application-level protocol.
+This situation is easily detected by the program, and `seqovl` is canceled. Increasing the package size is impossible in principle.
+If the condition is met, the 2nd part of the package is completely in-window, so the server OS accepts it in its entirety, including the fake.
+But since the initial part of the data from packet 1 has not yet been received, the fake and real data remain in the kernel memory without being sent to the server application.
+As soon as the 1st part of the packet arrives, it overwrites the fake part in the kernel memory.
+The kernel receives data from parts 1 and 2, so the next step is sending to the application socket.
+This is the behavior of all unix OSes, except solaris - leaving the last received data.
+Windows leaves old data, so disorder with seqovl will lead to connection freezes
+when working with Windows servers. Solaris is practically dead, there are very few Windows servers.
+You can use sheets if necessary.
+The method allows you to do without fooling and TTL. Fakes are mixed with real data.
+`fakedsplit/fakeddisorder` still adds additional individual fakes.
 
-`seqovl` в варианте `split` может быть только абсолютным положительным значением, поскольку применяется только в первому пакету.
-В варианте `disorder` допустимо применение всех вариантов маркеров.
-Они автоматически нормализуются к текущему пакету в серии. Можно сплитать на `midsld` и делать seqovl на `midsld-1`.
+`seqovl` in the `split` variant can only be an absolute positive value, since it is only applied in the first packet.
+In the `disorder` option, all marker options are allowed.
+They are automatically normalized to the current packet in the series. You can split on `midsld` and do seqovl on `midsld-1`.
 
-### НАЗНАЧЕНИЕ IP_ID
+### ASSIGNMENT IP_ID
 
-Некоторые DPI секут поле ipv4 заголовка ip_id. Защита заключается в распознавании нехарактерного для разных ОС порядка назначения ip_id,
-но характерного для некоторого anti-DPI софта. Обычно ОС инкрементируют ip_id для каждого следующего пакета.
-Например, на ТСПУ повторение ненулевых ip_id фейка и не фейка вызывает триггер блока на диапазонах IP `googlevideo.com`.
+Some DPIs strip the ipv4 field of the ip_id header. The protection consists of recognizing the ip_id assignment order, which is uncharacteristic for different OSes,
+but typical for some anti-DPI software. Typically, OS increments ip_id for each subsequent packet.
+For example, on TSPU, repetition of non-zero fake and non-fake ip_ids causes a block trigger on the `googlevideo.com` IP ranges.
 
-Если отсылаются фейки или дополнительные tcp сегменты, то в любом случае последовательность будет нарушена, поскольку ОС ничего не будет знать о всунутых фейках
-и не увеличит свой счетчик ip_id на количество фейков или дополнительных tcp сегментов.
-Чтобы сохранить последовательность, потребовалось бы перехватывать все соединение до конца, что очень затратно по ресурсам.
-Поэтому после отработки серии генерированных пакетов ip_id возвращается к тому значению, о котором знает ОС.
+If fakes or additional tcp segments are sent, then in any case the sequence will be broken, since the OS will not know anything about the fakes inserted
+and will not increase its ip_id counter by the number of fakes or additional tcp segments.
+To maintain consistency, it would be necessary to intercept the entire connection until the end, which is very resource-intensive.
+Therefore, after processing a series of generated packets, ip_id returns to the value that the OS knows about.
 
-Параметр `ip-id` относится к профилю и задает режим назначения ip_id при отсылке генерированных в nfqws пакетов.
+The `ip-id` parameter refers to the profile and specifies the ip_id assignment mode when sending packets generated in nfqws.
 
- * `seq` (по умолчанию) : взять последний ip_id реального пакета. последующие генерированыне пакеты получают увеличенные на 1 ip_id, кроме случая `multidisorder`.
- для `multidisorder` в пределах сегментов, где есть сплит-позиции, значение ip_id увеличивается на количество частей, затем уменьшается на 1 с каждой отосланной частью.
- * `seqgroup` : то же, что и `seq`, но фейки того же размера, что и оригинальные сегменты, маскирующиеся под оригинал получают те же ip_id.
- * `rnd` : всем генерированным пакетам назначать случайный ip_id
- * `zero` : всем генерированным пакетам назначать ip_id=0 . в этом случае Linux и BSD отошлют 0, Windows назначит последовательные ip_id всем пакетам (тем самым автоматически решается проблема сбоя счетчика пакетов).
+ * `seq` (default) : take the last ip_id of the real packet. subsequent generated packets receive ip_id increased by 1, except in the case of `multidisorder`.
+for `multidisorder` within segments where there are split positions, the ip_id value is increased by the number of parts, then decreased by 1 with each part sent.
+ * `seqgroup` : same as `seq`, but fakes are the same size as the original segments, masquerading as the original and given the same ip_id.
+ * `rnd` : assign a random ip_id to all generated packets
+ * `zero` : assign ip_id=0 to all generated packets. in this case Linux and BSD will send 0, Windows will assign consecutive ip_ids to all packets (thereby automatically solving the packet counter glitch problem).
 
-В заголовках ipv6 поле ip_id отсутствует, параметр игнорируется для ipv6.
+There is no ip_id field in ipv6 headers; the parameter is ignored for ipv6.
 
-### СПЕЦИФИЧЕСКИЕ РЕЖИМЫ IPV6
+### IPV6 SPECIFIC MODES
 
-Режимы десинхронизации `hopbyhop`, `destopt` и `ipfrag1` (не путать с fooling !) относятся только к ipv6 и заключается
-в добавлении хедера `hop-by-hop options`, `destination options` или `fragment` во все пакеты, попадающие под десинхронизацию.
-Здесь надо обязательно понимать, что добавление хедера увеличивает размер пакета, потому не может быть применено
-к пакетам максимального размера. Это имеет место при передаче больших сообщений.
-В случае невозможности отослать пакет дурение будет отменено, пакет будет выслан в оригинале.
-Расчет идет на то, что DPI увидит 0 в поле next header основного заголовка `ipv6` и не будет скакать по
-extension хедерам в поисках транспортного хедера. Таким образом не поймет, что это tcp или udp, и пропустит пакет
-без анализа. Возможно, какие-то DPI на это купятся.
-Может сочетаться с любыми режимами 2-й фазы, кроме варианта `ipfrag1+ipfrag2`.
-Например, `hopbyhop,multisplit` означает разбить tcp пакет на несколько сегментов, в каждый из них добавить hop-by-hop.
-При `hopbyhop,ipfrag2` последовательность хедеров будет : `ipv6,hop-by-hop`,`fragment`,`tcp/udp`.
-Режим `ipfrag1` может срабатывать не всегда без специальной подготовки. См. раздел `IP фрагментация`.
+The desynchronization modes `hopbyhop`, `destopt` and `ipfrag1` (not to be confused with fooling!) apply only to ipv6 and are
+in adding a `hop-by-hop options`, `destination options` or `fragment` header to all packages subject to desynchronization.
+Here you must understand that adding a header increases the size of the package, and therefore cannot be used
+to maximum size packages. This occurs when transmitting large messages.
+If it is impossible to send the package, the scam will be canceled and the package will be sent in the original.
+The calculation is that DPI will see 0 in the next header field of the main `ipv6` header and will not jump across
+extension headers in search of a transport header. Thus, it will not understand that it is tcp or udp, and will miss the packet
+without analysis. Perhaps some DPIs will buy into this.
+Can be combined with any 2nd phase modes, except for the `ipfrag1+ipfrag2` option.
+For example, `hopbyhop,multisplit` means to split the TCP packet into several segments and add a hop-by-hop to each of them.
+With `hopbyhop,ipfrag2` the sequence of headers will be: `ipv6,hop-by-hop`,`fragment`,`tcp/udp`.
+The `ipfrag1` mode may not always work without special preparation. See `IP fragmentation` section.
 
-### МОДИФИКАЦИЯ ОРИГИНАЛА
+### MODIFICATION OF THE ORIGINAL
 
-Параметры `--orig-ttl` и `--orig-ttl6` позволяют изменить TTL оригинальных пакетов.
-Если дальнейшие манипуляции связаны с оригиналом, например, идет TCP сегментация, то исходными
-данными являются измененные оригинальные пакеты. То есть в данном примере TCP сегменты пойдут с измененным TTL.
+The `--orig-ttl` and `--orig-ttl6` options allow you to change the TTL of the original packets.
+If further manipulations are related to the original, for example, TCP segmentation is in progress, then the original
+the data are modified original packages. That is, in this example, TCP segments will have a changed TTL.
 
-Вариант `--orig-autottl` и `--orig-autottl6` работает аналогично `dpi-desync-autottl`, но по оригинальным пакетам.
-Дельту стоит указывать положительную с унарным знаком `+`, иначе оригинал не дойдет до сервера, и вы вообще ничего не получите.
-Пример : `--orig-autottl=+5:3-64`.
+The `--orig-autottl` and `--orig-autottl6` options work similarly to `dpi-desync-autottl`, but using the original packages.
+The delta should be specified as positive with a unary `+` sign, otherwise the original will not reach the server, and you will not receive anything at all.
+Example: `--orig-autottl=+5:3-64`.
 
-`--orig-mod-start` и `--orig-mod-cutoff` задают ограничитель по началу и концу модификации оригинала.
-Схема аналогична `--dpi-desync-start` и `--dpi-desync-cutoff`.
+`--orig-mod-start` and `--orig-mod-cutoff` set a limiter on the beginning and end of modification of the original.
+Scheme analogous to `--dpi-desync-start` and `--dpi-desync-cutoff`.
 
-Функция может быть полезна, когда DPI охотится за фейками и блокирует соединение при наличии подозрительных признаков,
-в частности, измененный TTL у фейка относительно оригинала.
+The function can be useful when DPI hunts for fakes and blocks the connection if there are suspicious signs,
+in particular, the changed TTL of the fake relative to the original.
 
-### ДУБЛИКАТЫ
+### DUPLICATES
 
-Дубликаты - это копии оригинальных пакетов, высылаемые перед ними. Включаются параметром `--dup=N`, где N - количество дублей,
-не включающее оригинал. `--dup-replace` отключает отсылку оригинала.
+Duplicates are copies of the original packages sent before them. Enabled by the parameter `--dup=N`, where N is the number of takes,
+not including the original. `--dup-replace` disables sending the original.
 
-Отсылка дублей имеет место только в тех случаях, когда высылается и оригинал без реконструкции.
-Например, если случилась TCP сегментация, то оригинал фактически дропается и заменяется искусственно сконструированными сегментами.
-Дубли высланы не будут. Это же касается изменения состава хедеров ipv6, режима tamper для DHT и других.
+Sending duplicates occurs only in cases where the original is also sent without reconstruction.
+For example, if TCP segmentation occurs, then the original is actually dropped and replaced with artificially constructed segments.
+No duplicates will be sent. The same applies to changing the composition of ipv6 headers, tamper mode for DHT and others.
 
-Возможно применение всех вариантов дурения, как и для desync : `--dup-ttl`. `--dup-ttl6`, `--dup-fooling`. Нужно ли, чтобы эти пакеты доходили до сервера и в каком виде, решаете вы согласно задуманной стратегии.
+All variants of stupidity can be used, as for desync: `--dup-ttl`. `--dup-ttl6`, `--dup-fooling`. Whether these packets need to reach the server and in what form is up to you to decide according to your intended strategy.
 
-Вариант `--dup-autottl` и `--dup-autottl6` работает аналогично `dpi-desync-autottl`, но по дублям.
-Дельту можно указывать положительную с унарным знаком `+`, а можно и отрицательную. Зависит от вашей задумки.
-Пример : `--dup-autottl=-2:3-64`.
+The `--dup-autottl` and `--dup-autottl6` options work similarly to `dpi-desync-autottl`, but for duplicates.
+The delta can be specified as positive with the unary sign `+`, or it can be negative. Depends on your idea.
+Example: `--dup-autottl=-2:3-64`.
 
-`--dup-start` и `--dup-cutoff` задают ограничитель по началу и концу применения стратегии дубликатов.
-Схема аналогична `--dpi-desync-start` и `--dpi-desync-cutoff`.
+`--dup-start` and `--dup-cutoff` specify the start and end limit for applying the duplicate strategy.
+Scheme analogous to `--dpi-desync-start` and `--dpi-desync-cutoff`.
 
-Функция может помочь, когда DPI сечет разницу в характеристиках фейков и оригинала.
-Дубликатами можно попытаться заставить DPI принять , что весь сеанс идет аномальным.
-Например, у нас имеется TCP сеанс с MD5 сразу с первого SYN пакета. Значит последующие MD5 будут восприниматься нормально.
+The function can help when DPI shows the difference in the characteristics of fakes and the original.
+With duplicates you can try to force DPI to accept that the entire session is anomalous.
+For example, we have a TCP session with MD5 immediately from the first SYN packet. This means that subsequent MD5s will be perceived normally.
 
-### КОМБИНИРОВАНИЕ МЕТОДОВ ДЕСИНХРОНИЗАЦИИ
+### COMBINING DESYNCHRONIZATION METHODS
 
-В параметре dpi-desync можно указать до 3 режимов через запятую.
+In the dpi-desync parameter, you can specify up to 3 modes separated by commas.
 
-* 0 фаза - предполагает работу на этапе установления соединения : `synack`, `syndata`, `--wsize`, `--wssize`. На эту фазу не действуют фильтры по [hostlist](#множественные-стратегии), кроме случая, описанного [далее](#кэш-ip).
-* 1 фаза - отсылка чего-либо до оригинального пакета данных : `fake`, `rst`, `rstack`.
-* 2 фаза - отсылка в модифицированном виде оригинального пакета данных (например, `fakedsplit` или `ipfrag2`).
+* Phase 0 - involves work at the connection establishment stage: `synack`, `syndata`, `--wsize`, `--wssize`. This phase is not affected by filters based on [hostlist](#multiple-strategies), except for the case described [further](#cache-ip).
+* Phase 1 - sending something before the original data packet: `fake`, `rst`, `rstack`.
+* Phase 2 - sending a modified form of the original data packet (for example, `fakedsplit` or `ipfrag2`).
 
-Режимы требуют указания в порядке возрастания номеров фаз.
+Modes require indication in ascending order of phase numbers.
 
-### КЭШ IP
+### CACHE IP
 
-ipcache представляет собой структуру в памяти процесса, позволяющую по ключу IP адреса и имени интерфейса запоминать некоторую информацию,
-которую впоследствии можно извлечь и использовать как недостающие данные. На текущий момент это применяются в следующих ситуациях :
+ipcache is a structure in process memory that allows you to remember some information based on the IP address key and interface name,
+which can later be extracted and used as missing data. Currently this applies in the following situations:
 
-1. IP,interface => hop count . Кэшируется количество хопов до сервера для последующего применения в autottl прямо с первого пакета, когда еще ответа не было. Пока записи в кэше нет, autottl не будет применен сразу. При повторном запросе до истечения времени жизни записи autottl будет применение сразу.
+1. IP,interface => hop count . The number of hops to the server is cached for subsequent use in autottl directly from the first packet, when there has been no response yet. While there is no entry in the cache, autottl will not be applied immediately. If the request is repeated before the autottl entry lifetime expires, the autottl entry will be applied immediately.
 
-2. IP => hostname . Кэшируется имя хоста, вне привязки к интерфейсу, для последующего применения в стратегиях нулевой фазы. Режим отключен по умолчанию и включается через параметры `ipcache-hostname`.
-Данная техника является экспериментальной. Ее проблема в том, что как такового нет однозначного соответствия между доменом и IP. Множество доменов могут ссылаться на тот же IP адрес.
-При коллизии происходит замещение имени хоста на последний вариант.
-Домен может скакать по разным IP на CDN. Сейчас один адрес, через час - другой. Эта проблема решается через время жизни записей кэша : `--ipcache-lifetime`. По умолчанию 2 часа.
-Однако, может случиться и так, что в вашем случае применение техники несет больше пользы, чем проблем. Будьте готовы к непонятному на первый взгляд поведению, которое может быть исследовано только через `--debug` лог.
+2. IP => hostname. The host name is cached, outside of interface binding, for later use in phase zero strategies. The mode is disabled by default and is enabled through the `ipcache-hostname` parameters.
+This technique is experimental. Its problem is that, as such, there is no one-to-one correspondence between the domain and the IP. Multiple domains can refer to the same IP address.
+In the event of a collision, the host name is replaced with the latest option.
+A domain can jump across different IPs on a CDN. One address now, another in an hour. This problem is solved through the lifetime of cache entries: `--ipcache-lifetime`. Default is 2 hours.
+However, it may also happen that in your case the use of technology brings more benefits than problems. Be prepared for seemingly incomprehensible behavior that can only be investigated via `--debug` log.
 
-При подаче сигнала SIGUSR2 процесс выводит содержимое ipcache на консоль.
+When the SIGUSR2 signal is issued, the process prints the contents of ipcache to the console.
 
-### РЕАКЦИЯ DPI НА ОТВЕТ СЕРВЕРА
+### DPI RESPONSE TO SERVER RESPONSE
 
-Есть DPI, которые анализируют ответы от сервера, в частности сертификат из ServerHello, где прописаны домены.
-Подтверждением доставки ClientHello является ACK пакет от сервера с номером ACK sequence, соответствующим длине ClientHello+1.
-В варианте disorder обычно приходит сперва частичное подтверждение (SACK), потом полный ACK.
-Если вместо ACK или SACK идет RST пакет с минимальной задержкой, то DPI вас отсекает еще на этапе вашего запроса.
-Если RST идет после полного ACK спустя задержку, равную примерно пингу до сервера,
-тогда вероятно DPI реагирует на ответ сервера.
-DPI может отстать от потока, если ClientHello его удовлетворил и не проверять ServerHello.
-Тогда вам повезло. Вариант fake может сработать.
-Если же он не отстает и упорно проверяет ServerHello, то можно попробовать заставить сервер высылать ServerHello частями
-через параметр `--wssize` (см. conntrack).
-Если и это не помогает, то сделать с этим что-либо вряд ли возможно без помощи со стороны сервера.
-Лучшее решение - включить на сервере поддержку TLS 1.3. В нем сертификат сервера передается в зашифрованном виде.
-Это рекомендация ко всем админам блокируемых сайтов. Включайте TLS 1.3. Так вы дадите больше возможностей преодолеть DPI.
+There are DPIs that analyze responses from the server, in particular the certificate from ServerHello, where domains are registered.
+Confirmation of delivery of ClientHello is an ACK packet from the server with an ACK sequence number corresponding to the length of ClientHello+1.
+In the disorder variant, a partial acknowledgment (SACK) usually comes first, then a full ACK.
+If instead of an ACK or SACK there is an RST packet with minimal delay, then DPI will cut you off at the stage of your request.
+If the RST comes after a full ACK after a delay equal to approximately a ping to the server,
+then probably DPI reacts to the server response.
+DPI may lag behind the flow if the ClientHello satisfied it and does not check the ServerHello.
+Then you're in luck. The fake option might work.
+If it doesn’t lag behind and persistently checks ServerHello, then you can try to force the server to send ServerHello in parts
+via `--wssize` option (see conntrack).
+If this does not help, then it is hardly possible to do anything about it without help from the server.
+The best solution is to enable TLS 1.3 support on the server. In it, the server certificate is transmitted in encrypted form.
+This is a recommendation to all administrators of blocked sites. Enable TLS 1.3. This will give you more opportunities to overcome DPI.
 
-### РЕЖИМ SYNACK
+### SYNACK MODE
 
-В документации по geneva это называется "TCB turnaround". Попытка ввести DPI в заблуждение относительно
-ролей клиента и сервера.
+In the geneva documentation this is called "TCB turnaround". An attempt to mislead DPI regarding
+client and server roles.
 
-Поскольку режим нарушает работу NAT, техника может сработать только если между атакующим устройством
-и DPI нет NAT. Атака не сработает через NAT роутер, но может сработать с него.
-Для реализации атаки на проходящий трафик требуются nftables и схема [POSTNAT](#nftables-для-nfqws).
+Since the mode breaks NAT, the technique can only work if between the attacking device
+and DPI no NAT. The attack will not work through a NAT router, but can work from one.
+To implement an attack on passing traffic, nftables and the [POSTNAT](#nftables-for-nfqws) scheme are required.
 
-### РЕЖИМ SYNDATA
+### SYNDATA MODE
 
-Тут все просто. Добавляются данные в пакет SYN. Все ОС их игнорируют, если не используется TCP fast open (TFO),
-а DPI может воспринять, не разобравшись есть там TFO или нет.
-Оригинальные соединения с TFO не трогаются, поскольку это их точно сломает.
-Без уточняющего параметра добавляются 16 нулевых байтов.
+Everything is simple here. Data is added to the SYN packet. All operating systems ignore them unless TCP fast open (TFO) is used,
+and DPI can be perceived without understanding whether there is TFO there or not.
+The original connections to the TFO are not touched as this will definitely break them.
+Without the qualifying parameter, 16 zero bytes are added.
 
-### ВИРТУАЛЬНЫЕ МАШИНЫ
+### VIRTUAL MACHINES
 
-Изнутри VM от virtualbox и vmware в режиме NAT не работают многие техники пакетной магии nfqws.
-Принудительно заменяется ttl, не проходят фейк пакеты. Необходимо настроить сеть в режиме bridge.
+Many nfqws packet magic techniques do not work from inside a VM from virtualbox and vmware in NAT mode.
+TTL is forcibly replaced, fake packets do not pass through. It is necessary to configure the network in bridge mode.
 
 ### CONNTRACK
 
-nfqws оснащен ограниченной реализацией слежения за состоянием tcp соединений (conntrack).
-Он включается для реализации некоторых методов противодействия DPI.
-conntrack способен следить за фазой соединения : SYN,ESTABLISHED,FIN, количеством пакетов в каждую сторону,
-sequence numbers. conntrack способен "кормиться" пакетами в обе или только в одну сторону.
-Соединение попадает в таблицу при обнаружении пакетов с выставленными флагами SYN или SYN,ACK.
-Поэтому если необходим conntrack, в правилах перенаправления iptables соединение должно идти на nfqws с самого первого
-пакета, хотя затем может обрываться по фильтру connbytes.
-Для UDP инициатором попадания в таблицу является первый UDP пакет. Он же и определяет направление потока.
-Считается, что первый UDP пакет исходит от клиента к серверу. Далее все пакеты с совпадающими
-`src_ip,src_port,dst_ip,dst_port` считаются принадлежащими этому потоку до истечения времени неактивности.
-conntrack - простенький, он не писался с учетом всевозможных атак на соединение, он не проверяет
-пакеты на валидность sequence numbers или чексумму. Его задача - лишь обслуживание нужд nfqws, он обычно
-кормится только исходящим трафиком, потому нечувствителен к подменам со стороны внешней сети.
-Соединение удаляется из таблицы, как только отпадает нужда в слежении за ним или по таймауту неактивности.
-Существуют отдельные таймауты на каждую фазу соединения. Они могут быть изменены параметром `--ctrack-timeouts`.
+nfqws is equipped with a limited implementation of tracking the state of tcp connections (conntrack).
+It is included to implement some DPI countermeasures.
+conntrack is able to monitor the connection phase: SYN,ESTABLISHED,FIN, the number of packets in each direction,
+sequence numbers. conntrack is able to “feed” packets in both directions or only in one direction.
+A connection is included in the table when packets with the SYN or SYN,ACK flags are detected.
+Therefore, if conntrack is needed, in the iptables redirection rules the connection should go to nfqws from the very first
+packet, although it may then be terminated by the connbytes filter.
+For UDP, the initiator of getting into the table is the first UDP packet. It also determines the direction of flow.
+The first UDP packet is considered to come from the client to the server. Next, all packages with matching
+`src_ip,src_port,dst_ip,dst_port` are considered to belong to this thread until the inactivity time expires.
+conntrack is simple, it was not written taking into account all kinds of attacks on the connection, it does not check
+packages for the validity of sequence numbers or checksum. His task is only to serve the needs of nfqws, he usually
+It feeds only on outgoing traffic, therefore it is insensitive to substitutions from the external network.
+A connection is removed from the table as soon as it is no longer needed to be monitored or after an inactivity timeout.
+There are separate timeouts for each connection phase. These can be changed with the `--ctrack-timeouts` option.
 
-`--wssize` позволяет изменить с клиента размер tcp window для сервера, чтобы он послал следующие ответы разбитыми на части.
-Чтобы это подействовало на все серверные ОС, необходимо менять window size в каждом исходящем с клиента пакете до отсылки сообщения,
-ответ на которое должен быть разбит (например, TLS ClientHello). Именно поэтому и необходим conntrack, чтобы
-знать когда надо остановиться. Если не остановиться и все время устанавливать низкий wssize, скорость упадет катастрофически.
-В linux это может быть купировано через connbytes, но в BSD системах такой возможности нет.
+`--wssize` allows you to change the size of the tcp window for the server from the client so that it sends the following responses in parts.
+For this to work on all server OSes, it is necessary to change the window size in each packet outgoing from the client before sending the message,
+the response to which must be split (for example, TLS ClientHello). This is why conntrack is needed to
+know when to stop. If you don't stop and set low wssize all the time, the speed will drop catastrophically.
+On Linux this can be stopped using connbytes, but on BSD systems there is no such option.
 В случае http(s) останавливаемся сразу после отсылки первого http запроса или TLS ClientHello.
 Если вы имеете дело с не http(s), то вам потребуется параметр `--wssize-cutoff`. Он устанавливает предел, с которого действие
-wssize прекращается. Префикс d перед номером означает учитывать только пакеты с data payload, префикс s - relative sequence number,
-проще говоря количество переданных клиентом байтов + 1.
+wssize is terminated. The prefix d before the number means to consider only packets with data payload, the prefix s - relative sequence number,
+In other words, the number of bytes transferred by the client + 1.
 Если проскочит пакет с http request или TLS ClientHello, действие wssize прекращается сразу же, не дожидаясь wssize-cutoff,
-если не указан параметр `--wssize-forced-cutoff=0`.
-Если ваш протокол склонен к долгому бездействию, следует увеличить таймаут фазы ESTABLISHED через параметр `--ctrack-timeouts`.
-Таймаут по умолчанию низкий - всего 5 минут.
-Не забывайте, что nfqws кормится приходящими на него пакетами. Если вы ограничили поступление пакетов через connbytes,
-то в таблице могут остаться повисшие соединения в фазе ESTABLISHED, которые отвалятся только по таймауту.
-Для диагностики состояния conntrack пошлите сигнал SIGUSR1 процессу nfqws : `killall -SIGUSR1 nfqws`.
-Текущая таблица будет выведена nfqws в stdout.
+if the `--wssize-forced-cutoff=0` option is not specified.
+If your protocol is prone to long periods of inactivity, you should increase the ESTABLISHED phase timeout via the `--ctrack-timeouts` option.
+The default timeout is low - only 5 minutes.
+Don't forget that nfqws feeds on packages coming to it. If you have restricted packets coming through connbytes,
+then the table may remain hanging connections in the ESTABLISHED phase, which will fall off only after a timeout.
+To diagnose the conntrack state, send the SIGUSR1 signal to the nfqws process: `killall -SIGUSR1 nfqws`.
+The current table will be printed to stdout by nfqws.
 
-Обычно в SYN пакете клиент отсылает кроме window size еще и TCP extension `scaling factor`.
-**scaling factor** представляет из себя степень двойки, на которую умножается window size : 0=>1, 1=>2, 2=>4, ..., 8=>256, ...
-В параметре wssize scaling factor указывается через двоеточие.
-Scaling factor может только снижаться, увеличение заблокировано, чтобы не допустить превышение размера окна со стороны сервера.
-Для принуждения сервера к фрагментации ServerHello, чтобы избежать просекание имени сервера из сертификата сервера на DPI,
-лучше всего использовать `--wssize=1:6`. Основное правило - делать `scale_factor` как можно больше, чтобы после восстановления
-window size итоговый размер окна стал максимально возможным. Если вы сделаете 64:0, будет очень медленно.
-С другой стороны нельзя допустить, чтобы ответ сервера стал достаточно большим, чтобы DPI нашел там искомое.
+Usually, in the SYN packet, the client also sends, in addition to window size, a TCP extension `scaling factor`.
+**scaling factor** is a power of two by which window size is multiplied: 0=>1, 1=>2, 2=>4, ..., 8=>256, ...
+In the wssize parameter, the scaling factor is indicated separated by a colon.
+The scaling factor can only decrease; increases are blocked to prevent the server from exceeding the window size.
+To force the server to fragment the ServerHello to avoid leaking the server name from the server certificate to the DPI,
+It's best to use `--wssize=1:6`. The basic rule is to make `scale_factor` as large as possible so that after recovery
+window size the resulting window size has become the maximum possible. If you do 64:0 it will be very slow.
+On the other hand, we cannot allow the server response to become large enough for DPI to find what it is looking for.
 
-`--wssize` не работает в профилях с хостлистами, поскольку он действует с самого начала соединения, когда еще нельзя
-принять решение о попадании в лист. Однако, профиль с auto hostlist может содержать --wssize.
-`--wssize` может замедлять скорость и/или увеличивать время ответа сайтов, поэтому если есть другие работающие способы
-обхода DPI, лучше применять их.
+`--wssize` does not work in profiles with hostlists, because it is effective from the very beginning of the connection, when it is not yet possible
+make a decision about getting on the list. However, a profile with auto hostlist may contain --wssize.
+`--wssize` can slow down the speed and/or increase the response time of sites, so if there are other ways that work
+bypass DPI, it is better to use them.
 
-`--dpi-desync-cutoff` позволяет задать предел, при достижении которого прекращается применение dpi-desync.
-Доступны префиксы n,d,s по аналогии с `--wssize-cutoff`.
-Полезно совместно с `--dpi-desync-any-protocol=1`.
-На склонных к бездействию соединениях следует изменить таймауты conntrack.
-Если соединение выпало из conntrack и задана опция `--dpi-desync-cutoff`, `dpi desync` применяться не будет.
+`--dpi-desync-cutoff` allows you to set a limit at which dpi-desync will stop being applied.
+The available prefixes are n,d,s, similar to `--wssize-cutoff`.
+Useful in conjunction with `--dpi-desync-any-protocol=1`.
+On connections that are prone to inactivity, you should change the conntrack timeouts.
+If the connection has dropped out of conntrack and the `--dpi-desync-cutoff` option is specified, `dpi desync` will not be applied.
 
-### РЕАССЕМБЛИНГ
+### REASSEMBLING
 
-nfqws поддерживает реассемблинг некоторых видов запросов.
-На текущий момент это TLS и QUIC ClientHello. Они бывают длинными, если в chrome включить пост-квантовую
-криптографию tls-kyber, и занимают, как правило, 2 или 3 пакета. kyber включен по умолчанию, начиная с chromium 124.
-chrome рандомизирует фингерпринт TLS. SNI может оказаться как в начале, так и в конце, то есть
-попасть в любой пакет. stateful DPI обычно реассемблирует запрос целиком, и только потом
-принимает решение о блокировке.
-В случае получения TLS или QUIC пакета с частичным ClientHello начинается процесс сборки, а пакеты
-задерживаются и не отсылаются до ее окончания. По окончании сборки пакеты проходит через десинхронизацию
-на основании полностью собранного ClientHello.
-При любой ошибке в процессе сборки задержанные пакеты немедленно отсылаются в сеть, а десинхронизация отменяется.
+nfqws supports reassembly of some types of queries.
+Currently these are TLS and QUIC ClientHello. They can be long if you enable post-quantum in chrome
+tls-kyber cryptography, and usually take 2 or 3 packages. kyber is enabled by default starting with chromium 124.
+chrome randomizes the TLS fingerprint. SNI can be either at the beginning or at the end, that is
+get into any package. stateful DPI usually reassembles the entire request, and only then
+makes a decision to block.
+If a TLS or QUIC packet is received with a partial ClientHello, the build process begins and the packages
+are delayed and not sent until its end. Upon completion of the build, the packages go through desynchronization
+based on the fully assembled ClientHello.
+If there is any error in the build process, the delayed packets are immediately sent to the network and desynchronization is aborted.
 
-Есть специальная поддержка всех вариантов tcp сплита для многосегментного TLS.
-Если указать позицию сплита больше длины первого пакета, то разбивка происходит не обязательно первого пакета, а того,
-на который пришлась итоговая позиция.
-Если, допустим, клиент послал TLS ClientHello длиной 2000, SNI начинается с 1700,
-и заданы опции `fake,multisplit`, то перед первым пакетом идет fake, затем первый пакет в оригинале,
-а последний пакет разбивается на 2 сегмента. В итоге имеем фейк в начале и 3 реальных сегмента.
+There is special support for all tcp split options for multi-segment TLS.
+If you specify a split position greater than the length of the first packet, then the split does not necessarily occur in the first packet, but in the
+which accounted for the final position.
+If, say, the client sent a TLS ClientHello of length 2000, the SNI starts at 1700,
+and the options `fake,multisplit` are specified, then the first packet is preceded by fake, then the first packet in the original,
+and the last packet is split into 2 segments. As a result, we have a fake at the beginning and 3 real segments.
 
-### ПОДДЕРЖКА UDP
+### UDP SUPPORT
 
-Атаки на udp более ограничены в возможностях. udp нельзя фрагментировать иначе, чем на уровне ip.
+Attacks on udp are more limited in scope. udp cannot be fragmented other than at the ip level.
 
-Для UDP действуют только режимы десинхронизации `fake`, `fakeknown`, `hopbyhop`, `destopt`, `ipfrag1`, `ipfrag2`, `udplen`, `tamper`.
-Режимами первой фазы являются `fake`, `fakeknown`, `hopbyhop`, `destopt`, `ipfrag1`. Второй фазы - `ipfrag2`, `udplen`, `tamper`.
-Как обычно, возможно сочетание режимов первой и второй фазы, но не двух режимов одной фазы.
+For UDP, only desynchronization modes `fake`, `fakeknown`, `hopbyhop`, `destopt`, `ipfrag1`, `ipfrag2`, `udplen`, `tamper` are valid.
+The first phase modes are `fake`, `fakeknown`, `hopbyhop`, `destopt`, `ipfrag1`. The second phases are `ipfrag2`, `udplen`, `tamper`.
+As usual, a combination of the first and second phase modes is possible, but not two modes of the same phase.
 
-`udplen` увеличивает размер udp пакета на указанное в `--dpi-desync-udplen-increment` количество байтов.
-Паддинг заполняется нулями по умолчанию, но можно задать свой паттерн.
-Предназначено для обмана DPI, ориентирующегося на размеры пакетов.
-Может сработать, если пользовательский протокол не привязан жестко к размеру udp пейлоада.
-Режим tamper означает модификацию пакетов известных протоколов особенным для протокола образом.
-На текущий момент работает только с DHT.
-Поддерживается определение пакетов QUIC Initial с расшифровкой содержимого и имени хоста, то есть параметр
-`--hostlist` будет работать.
-Определяются пакеты wireguard handshake initiation, DHT (начинается с 'd1', кончается 'e'), STUN и
+`udplen` increases the size of the udp packet by the number of bytes specified in `--dpi-desync-udplen-increment`.
+Padding is filled with zeros by default, but you can set your own pattern.
+Designed to cheat DPI based on packet sizes.
+It may work if the user protocol is not strictly tied to the size of the udp payload.
+Tamper mode means modifying packets of known protocols in a protocol-specific manner.
+Currently only works with DHT.
+Supports detection of QUIC Initial packets with content and hostname decryption, i.e. parameter
+`--hostlist` will work.
+The wireguard handshake initiation, DHT (starts with 'd1', ends with 'e'), STUN and
 [Discord Voice IP Discovery](https://discord.com/developers/docs/topics/voice-connections#ip-discovery).
-Для десинхронизации других протоколов обязательно указывать `--dpi-desync-any-protocol`.
-Реализован conntrack для udp. Можно пользоваться --dpi-desync-cutoff. Таймаут conntrack для udp
-можно изменить 4-м параметром в `--ctrack-timeouts`.
-Атака fake полезна только для stateful DPI, она бесполезна для анализа на уровне отдельных пакетов.
-По умолчанию fake наполнение - 64 нуля. Можно указать файл в `--dpi-desync-fake-unknown-udp`.
+To desynchronize other protocols, be sure to specify `--dpi-desync-any-protocol`.
+Implemented conntrack for udp. You can use --dpi-desync-cutoff. conntrack timeout for udp
+can be changed by the 4th parameter in `--ctrack-timeouts`.
+The fake attack is only useful for stateful DPI, it is useless for analysis at the individual packet level.
+By default, fake content is 64 zeros. You can specify the file in `--dpi-desync-fake-unknown-udp`.
 
-### IP ФРАГМЕНТАЦИЯ
+### IP FRAGMENTATION
 
-Современная сеть практически не пропускает фрагментированные tcp на уровне ip.
-На udp с этим дело получше, поскольку некоторые udp протоколы могут опираться на этот механизм (IKE старых версий).
-Однако, кое-где бывает, что режут и фрагментированный udp.
-Роутеры на базе linux могут самопроизвольно собирать или перефрагментировать пакеты.
-Позиция фрагментации задается отдельно для tcp и udp. По умолчанию 24 и 8 соответственно, должна быть кратна 8.
-Смещение считается с транспортного заголовка.
+The modern network practically does not allow fragmented tcp at the ip level to pass through.
+This is better with udp, since some udp protocols can rely on this mechanism (IKE of older versions).
+However, in some places it happens that fragmented udp is also cut.
+Linux-based routers can spontaneously assemble or re-fragment packets.
+The fragmentation position is set separately for tcp and udp. The default is 24 and 8 respectively, must be a multiple of 8.
+The offset is calculated from the transport header.
 
-Существует ряд моментов вокруг работы с фрагментами на Linux, без понимания которых может ничего не получиться.
+There are a number of issues around working with fragments on Linux, without understanding which nothing may work.
 
-ipv4 : Linux дает отсылать ipv4 фрагменты, но стандартные настройки iptables в цепочке OUTPUT могут вызывать ошибки отправки.
+ipv4: Linux allows sending ipv4 fragments, but the standard iptables settings in the OUTPUT chain may cause sending errors.
 
-ipv6 : Нет способа для приложения гарантированно отослать фрагменты без дефрагментации в conntrack.
-На разных системах получается по-разному. Где-то нормально уходят, где-то пакеты дефрагментируются.
-Для ядер <4.16 похоже, что нет иного способа решить эту проблему, кроме как выгрузить модуль `nf_conntrack`,
-который подтягивает зависимость `nf_defrag_ipv6`. Он то как раз и выполняет дефрагментацию.
-Для ядер 4.16+ ситуация чуть лучше. Из дефрагментации исключаются пакеты в состоянии NOTRACK.
-Чтобы не загромождать описание, смотрите пример решения этой проблемы в `blockcheck.sh`.
+ipv6: There is no way for an application to be guaranteed to send fragments without defragmenting in conntrack.
+It works differently on different systems. Somewhere they leave normally, somewhere the packets are defragmented.
+For kernels <4.16, it looks like there is no other way to solve this problem other than unloading the `nf_conntrack` module.
+which pulls up the `nf_defrag_ipv6` dependency. It just performs defragmentation.
+For kernels 4.16+ the situation is slightly better. Packets in the NOTRACK state are excluded from defragmentation.
+To avoid cluttering the description, see an example of a solution to this problem in `blockcheck.sh`.
 
-Иногда требуется подгружать модуль `ip6table_raw` с параметром `raw_before_defrag=1`.
-В OpenWrt параметры модулей указываются через пробел после их названий в файлах `/etc/modules.d`.
-В традиционных системах посмотрите используется ли `iptables-legacy` или `iptables-nft`. Если legacy, то нужно создать файл
-`/etc/modprobe.d/ip6table_raw.conf` с содержимым :
+Sometimes it is necessary to load the `ip6table_raw` module with the `raw_before_defrag=1` parameter.
+In OpenWrt, module parameters are specified with a space after their names in the `/etc/modules.d` files.
+On traditional systems, see if `iptables-legacy` or `iptables-nft` is used. If legacy, then you need to create a file
+`/etc/modprobe.d/ip6table_raw.conf` with contents:
 ```
 options ip6table_raw raw_before_defrag=1
 ```
-В некоторых традиционных дистрибутивах можно изменить текущий ip6tables через : update-alternatives --config ip6tables
-Если вы хотите оставаться на iptables-nft, вам придется пересобрать патченную версию. Патч совсем небольшой.
-В `nft.c` найдите фрагмент:
+On some traditional distributions you can change the current ip6tables via: update-alternatives --config ip6tables
+If you want to stay on iptables-nft, you will have to rebuild the patched version. The patch is quite small.
+In `nft.c` find the snippet:
 ```
         {
             .name	= "PREROUTING",
@@ -831,92 +831,92 @@ options ip6table_raw raw_before_defrag=1
             .hook	= NF_INET_LOCAL_OUT,
         },
 ```
-и замените везде -300 на -450.
+and replace -300 with -450 everywhere.
 
-Это нужно сделать вручную, никакой автоматики в `blockcheck.sh` нет.
+This must be done manually; there is no automation in `blockcheck.sh`.
 
-Либо можно раз и навсегда избавиться от этой проблемы, используя `nftables`. Там можно создать `netfilter hook`
-с любым приоритетом. Используйте приоритет -401 и ниже.
+Or you can get rid of this problem once and for all by using `nftables`. There you can create a `netfilter hook`
+with any priority. Use priority -401 and lower.
 
-При использовании iptables и NAT, похоже, что нет способа прицепить обработчик очереди после NAT.
-Пакет попадает в nfqws с source адресом внутренней сети, затем фрагментируется и уже не обрабатывается NAT.
-Так и уходит во внешнюю сеть с src ip 192.168.x.x. Следовательно, метод не срабатывает.
-Видимо единственный рабочий метод - отказаться от iptables и использовать nftables.
-Хук должен быть с приоритетом 101 или выше.
+When using iptables and NAT, there seems to be no way to attach a queue handler after the NAT.
+The packet enters nfqws with the source address of the internal network, then is fragmented and is no longer processed by NAT.
+So it goes to the external network with src ip 192.168.x.x. Therefore, the method does not work.
+Apparently the only working method is to abandon iptables and use nftables.
+The hook must be priority 101 or higher.
 
-### МНОЖЕСТВЕННЫЕ СТРАТЕГИИ
+### MULTIPLE STRATEGIES
 
-**nfqws** способен по-разному реагировать на различные запросы и применять разные стратегии дурения.
-Это реализовано посредством поддержки множества профилей дурения.
-Профили разделяются в командной строке параметром `--new`. Первый профиль создается автоматически.
-Для него не нужно `--new`. Каждый профиль имеет фильтр. По умолчанию он пуст, то есть профиль удовлетворяет
-любым условиям.
-Фильтр может содержать жесткие параметры: версия ip протокола, ipset и порты tcp/udp.
-Они всегда однозначно идентифицируются даже на нулевой фазе десинхронизации, когда еще хост и L7 неизвестны.
-В качестве мягкого фильтра могут выступать хост-листы и протокол прикладного уровня (l7).
-L7 протокол становится известен обычно после первого пакета с данными.
-При поступлении запроса идет проверка профилей в порядке от первого до последнего до
-достижения первого совпадения с фильтром.
-Жесткие параметры фильтра сверяются первыми. При несовпадении идет сразу же переход к следующему профилю.
-Если какой-то профиль удовлетворяет жесткому фильтру и L7 фильтру и содержит авто-хостлист, он выбирается сразу.
-Если профиль удовлетворяет жесткому фильтру и L7 фильтру, для него задан хостлист, и у нас еще нет имени хоста,
-идет переход к следующему профилю. В противном случае идет проверка по хостлистам этого профиля.
-Если имя хоста удовлетворяет листам, выбирается этот профиль. Иначе идет переход к следующему.
-Может так случиться, что до получения имени хоста или узнавания L7 протокола соединение идет по одному профилю,
-а при выяснении этих параметров профиль меняется на лету. Это может произойти даже дважды - при выяснении L7
-и имени хоста. Чаще всего это выяснение совмещается в одно действие, поскольку по одному пакету, как правило, узнается и L7, и хост.
-Поэтому если у вас есть параметры дурения нулевой фазы, тщательно продумывайте что может произойти при переключении стратегии.
-Смотрите debug log, чтобы лучше понять что делает nfqws.
-Нумерация профилей идет с 1 до N. Последним в цепочке создается пустой профиль с номером 0.
-Он используется, когда никакие условия фильтров не совпали.
-
-> [!IMPORTANT]
-> Множественные стратегии создавались только для случаев, когда невозможно обьединить
-> имеющиеся стратегии для разных ресурсов. Копирование стратегий из blockcheck для разных сайтов
-> во множество профилей без понимания как они работают приведет к нагромождению параметров, которые все равно
-> не покроют все возможные заблокированные ресурсы. Вы только увязните в этой каше.
+**nfqws** is capable of reacting differently to different requests and using different strategies for fooling around.
+This is implemented by supporting multiple fooling profiles.
+Profiles are separated on the command line with the `--new` parameter. The first profile is created automatically.
+It doesn't need `--new`. Each profile has a filter. By default it is empty, that is, the profile satisfies
+any conditions.
+The filter can contain hard parameters: IP protocol version, ipset and tcp/udp ports.
+They are always uniquely identified even at the zero desynchronization phase, when the host and L7 are still unknown.
+Host lists and the application layer protocol (l7) can act as a soft filter.
+The L7 protocol usually becomes known after the first data packet.
+When a request is received, profiles are checked in order from first to last to
+achieving the first match with the filter.
+Hard filter parameters are checked first. If there is a mismatch, there is an immediate transition to the next profile.
+If a profile satisfies the hard filter and the L7 filter and contains an auto-hostlist, it is selected immediately.
+If a profile satisfies the hard filter and L7 filter, it has a hostlist and we don't have a hostname yet,
+there is a transition to the next profile. Otherwise, the hostlists of this profile are checked.
+If the hostname matches the sheets, that profile is selected. Otherwise, it moves on to the next one.
+It may happen that before receiving the host name or recognizing the L7 protocol, the connection goes through one profile,
+and when figuring out these parameters, the profile changes on the fly. This can even happen twice - when figuring out L7
+and hostname. Most often, this identification is combined into one action, since one packet, as a rule, identifies both L7 and the host.
+Therefore, if you have zero-phase fooling parameters, carefully consider what can happen when switching strategies.
+See the debug log to better understand what nfqws does.
+Profiles are numbered from 1 to N. An empty profile with number 0 is created last in the chain.
+It is used when no filter conditions match.
 
 > [!IMPORTANT]
-> user-mode реализация ipset создавалась не как удобная замена *nix версии, реализованной в ядре.
-> Вариант в ядре работает гораздо эффективнее. Это создавалось для систем без поддержки ipset в ядре.
-> Конкретно - Windows и ядра Linux, собранные без nftables и ipset модулей ядра. Например, в android нет ipset.
+> Multiple strategies were created only for cases where it is impossible to combine
+> available strategies for different resources. Copying strategies from blockcheck for different sites
+> into many profiles without understanding how they work will lead to a clutter of parameters that don’t matter
+> will not cover all possible blocked resources. You will only get stuck in this mess.
 
-### ФИЛЬТРАЦИЯ ПО WIFI
+> [!IMPORTANT]
+> The user-mode implementation of ipset was not created as a convenient replacement for the *nix version implemented in the kernel.
+> The kernel version works much more efficiently. This was designed for systems without ipset support in the kernel.
+> Specifically, Windows and Linux kernels compiled without nftables and ipset kernel modules. For example, android does not have ipset.
 
-Имя wifi сети никак не связано с сетевым интерфейсом адаптера wifi.
-Интерфейс один, подключиться можно к любой сети. Для разных сетей разные стратегии.
-Стратегия от сети A не работает или ломает сеть B. Что делать ?
+### FILTERING BY WIFI
 
-Можно вручную запускать и снимать инстансы nfqws. Но можно поступить иначе.
-В windows версии winws есть глобальный фильтр `--ssid-filter`.
-Он включает или отключает инстанс winws в зависимости от подключенности любого адаптера к конкретной wifi сети.
-При этом не учитывается маршрутизация. Такой подход возможен потому, что к windivert можно прицепить несколько инстансов winws на пересекающихся фильтрах.
-При смене wifi сети одни будут включаться, другие выключаться.
+The wifi network name has nothing to do with the network interface of the wifi adapter.
+There is only one interface, you can connect to any network. Different networks have different strategies.
+The strategy from network A does not work or breaks network B. What to do?
 
-Для linux применяется иное решение. Фильтр `--filter-ssid` относится к конкретному профилю.
-Невозможно повесить несколько инстансов nfqws на одну и ту же очередь или направить один и тот же трафик на несколько очередей.
-Подключение и отключение от очереди разных инстансов сопряжено со сложностями синхронизации между ними.
-Поэтому обрабатывать трафик должен один инстанс, и он должен уметь работать с разными wifi сетями.
-Это и реализовано в параметре `--filter-ssid`. Он берет список имен wifi сетей (SSID) через запятую аналогично `--ssid-filter` для winws.
-При выборе профиля имеет значение куда идет конкретный обрабатываемый пакет. На какой интерфейс. Или с какого интерфейса пакет пришел, если он считается входящим.
-Поэтому даже если у вас часть трафика идет на одну сеть, часть на другую, а часть вообще не идет по wifi, то все это можно настроить.
+You can manually launch and remove nfqws instances. But you can do it differently.
+In the windows version of winws there is a global filter `--ssid-filter`.
+It enables or disables the winws instance depending on the connection of any adapter to a specific wifi network.
+This does not take routing into account. This approach is possible because several winws instances on intersecting filters can be attached to windivert.
+When changing wifi networks, some will turn on, others will turn off.
 
-Информация о подключенных сетях берется способом, используемым командой `iw dev <ifname> info` (nl80211).
-К сожалению, на ядрах с 5.19 до самых последних (6.14 не работает) этот способ сломан.
-В этом случае используется способ iwgetid (wireless extensions).
-wireless extensions считаются deprecated и на новых ядрах реализованы как прослойка совместимости.
-Некоторые ядра могут быть собраны без wireless extensions.
-Перед использованием `--filter-ssid` удостоверьтесь, что любая из этих команд возвращает SSID.
+For Linux, a different solution is used. The `--filter-ssid` filter refers to a specific profile.
+It is not possible to hang multiple nfqws instances on the same queue or route the same traffic to multiple queues.
+Connecting and disconnecting different instances from the queue is associated with difficulties in synchronizing between them.
+Therefore, one instance must process traffic, and it must be able to work with different wifi networks.
+This is implemented in the `--filter-ssid` parameter. It takes a list of wifi network names (SSIDs) separated by commas, similar to `--ssid-filter` for winws.
+When choosing a profile, it matters where the specific package being processed goes. Which interface? Or from which interface the packet came, if it is considered incoming.
+Therefore, even if part of your traffic goes to one network, part to another, and part does not go over wifi at all, then all this can be configured.
 
-Сканируются все wifi интерфейсы, составляется список interface->SSID. Он обновляется по мере поступления
-пакетов, но не чаще 1 раза в секунду.
+Information about connected networks is obtained in the manner used by the `iw dev <ifname> info` command (nl80211).
+Unfortunately, this method is broken on kernels from 5.19 to the latest (6.14 does not work).
+In this case, the iwgetid (wireless extensions) method is used.
+Wireless extensions are considered deprecated and are implemented on new cores as a compatibility layer.
+Some kernels can be built without wireless extensions.
+Before using `--filter-ssid`, make sure that any of these commands return the SSID.
 
-### IPTABLES ДЛЯ NFQWS
+All wifi interfaces are scanned and a list of interface->SSIDs is compiled. It is updated as it becomes available.
+packets, but not more than 1 time per second.
+
+### IPTABLES FOR NFQWS
 
 > [!CAUTION]
-> Начиная с ядер Linux 6.17 присутствует параметр конфигурации ядра CONFIG_NETFILTER_XTABLES_LEGACY, который по умолчанию в дистрибутиве может быть "not set". Отсутствие этой настройки выключает iptables-legacy. Это часть процесса депрекации iptables. Тем не менее iptables-nft будут работать, поскольку используют backend nftables.
+> Starting with Linux kernels 6.17, there is a kernel configuration parameter CONFIG_NETFILTER_XTABLES_LEGACY, which may be "not set" by default in the distribution. Missing this setting disables iptables-legacy. This is part of the iptables deprecation process. However, iptables-nft will work because they use backend nftables.
 
-iptables для задействования атаки на первые пакеты данных в tcp соединении :
+iptables to launch an attack on the first data packets in a tcp connection:
 
 ```
 iptables -t mangle -I POSTROUTING -o <внешний_интерфейс> -p tcp -m multiport --dports 80,443 -m connbytes --connbytes-dir=original --connbytes-mode=packets --connbytes 1:6 -m mark ! --mark 0x40000000/0x40000000 -j NFQUEUE --queue-num 200 --queue-bypass
@@ -930,41 +930,41 @@ iptables -t mangle -I POSTROUTING -o <внешний_интерфейс> -p tcp 
 iptables -t mangle -I POSTROUTING -o <внешний_интерфейс> -p tcp --dport 80 -m mark ! --mark 0x40000000/0x40000000 -j NFQUEUE --queue-num 200 --queue-bypass
 ```
 
-mark нужен, чтобы сгенерированный поддельный пакет не попал опять к нам на обработку. nfqws выставляет fwmark при его отсылке.
-Хотя nfqws способен самостоятельно различать помеченные пакеты, фильтр в iptables по mark нужен при использовании connbytes,
-чтобы не допустить изменения порядка следования пакетов. Процессинг очереди - процесс отложенный.
-Если ядро имеет пакеты на отсылку вне очереди - оно их отправляет незамедлительно.
-Изменение правильного порядка следования пакетов при десинхронизации ломает всю идею.
-Так же были замечены дедлоки при достаточно большой отсылке пакетов из nfqws и отсутствии mark фильтра.
-Процесс может зависнуть. Поэтому наличие фильтра по mark в ip/nf tables можно считать обязательным.
+mark is needed so that the generated fake package does not come back to us for processing. nfqws sets fwmark when sending it.
+Although nfqws is able to independently distinguish marked packets, the mark filter in iptables is needed when using connbytes,
+to prevent the packets from being reordered. Queue processing is a deferred process.
+If the kernel has packets to be sent out of turn, it sends them immediately.
+Changing the correct order of packets during desynchronization breaks the whole idea.
+Deadlocks were also noticed when the number of packets sent from nfqws was large enough and there was no mark filter.
+The process may freeze. Therefore, the presence of a mark filter in ip/nf tables can be considered mandatory.
 
-Почему `--connbytes 1:6` :
-* 1 - для работы методов десинхронизации 0-й фазы и корректной работы conntrack
-* 2 - иногда данные идут в 3-м пакете 3-way handshake
-* 3 - стандартная ситуация приема одного пакета запроса
-* 4-6 - на случай ретрансмиссии или запроса длиной в несколько пакетов (TLSClientHello с kyber, например)
+Why `--connbytes 1:6` :
+* 1 - for the operation of desynchronization methods of the 0th phase and correct operation of conntrack
+* 2 - sometimes the data comes in the 3rd packet 3-way handshake
+* 3 - standard situation of receiving one request packet
+* 4-6 - in case of retransmission or a request several packets long (TLSClientHello with kyber, for example)
 
-Для режима autottl необходимо перенаправление входящего `SYN,ACK` пакета или первого пакета соединения (что обычно есть то же самое).
+Autottl mode requires redirection of the incoming `SYN,ACK` packet or the first packet of the connection (which is usually the same thing).
 Для режима autohostlist необходимы входящие RST и http redirect.
 Можно построить фильтр на tcp flags для выделения `SYN,ACK` и модуле u32 для поиска характерных паттернов http redirect,
-но проще использовать connbytes для выделения нескольких начальных входящих пакетов.
+but it's easier to use connbytes to isolate a few initial incoming packets.
 
 `
 iptables -t mangle -I PREROUTING -i <внешний интерфейс> -p tcp -m multiport --sports 80,443 -m connbytes --connbytes-dir=reply --connbytes-mode=packets --connbytes 1:3 -m mark ! --mark 0x40000000/0x40000000 -j NFQUEUE --queue-num 200 --queue-bypass
 `
 
-Для quic :
+For quick:
 
 ```
 iptables -t mangle -I POSTROUTING -o <внешний_интерфейс> -p udp --dport 443 -m connbytes --connbytes-dir=original --connbytes-mode=packets --connbytes 1:6 -m mark ! --mark 0x40000000/0x40000000 -j NFQUEUE --queue-num 200 --queue-bypass
 ```
 
-6 пакетов берется, чтобы покрыть случаи возможных ретрансмиссий quic initial в случае плохой связи или если сервер плохо себя чувствует, а приложение настаивает именно на quic, не переходя на tcp.
-А так же для работы autohostlist по quic. Однако, autohostlist для quic не рекомендуется.
+6 packets are taken to cover cases of possible retransmissions of quic initial in case of a bad connection or if the server is not feeling well, and the application insists on quic, without switching to tcp.
+And also for autohostlist to work using quic. However, autohostlist for quic is not recommended.
 
-### NFTABLES ДЛЯ NFQWS
+### NFTABLES FOR NFQWS
 
-Можно начать с базовой конфигурации.
+You can start with a basic configuration.
 
 ```
 IFACE_WAN=wan
@@ -981,9 +981,9 @@ nft add chain inet ztest pre "{type filter hook prerouting priority filter;}"
 nft add rule inet ztest pre iifname $IFACE_WAN tcp sport "{80,443}" ct reply packets 1-3 queue num 200 bypass
 ```
 
-Для задействования IP фрагментации и `datanoack` на проходящие пакеты требуется особая конфигурация цепочек, перенаправляющая пакеты после NAT.
-В скриптах zapret эта схема называется `POSTNAT`, и она возможна только на nftables.
-Сгенерированные nfqws пакеты требуется на раннем этапе помечать как **notrack**, чтобы они не были испорчены NAT.
+To enable IP fragmentation and `datanoack` on passing packets, a special chain configuration is required that redirects packets after NAT.
+In zapret scripts this scheme is called `POSTNAT`, and it is only possible on nftables.
+Packets generated by nfqws must be marked as **nottrack** early on so that they are not corrupted by NAT.
 
 ```
 IFACE_WAN=wan
@@ -998,7 +998,7 @@ nft add chain inet ztest predefrag "{type filter hook output priority -401;}"
 nft add rule inet ztest predefrag "mark & 0x40000000 != 0x00000000 notrack"
 ```
 
-Удаление тестовой таблицы :
+Removing a test table:
 
 ```
 nft delete table inet ztest
@@ -1006,40 +1006,40 @@ nft delete table inet ztest
 
 ### FLOW OFFLOADING
 
-Если ваше устройство поддерживает аппаратное ускорение (flow offloading, hardware nat, hardware acceleration), то
-iptables могут не работать. При включенном offloading пакет не проходит по обычному пути netfilter. Необходимо или его
-отключить, или выборочно им управлять.
+If your device supports hardware acceleration (flow offloading, hardware nat, hardware acceleration), then
+iptables may not work. When offloading is enabled, the packet does not go through the normal netfilter path. Necessary or its
+disable, or selectively manage it.
 
-В новых ядрах присутствует software flow offloading (SFO).
-Пакеты, проходящие через SFO, так же проходят мимо большей части механизмов iptables. При включенном SFO работает
-DNAT/REDIRECT (tpws). Эти соединения исключаются из offloading. Однако, остальные соединения идут через SFO, потому
-NFQUEUE будет срабатывать только до помещения соединения в flowtable. Практически это означает, что почти весь функционал nfqws работать не будет.
-Offload включается через специальный target в iptables `FLOWOFFLOAD` или через flowtable в nftables.
+The new kernels feature software flow offloading (SFO).
+Packets passing through SFO also bypass most of the iptables mechanisms. When enabled SFO works
+DNAT/REDIRECT (tpws). These connections are excluded from offloading. However, other connections go through SFO, because
+NFQUEUE will only fire before the connection is placed in the flowtable. In practice, this means that almost all nfqws functionality will not work.
+Offload is enabled via a special target in iptables `FLOWOFFLOAD` or via flowtable in nftables.
 
-Не обязательно пропускать весь трафик через offload.
-tpws и так обходит offload "by design", а для отработки nfqws достаточно первых нескольких пакетов в tcp соединении или udp сеансе.
-Пока сеанс не направлен на offload, он процессится обычным образом через полноценный netfilter.
-Как только срабатывает правило offload по любому входящему или исходящему пакету, весь сеанс окончательно уходит из netfilter в offload.
-Поэтому скрипты zapret берут правила для NFQUEUE, что они создали, и из них создают exemption правила, которые не дают раньше времени попасть сеансу в offload, а потом его "отпускают".
-При этом входящим пакетам не дают начать offload, триггером выступают только исходящие пакеты.
-Эта схема обеспечивает практически нулевой негативный эффект на скорость, одновременно покрывая нужды nfqws и упрощая правила таблиц.
+It is not necessary to pass all traffic through offload.
+tpws already bypasses offload "by design", and to work with nfqws, the first few packets in a tcp connection or udp session are enough.
+While the session is not directed to offload, it is processed in the usual way through a full-fledged netfilter.
+As soon as the offload rule is triggered on any incoming or outgoing packet, the entire session finally leaves netfilter and goes offload.
+Therefore, zapret scripts take the rules for the NFQUEUE that they created, and from them create exemption rules that prevent the session from going offload ahead of time, and then “release” it.
+In this case, incoming packets are not allowed to start offloading; only outgoing packets are triggered.
+This scheme provides almost zero negative impact on speed, while covering the needs of nfqws and simplifying the table rules.
 
-OpenWrt не предусматривает выборочного управления offload, поэтому скрипты zapret поддерживают свою систему выборочного управления.
+OpenWrt does not provide offload selective control, so zapret scripts support their own selective control system.
 
-iptables target `FLOWOFFLOAD` - это проприетарное изобретение OpenWrt.
-Управление offload в nftables реализовано в базовом ядре linux без патчей.
-nftables - единственный способ включения offload на классическом Linux.
+iptables target `FLOWOFFLOAD` is a proprietary OpenWrt invention.
+The offload control in nftables is implemented in the base Linux kernel without patches.
+nftables is the only way to enable offload on classic Linux.
 
-### ОСОБЕННОСТИ ЖЕЛЕЗОК
+### FEATURES OF GLANDS
 
-На устройствах mediatek замечены 2 проблемы.
+2 problems have been noticed on mediatek devices.
 
-Драйвер mediatek ethernet отбрасывает tcp и udp пакеты с неверной чексуммой на аппаратном уровне, это не отключается.
-Как следствие не будет работать fooling badsum через роутер, но будет с него.
+The mediatek ethernet driver discards tcp and udp packets with an incorrect checksum at the hardware level, this is not disabled.
+As a result, fooling badsum will not work through the router, but will work from it.
 
-Другая проблема mediatek, затрагивающая как ethernet, так и wireless, проявляется на udp, когда включен offload rx-gro-list.
-Пока отсутствует nfqueue, все хорошо. Как только nfqueue появляется, часть пакетов выпадает.
-Особенно заметно это проявляется на дурении QUIC с kyber.
+Another mediatek issue affecting both ethernet and wireless appears on udp when offload rx-gro-list is enabled.
+As long as nfqueue is missing, everything is fine. As soon as nfqueue appears, some packets drop out.
+This is especially noticeable in the fooling of QUIC with kyber.
 
 <details>
   <summary><b>shell код лечения</b></summary>
@@ -1090,38 +1090,38 @@ done
 ```
 </details>
 
-Этот код нужно вызывать после вставания интерфейса LAN, когда все bridge members уже занесены в bridge.
-Можно использовать хук в `/etc/hotplug.d/iface`. Должен быть установлен `ethtool`.
+This code must be called after the LAN interface is up, when all bridge members are already included in the bridge.
+You can use the hook in `/etc/hotplug.d/iface`. `ethtool` must be installed.
 
-Проблемы mediatek были подтверждены на MT7621 (TP-Link Archer C6U v1) и MT7981 (Xiaomi AX3000T).
-Другие чипсеты могут быть так же подвержены проблеме, а могут и не быть. Более широкой статистики нет.
+mediatek issues have been confirmed on MT7621 (TP-Link Archer C6U v1) and MT7981 (Xiaomi AX3000T).
+Other chipsets may or may not be similarly affected. There are no broader statistics.
 
 
-### ДУРЕНИЕ СО СТОРОНЫ СЕРВЕРА
+### FOOLING FROM THE SERVER
 
-Это тоже возможно.
-nfqws рассчитан на атаку со стороны клиента, поэтому он распознает прямой и обратный трафик на основании роли в установлении tcp соединения.
-Если проходит SYN, то source IP - это клиент. Если проходит SYN,ACK , то source IP - это сервер.
-Для UDP клиентом считается source IP первого прошедшего пакета по двум связкам ip-port.
-На сервере трафиком клиента будет считаться принятый трафик, а трафиком сервера - исходящий.
+This is also possible.
+nfqws is designed to withstand client-side attacks, so it recognizes forward and reverse traffic based on its role in establishing a TCP connection.
+If SYN passes, then the source IP is the client. If SYN,ACK passes, then the source IP is the server.
+For UDP, the client is considered to be the source IP of the first packet passed through two ip-port links.
+On the server, client traffic will be considered received traffic, and server traffic will be outgoing traffic.
 
-`--wsize` работает в любом случае, он может использоваться как на клиенте, так и на сервере.
-Остальные техники работают только если nfqws считает трафик трафиком клиента.
-Поэтому для их применения по исходящему с сервера трафику conntrack нужно выключить параметром `--ctrack-disable`.
-Если пакет не найден в conntrack, по нему идет работа как по пакету клиента.
+`--wsize` works either way, it can be used on both the client and the server.
+The remaining techniques only work if nfqws considers the traffic to be client traffic.
+Therefore, to use them on traffic outgoing from the server, conntrack must be disabled with the `--ctrack-disable` parameter.
+If the package is not found in conntrack, it is processed as if it were a client package.
 
-Большинство протоколов опознаваться не будет, потому что система их опознавания рассчитана на содержание пакетов от клиента.
-Чтобы задействовать техники типа `fake` или `multisplit` нужно использовать `--dpi-desync-any-protocol` с ограничителем connbytes или
-с ограничителем на основании содержания пакета или его заголовков.
-start/cutoff недоступны, поскольку завязаны на conntrack.
+Most protocols will not be recognized, because their recognition system is designed to contain packets from the client.
+To enable techniques like `fake` or `multisplit` you need to use `--dpi-desync-any-protocol` with a connbytes limiter or
+with a delimiter based on the contents of the packet or its headers.
+start/cutoff are not available because they are tied to conntrack.
 
-Техника `synack-split` позволяет разбить tcp сегмент SYN,ACK на отдельные части с SYN и с ACK.
-В ответ на это клиент шлет SYN,ACK , что обычно характеризует сервер.
-У некоторых DPI от этого может ломаться алгоритм, и они перестают блокировать запрещенный контент.
+The `synack-split` technique allows you to split the tcp segment SYN,ACK into separate parts with SYN and ACK.
+In response to this, the client sends SYN,ACK, which usually characterizes the server.
+For some DPIs, this may break the algorithm, and they stop blocking prohibited content.
 Здесь [подробное описание](https://nmap.org/misc/split-handshake.pdf) что есть split handshake.
 
-Перенаправление трафика обычно идет по номеру source портов и направлению original.
-original - это исходящий с системы трафик, reply - входящий.
+Traffic is usually redirected according to the source port number and the original direction.
+original is outgoing traffic from the system, reply is incoming traffic.
 
 
 ## tpws
@@ -1228,232 +1228,232 @@ tpws - это transparent proxy.
 --ipset-exclude-ip=<ip_list>                      ; фиксированный список подсетей через запятую. можно использовать # в начале для комментирования отдельных подсетей.
 ```
 
-### TCP СЕГМЕНТАЦИЯ В TPWS
+### TCP SEGMENTATION IN TPWS
 
-tpws, как и nfqws, поддерживает множественную сегментацию запросов. Сплит позиции задаются в `--split-pos`.
-Указываются маркеры через запятую. Описание маркеров см в разделе [nfqws](#tcp-сегментация).
+tpws, like nfqws, supports multiple query segmentation. Split positions are specified in `--split-pos`.
+Markers are indicated separated by commas. For a description of the markers, see the [nfqws](#tcp-segmentation) section.
 
-На прикладном уровне в общем случае нет гарантированного средства заставить ядро выплюнуть
-блок данных, порезанным в определенном месте. ОС держит буфер отсылки (SNDBUF) у каждого сокета.
-Если у сокета включена опция TCP_NODELAY и буфер пуст, то каждый send приводит к отсылке
-отдельного ip пакета или группы пакетов, если блок не вмещается в один ip пакет.
-Однако, если в момент send уже имеется неотосланный буфер, то ОС присоединит данные к нему,
-никакой отсылки отдельным пакетом не будет. Но в этом случае и так нет никакой гарантии,
-что какой-то блок сообщения пойдет в начале пакета, на что собственно и заточены DPI.
-Разбиение будет производиться согласно MSS, который зависит от MTU исходящего интерфейса.
-Таким образом DPI, смотрящие в начало поля данных TCP пакета, будут поломаны в любом случае.
+At the application level there is generally no guaranteed way to force the kernel to spit out
+a block of data cut in a specific place. The OS keeps a send buffer (SNDBUF) on each socket.
+If the socket has the TCP_NODELAY option enabled and the buffer is empty, then each send results in sending
+a separate IP packet or a group of packets, if the block does not fit into one IP packet.
+However, if at the time of send there is already an unsent buffer, then the OS will append the data to it,
+There will be no sending in a separate package. But in this case there is no guarantee anyway,
+that some message block will go at the beginning of the packet, which is what DPI is actually designed for.
+The partitioning will be done according to the MSS, which depends on the MTU of the outgoing interface.
+Thus, DPIs looking at the beginning of the TCP packet data field will be broken in any case.
 Протокол http относится к запрос-ответным протоколам. Новое сообщение посылается только тогда,
-когда сервер получил запрос и полностью вернул ответ. Значит запрос фактически был не только отослан,
-но и принят другой стороной, а следовательно буфер отсылки пуст, и следующие 2 send приведут
-к отсылке сегментов данных разными ip пакетами.
+when the server received the request and fully returned the response. This means that the request was actually not only sent,
+but also accepted by the other side, and therefore the sending buffer is empty, and the next 2 sends will result
+to sending data segments in different IP packets.
 
-Таким образом tpws обеспечивает сплит только за счет раздельных вызовов send, и это обычно работает надежно,
-если разбивать не на слишком много частей и не на слишком мелкие подряд следующие части.
-В последнем случае Linux все же может обьединить некоторые части, что приведет к несоответствию реальной сегментации
-указанным сплит позициям. Другие ОС в этом вопросе ведут себя более предсказуемо. Спонтанного обьединения замечено не было.
-Поэтому не стоит злоупотреблять сплитами и в особенности мелкими соседними пакетами.
+So tpws only provides splitting by making separate send calls, and this usually works reliably,
+if you break it down not into too many parts and not into too small successive parts.
+In the latter case, Linux may still merge some parts, which will lead to a mismatch of the actual segmentation
+specified split positions. Other operating systems behave more predictably in this matter. No spontaneous unification was observed.
+Therefore, you should not abuse splits and especially small neighboring packages.
 
-Как показывается практика, проблемы могут начаться , если количество сплитов более одного.
-На каких-то системах наблюдался стабильный результат до 8 сплитов, на других проблемы уже начинались после 2 сплитов.
-Один сплит работает стабильно, если не является частью массивной потоковой передачи.
-При неудаче сегментации будет выводиться сообщение `WARNING ! segmentation failed`.
-Если вы его видите, это повод снизить количество сплит позиций.
-Если это не вариант, для ядер Linux >=4.6 есть параметр `--fix-seg`. Он позволяет подождать завершение отсылки перед отправкой следующей части.
-Но этот вариант ломает модель асинхронной обработки событий. Пока идет ожидание, все остальные соединения не обрабатываются
-и кратковременно подвисают. На практике это может быть совсем небольшое ожидание - менее 10 мс.
-Выполняется оно только , если происходит split, и в ожидании есть реальная необходимость.
-В высоконагруженных системах данный вариант не рекомендуется. Но для домашнего использования может подойти, и вы эти задержки даже не заметите.
+As practice shows, problems can begin if the number of splits is more than one.
+On some systems, stable results were observed up to 8 splits, on others, problems already began after 2 splits.
+One split works reliably unless it is part of a massive streaming.
+If segmentation fails, the message `WARNING! segmentation failed.
+If you see it, this is a reason to reduce the number of split positions.
+If this is not an option, there is a `--fix-seg` option for Linux kernels >=4.6. It allows you to wait for the sending to complete before sending the next part.
+But this option breaks the asynchronous event processing model. While waiting, all other connections are not processed
+and freeze for a short time. In practice, this may be a very small wait - less than 10 ms.
+It is executed only if a split occurs and there is a real need for waiting.
+This option is not recommended for highly loaded systems. But it may be suitable for home use, and you won’t even notice these delays.
 
-Если вы пытаетесь сплитнуть массивную передачу с `--split-any-protocol`, когда информация поступает быстрее отсылки,
-то без `--fix-seg` ошибки сегментации будут сыпаться сплошным потоком.
-Работа по массивному потоку без ограничителей `--tamper-start` и `--tamper-cutoff` обычно лишена смысла.
+If you are trying to split a massive transfer with `--split-any-protocol` when the information arrives faster than the send,
+then without `--fix-seg` segmentation errors will pour in in a continuous stream.
+Working on a massive stream without the `--tamper-start` and `--tamper-cutoff` limiters is usually meaningless.
 
-tpws работает на уровне сокетов, поэтому длинный запрос, не вмещающийся в 1 пакет (TLS с kyber), он получает целым блоком.
-На каждую сплит часть он делает отдельный вызов `send()`. Но ОС не сможет отослать данные в одном пакете, если размер превысит MTU.
-В случае слишком большого сегмента ОС дополнительно его порежет на более мелкие. Результат должен быть аналогичен nfqws.
+tpws works at the socket level, so it receives a long request that does not fit into 1 packet (TLS with kyber) as a whole block.
+For each split part, it makes a separate `send()` call. But the OS will not be able to send data in one packet if the size exceeds the MTU.
+If the segment is too large, the OS will additionally cut it into smaller ones. The result should be similar to nfqws.
 
-`--disorder` заставляет слать каждый 2-й пакет с TTL=1, начиная с первого.
-К серверу приходят все четные пакеты сразу. На остальные ОС делает ретрансмиссию, и они приходят потом.
-Это само по себе создает дополнительную задержку (200 мс в linux для первой ретрансмиссии).
-Иным способом сделать disorder в сокет варианте не представляется возможным.
-Итоговый порядок для 6 сегментов получается `2 4 6 1 3 5`.
+`--disorder` causes every 2nd packet to be sent with TTL=1, starting from the first.
+All even-numbered packets arrive to the server at once. It retransmits the rest of the OS, and they come later.
+This in itself creates additional latency (200ms on linux for the first retransmission).
+There is no other way to create disorder in the socket version.
+The final order for 6 segments is `2 4 6 1 3 5`.
 
-`--oob` высылает 1 байт out-of-band data после первого сплит сегмента. `oob` в каждом сегменте сплита показал себя ненадежным.
-Сервер получает oob в сокет.
+`--oob` sends 1 byte of out-of-band data after the first split segment. `oob` in each segment of the split proved to be unreliable.
+The server receives oob on the socket.
 
-Сочетание `oob` и `disorder` возможно только в Linux. Остальные ОС не умеют с таким справляться. Флаг URG теряется при ретрансмиссиях.
-Сервер получает oob в сокет. Сочетание этих параметров в ос, кроме Linux, вызывает ошибку на этапе запуска.
+The combination of `oob` and `disorder` is only possible on Linux. Other operating systems don't know how to handle this. The URG flag is lost during retransmissions.
+The server receives oob on the socket. The combination of these parameters in operating systems other than Linux causes an error during the startup phase.
 
 ### TLSREC
 
-`--tlsrec` позволяют внутри одного tcp сегмента разрезать TLS ClientHello на 2 TLS records. Можно использовать стандартный
-механизм маркеров для задания относительных позиций.
+`--tlsrec` allows you to cut the TLS ClientHello into 2 TLS records within one tcp segment. Can use standard
+marker mechanism for specifying relative positions.
 
 `--tlsrec` ломает значительное количество сайтов. Криптобиблиотеки (openssl, ...) на оконечных http серверах
-без проблем принимают разделенные tls сегменты, но мидлбоксы - не всегда. К мидлбоксам можно отнести CDN
-или системы ddos-защиты. Поэтому применение `--tlsrec` без ограничителей вряд ли целесообразно.
-В РФ `--tlsrec` обычно не работает с TLS 1.2, потому что цензор парсит сертификат сервера из ServerHello.
-Работает только с TLS 1.3, поскольку там эта информация шифруется.
-Впрочем, сейчас сайтов, не поддерживающих TLS 1.3, осталось немного.
+TLS separated segments are accepted without problems, but middleboxes do not always. Middleboxes include CDN
+or DDoS protection systems. Therefore, using `--tlsrec` without delimiters is hardly advisable.
+In the Russian Federation, `--tlsrec` usually does not work with TLS 1.2, because the censor parses the server certificate from ServerHello.
+Works only with TLS 1.3, since this information is encrypted there.
+However, now there are few sites left that do not support TLS 1.3.
 
 ### MSS
 
-`--mss` устанавливает опцию сокета TCP_MAXSEG. Клиент выдает это значение в tcp опциях SYN пакета.
-Сервер в ответ в SYN,ACK выдает свой MSS. На практике сервера обычно снижают размеры отсылаемых ими пакетов, но они
-все равно не вписываются в низкий MSS, указанный клиентом. Обычно чем больше указал клиент, тем больше
-шлет сервер. На TLS 1.2 если сервер разбил заброс так, чтобы домен из сертификата не попал в первый пакет,
-это может обмануть DPI, секущий ответ сервера.
-Схема может значительно снизить скорость и сработать не на всех сайтах.
+`--mss` sets the TCP_MAXSEG socket option. The client issues this value in the tcp options of the SYN packet.
+The server responds with its MSS in SYN,ACK. In practice, servers usually reduce the size of the packets they send, but they
+still do not fit into the low MSS specified by the client. Typically, the more the client specified, the more
+sends the server. On TLS 1.2, if the server splits the cast so that the domain from the certificate does not end up in the first packet,
+this can fool the DPI, secant response of the server.
+The scheme can significantly reduce speed and does not work on all sites.
 
-С фильтром по hostlist совместимо только в [некоторых случаях](#множественные-стратегии-1), когда возможно узнать имя хоста на момент применения дурения.
+It is compatible with the hostlist filter only in [some cases](#multiple-strategies-1), when it is possible to find out the hostname at the time of the foolishness.
 
-Применяя данную опцию к сайтам TLS1.3, если броузер тоже поддерживает TLS1.3, то вы делаете только хуже.
-Но нет способа автоматически узнать когда надо применять, когда нет, поскольку MSS идет только в
-3-way handshake еще до обмена данными, а версию TLS можно узнать только по ответу сервера, который
-может привести к реакции DPI.
-Использовать только когда нет ничего лучше или для отдельных ресурсов.
+By applying this option to TLS1.3 sites, if the browser also supports TLS1.3, then you are only making things worse.
+But there is no way to automatically know when to use it and when not to, since MSS only goes into
+3-way handshake even before data exchange, and the TLS version can only be determined by the server response, which
+may cause DPI reaction.
+Use only when there is nothing better or for individual resources.
 Для http использовать смысла нет, поэтому заводите отдельный desync profile с фильтром по порту 443.
-Работает только на Linux, не работает на BSD и MacOS.
+Works only on Linux, does not work on BSD and MacOS.
 
-### ДРУГИЕ ПАРАМЕТРЫ ДУРЕНИЯ
+### OTHER DAMING PARAMETERS
 
-Параметр `--hostpad=<bytes>` добавляет паддинг-хедеров перед `Host:` на указанное количество байтов.
-Если размер `<bytes>` слишком большой, то идет разбивка на разные хедеры по 2K.
+The `--hostpad=<bytes>` parameter adds padding headers before `Host:` by the specified number of bytes.
+If the `<bytes>` size is too large, then it is split into different 2K headers.
 Общий буфер приема http запроса - 64K, больший паддинг не поддерживается, да и http сервера
-такое уже не принимают.
-Полезно против DPI, выполняющих реассемблинг TCP с ограниченным буфером.
+this is no longer accepted.
+Useful against DPIs performing TCP reassembly with a limited buffer.
 Если техника работает, то после некоторого количества bytes http запрос начнет проходить до сайта.
-Если при этом критический размер padding около MTU, значит скорее всего DPI не выполняет реассемблинг пакетов, и лучше будет использовать обычные опции TCP сегментации.
-Если все же реассемблинг выполняется, то критический размер будет около размера буфера DPI. Он может быть 4K или 8K, возможны и другие значения.
+If the critical padding size is around MTU, then most likely DPI does not perform packet reassembly, and it would be better to use regular TCP segmentation options.
+If reassembly is still performed, then the critical size will be around the size of the DPI buffer. It can be 4K or 8K, other values ​​are possible.
 
-### МНОЖЕСТВЕННЫЕ СТРАТЕГИИ
+### MULTIPLE STRATEGIES
 
-Работают аналогично **nfqws**, кроме некоторых моментов.
-Нет параметра `--filter-udp`, поскольку **tpws** udp не поддерживает.
-Методы нулевой фазы (`--mss`) могут работать по хостлисту только в двух случаях:
-если используется режим socks и удаленный ресолвинг хостов через прокси, либо используется система [кэша IP](#кэш-ip) для запоминания соответствия IP->hostname.
-Работоспособность вашей настройки в одном и том же режиме может зависеть от того,
-применяет ли клиент удаленный ресолвинг. Это может быть неочевидно. В одной программе работает, в другой - нет.
+They work similarly to **nfqws**, except for some points.
+There is no `--filter-udp` option because **tpws** does not support udp.
+Zero phase methods (`--mss`) can work on a hostlist only in two cases:
+if the socks mode and remote resolving of hosts through a proxy are used, or the [IP cache] system (#cache-ip) is used to remember the IP->hostname correspondence.
+The functionality of your setup in the same mode may depend on
+whether the client uses remote resolving. This may not be obvious. It works in one program, but not in another.
 
-Если вы используете профиль с хостлистом , и вам нужен mss всегда, укажите mss в профиле с хостлистом,
-создайте еще один профиль без хостлиста, если его еще нет, и в нем еще раз укажите mss.
-Тогда при любом раскладе будет выполняться mss.
+If you are using a profile with a hostlist, and you always need mss, specify mss in the profile with a hostlist,
+create another profile without a hostlist, if you don’t already have one, and specify mss in it again.
+Then, in any case, mss will be executed.
 
-Если вам нужен mss по хостлисту, указывайте `--mss` только в профиле с хостлистом и убедитесь в наличии любого из необходимых условий работы в таком режиме.
+If you need mss by hostlist, specify `--mss` only in the profile with the hostlist and make sure that any of the necessary conditions for working in this mode are present.
 
-Используйте `curl --socks5` и `curl --socks5-hostname` для проверки вашей стратегии.
-Смотрите вывод `--debug`, чтобы убедиться в правильности настроек.
+Use `curl --socks5` and `curl --socks5-hostname` to test your strategy.
+See the output of `--debug` to ensure the settings are correct.
 
-### СЛУЖЕБНЫЕ ПАРАМЕТРЫ
+### SERVICE PARAMETERS
 
-`--debug` позволяет выводить подробный лог действий на консоль, в syslog или в файл.
-Может быть важен порядок следования опций. `--debug` лучше всего указывать в самом начале.
-Опции анализируются последовательно. Если ошибка будет при проверке опции, а до анализа `--debug` еще дело не дошло,
-то сообщения не будут выведены в файл или syslog.
-`--debug=0|1|2` позволяют сразу в одном параметре включить логирование на консоль и указать уровень.
-Сохранено для совместимости с более старыми версиями. Для выбора уровня в режиме syslog или file используйте
-отдельный параметр `--debug-level`. Если в этих режимах `--debug` не указывать уровень через `--debug-level`, то
-автоматически назначается уровень 1.
-При логировании в файл процесс не держит файл открытым. Ради каждой записи файл открывается и потом закрывается.
-Так что файл можно удалить в любой момент, и он будет создан заново при первом же сообщении в лог.
-Но имейте в виду, что если вы запускаете процесс под root, то будет сменен UID на не-root.
-В начале на лог файл меняется owner, иначе запись будет невозможна. Если вы потом удалите файл,
-и у процесса не будет прав на создание файла в его директории, лог больше не будет вестись.
-Вместо удаления лучше использовать truncate.
-В шелле это можно сделать через команду ": >filename"
+`--debug` allows you to output a detailed log of actions to the console, syslog or file.
+The order of the options may be important. `--debug` is best specified at the very beginning.
+Options are analyzed sequentially. If there is an error when checking an option, but the analysis of `--debug` has not yet come,
+then messages will not be output to a file or syslog.
+`--debug=0|1|2` allows you to immediately enable logging to the console and specify the level in one parameter.
+Retained for compatibility with older versions. To select the level in syslog or file mode use
+separate parameter `--debug-level`. If in these modes `--debug` you do not specify the level via `--debug-level`, then
+Level 1 is automatically assigned.
+When logging to a file, the process does not keep the file open. For each entry, the file is opened and then closed.
+So the file can be deleted at any time, and it will be created again at the first message to the log.
+But keep in mind that if you run the process as root, the UID will be changed to non-root.
+At the beginning, the owner is changed to the log file, otherwise recording will be impossible. If you later delete the file,
+and the process will no longer have rights to create a file in its directory, the log will no longer be kept.
+Instead of deleting, it is better to use truncate.
+In the shell this can be done using the command ": >filename"
 
-tpws может биндаться на множество интерфейсов и IP адресов (до 32 шт).
-Порт всегда только один.
-Параметры `--bind-iface*` и `--bind-addr` создают новый бинд.
-Остальные параметры `--bind-*` относятся к последнему бинду.
-Для бинда на все ipv4 укажите `--bind-addr "0.0.0.0"`, на все ipv6 - `"::"`. `--bind-addr=""` - биндаемся на все ipv4 и ipv6.
-Выбор режима использования link local ipv6 адресов (`fe80::/8`) :
+tpws can be bound to many interfaces and IP addresses (up to 32 pcs).
+There is always only one port.
+The `--bind-iface*` and `--bind-addr` options create a new bind.
+The remaining parameters `--bind-*` refer to the last bind.
+To bind to all ipv4, specify `--bind-addr "0.0.0.0"`, for all ipv6 - `"::"`. `--bind-addr=""` - bind to all ipv4 and ipv6.
+Selecting the mode of using link local ipv6 addresses (`fe80::/8`):
 ```
 --bind-iface6 --bind-linklocal=no : сначала приватный адрес fc00::/7, затем глобальный адрес
 --bind-iface6 --bind-linklocal=unwanted : сначала приватный адрес fc00::/7, затем глобальный адрес, затем link local.
 --bind-iface6 --bind-linklocal=prefer : сначала link local, затем приватный адрес fc00::/7, затем глобальный адрес.
 --bind-iface6 --bind-linklocal=force : только link local
 ```
-Если не указано ни одного бинда, то создается бинд по умолчанию на все адреса всех интерфейсов.
-Для бинда на конкретный link-local address делаем так : `--bind-iface6=fe80::aaaa:bbbb:cccc:dddd%iface-name`
-Параметры `--bind-wait*` могут помочь в ситуациях, когда нужно взять IP с интерфейса, но его еще нет, он не поднят
-или не сконфигурирован.
-В разных системах события ifup ловятся по-разному и не гарантируют, что интерфейс уже получил IP адрес определенного типа.
-В общем случае не существует единого механизма повеситься на событие типа "на интерфейсе X появился link local address".
-Для бинда на известный ip, когда еще интерфейс не сконфигурирован, нужно делать так: `--bind-addr=192.168.5.3 --bind-wait-ip=20`
-В режиме transparent бинд возможен на любой несуществующий адрес, в режиме socks - только на существующий.
+If no bind is specified, then a default bind is created for all addresses of all interfaces.
+To bind to a specific link-local address, do this: `--bind-iface6=fe80::aaaa:bbbb:cccc:dddd%iface-name`
+The `--bind-wait*` parameters can help in situations where you need to take an IP from an interface, but it is not there yet, it is not up
+or not configured.
+Different systems catch ifup events differently and do not guarantee that the interface has already received an IP address of a certain type.
+In general, there is no single mechanism to respond to an event like “a link local address has appeared on interface X.”
+To bind to a known ip, when the interface is not yet configured, you need to do this: `--bind-addr=192.168.5.3 --bind-wait-ip=20`
+In transparent mode, a bind is possible to any non-existent address, in socks mode - only to an existing one.
 
-Параметры rcvbuf и sndbuf позволяют установить setsockopt SO_RCVBUF SO_SNDBUF для локального и удаленного соединения.
+The rcvbuf and sndbuf parameters allow you to set setsockopt SO_RCVBUF SO_SNDBUF for local and remote connections.
 
-`--skip-nodelay` может быть полезен, когда tpws используется без дурения, чтобы привести MTU к MTU системы, на которой работает tpws.
-Это может быть полезно для скрытия факта использования VPN. Пониженный MTU - 1 из способов обнаружения
-подозрительного подключения. С tcp proxy ваши соединения неотличимы от тех, что сделал бы сам шлюз.
+`--skip-nodelay` can be useful when tpws is being used without fooling around, to match the MTU to the MTU of the system on which tpws is running.
+This can be useful for hiding the fact that you are using a VPN. Reduced MTU - 1 of the detection methods
+suspicious connection. With tcp proxy, your connections are indistinguishable from those the gateway itself would make.
 
-`--local-tcp-user-timeout` и `--remote-tcp-user-timeout` устанавливают значение таймаута в секундах
-для соединений клиент-прокси и прокси-сервер. Этот таймаут соответствует опции сокета linux
-TCP_USER_TIMEOUT. Под таймаутом подразумевается время, в течение которого буферизированные данные
-не переданы или на переданные данные не получено подтверждение (ACK) от другой стороны.
-Этот таймаут никак не касается времени отсутствия какой-либо передачи через сокет лишь потому,
-что данных для передачи нет. Полезно для сокращения время закрытия подвисших соединений.
-Поддерживается только на Linux и MacOS.
+`--local-tcp-user-timeout` and `--remote-tcp-user-timeout` set the timeout value in seconds
+for client-proxy and proxy-server connections. This timeout corresponds to the linux socket option
+TCP_USER_TIMEOUT. Timeout refers to the time during which the buffered data
+not transmitted or an acknowledgment (ACK) from the other party was not received for the transmitted data.
+This timeout has nothing to do with the time of absence of any transmission through the socket only because
+that there is no data to transfer. Useful for reducing the time it takes to close hanging connections.
+Supported on Linux and MacOS only.
 
-Режим `--socks` не требует повышенных привилегий (кроме бинда на привилегированные порты 1..1023).
-Поддерживаются версии socks 4 и 5 без авторизации. Версия протокола распознается автоматически.
-Подключения к IP того же устройства, на котором работает tpws, включая localhost, запрещены.
-socks5 позволяет удаленно ресолвить хосты (curl : --socks5-hostname  firefox : socks_remote_dns=true).
-tpws поддерживает эту возможность асинхронно, не блокируя процессинг других соединений, используя
-многопоточный пул ресолверов. Количество потоков определяется автоматически в зависимости от `--maxconn`,
-но можно задать и вручную через параметр `--resolver-threads`.
-Запрос к socks выставляется на паузу, пока домен не будет преобразован в ip адрес в одном из потоков
-ресолвера. Ожидание может быть более длинным, если все потоки заняты.
-Если задан параметр `--no-resolve`, то подключения по именам хостов запрещаются, а пул ресолверов не создается.
-Тем самым экономятся ресурсы.
+The `--socks` mode does not require elevated privileges (except for the bind to privileged ports 1..1023).
+Socks 4 and 5 versions are supported without authorization. The protocol version is recognized automatically.
+Connections to the IP of the same device on which tpws is running, including localhost, are prohibited.
+socks5 allows you to remotely resolve hosts (curl : --socks5-hostname firefox : socks_remote_dns=true).
+tpws supports this feature asynchronously, without blocking the processing of other connections, using
+multi-threaded pool of resolvers. The number of threads is determined automatically depending on `--maxconn`,
+but you can prepare and the elm turn parameter `--resolver-threads`.
+The request to socks is paused until the domain is converted to an IP address in one of the threads
+resolver. The wait may be longer if all threads are busy.
+If the `--no-resolve` option is specified, connections by hostname are denied and a resolver pool is not created.
+This saves resources.
 
-### IPTABLES ДЛЯ TPWS
+### IPTABLES FOR TPWS
 
-Для перенаправления tcp соединения на transparent proxy используются команды следующего вида :
+To redirect a tcp connection to a transparent proxy, use the following commands:
 
 ```
 iptables -t nat -I OUTPUT -o <внешний_интерфейс> -p tcp --dport 80 -m owner ! --uid-owner tpws -j DNAT --to 127.0.0.127:988
 iptables -t nat -I PREROUTING -i <внутренний_интерфейс> -p tcp --dport 80 -j DNAT --to 127.0.0.127:988
 ```
 
-Первая команда для соединений с самой системы, вторая - для проходящих через роутер соединений.
+The first command is for connections from the system itself, the second is for connections passing through the router.
 
-DNAT на localhost работает в цепочке OUTPUT, но не работает в цепочке PREROUTING без включения параметра
+DNAT on localhost works in the OUTPUT chain, but does not work in the PREROUTING chain without enabling the parameter
 route_localnet :
 
-`sysctl -w net.ipv4.conf.<внутренний_интерфейс>.route_localnet=1`
+`sysctl -w net.ipv4.conf.<internal_interface>.route_localnet=1`
 
-Можно использовать `-j REDIRECT --to-port 988` вместо DNAT, однако в этом случае процесс transparent proxy должен
-слушать на ip адресе входящего интерфейса или на всех адресах. Слушать на всех - не есть хорошо с точки зрения
-безопасности. Слушать на одном (локальном) можно, но в случае автоматизированного скрипта придется его узнавать, потом
-динамически вписывать в команду. В любом случае требуются дополнительные усилия. Использование route_localnet тоже имеет
-потенциальные проблемы с безопасностью. Вы делаете доступным все, что висит на `127.0.0.0/8` для локальной подсети <
-внутренний_интерфейс>. Службы обычно привязываются к `127.0.0.1`, поэтому можно средствами iptables запретить входящие
-на `127.0.0.1` не с интерфейса lo, либо повесить tpws на любой другой IP из `127.0.0.0/8`, например на `127.0.0.127`,
-и разрешить входящие не с lo только на этот IP.
+You can use `-j REDIRECT --to-port 988` instead of DNAT, however in this case the transparent proxy process must
+listen on the IP address of the incoming interface or on all addresses. Listening to everyone is not good from the point of view
+security. You can listen on one (local) one, but in the case of an automated script you will have to recognize it, then
+dynamically fit into the command. In any case, additional effort is required. Using route_localnet also has
+potential security problems. You make available everything that hangs on `127.0.0.0/8` for the local subnet <
+internal_interface>. Services are usually bound to `127.0.0.1`, so you can use iptables to block incoming
+to `127.0.0.1` not from the lo interface, or hang tpws on any other IP from `127.0.0.0/8`, for example on `127.0.0.127`,
+and allow incoming people not from lo only to this IP.
 
 ```
 iptables -A INPUT ! -i lo -d 127.0.0.127 -j ACCEPT
 iptables -A INPUT ! -i lo -d 127.0.0.0/8 -j DROP
 ```
 
-Фильтр по owner необходим для исключения рекурсивного перенаправления соединений от самого tpws. tpws запускается под
-пользователем **tpws**, для него задается исключающее правило.
+The filter by owner is necessary to exclude recursive redirection of connections from tpws itself. tpws runs under
+by the user **tpws**, an exclusion rule is set for it.
 
-ip6tables работают почти точно так же, как и ipv4, но есть ряд важных нюансов. В DNAT следует брать адрес --to в
-квадратные скобки. Например :
+ip6tables work almost exactly the same as ipv4, but there are a number of important nuances. In DNAT you should take the --to address in
+square brackets. For example :
 
-`ip6tables -t nat -I OUTPUT -o <внешний_интерфейс> -p tcp --dport 80 -m owner ! --uid-owner tpws -j DNAT --to [::1]:988`
+`ip6tables -t nat -I OUTPUT -o <external_interface> -p tcp --dport 80 -m owner ! --uid-owner tpws -j DNAT --to [::1]:988`
 
-Параметра route_localnet не существует для ipv6. DNAT на localhost (::1) возможен только в цепочке OUTPUT. В цепочке
-PREROUTING DNAT возможен на любой global address или на link local address того же интерфейса, откуда пришел пакет.
-NFQUEUE работает без изменений.
+The route_localnet parameter does not exist for ipv6. DNAT on localhost (::1) is only possible in the OUTPUT chain. In a chain
+PREROUTING DNAT is possible on any global address or link local address of the same interface from which the packet came.
+NFQUEUE works without changes.
 
-### NFTABLES ДЛЯ TPWS
+### NFTABLES FOR TPWS
 
-Базовая конфигурация :
+Basic configuration:
 
 ```
 IFACE_WAN=wan
@@ -1475,15 +1475,15 @@ nft create chain inet ztest dnat_pre "{type nat hook prerouting priority dstnat;
 nft add rule inet ztest dnat_pre meta iifname $IFACE_LAN tcp dport { 80, 443 } dnat ip to 127.0.0.127:988
 ```
 
-Удаление таблицы :
+Removing a table:
 ```
 nft delete table inet ztest
 ```
 
 ## ip2net
 
-Утилита ip2net предназначена для преобразования ipv4 или ipv6 списка ip в список подсетей
-с целью сокращения размера списка. Входные данные берутся из stdin, выходные выдаются в `stdout`.
+The ip2net utility is designed to convert an ipv4 or ipv6 ip list into a list of subnets
+in order to reduce the size of the list. Input is taken from stdin, output is given in `stdout`.
 
 ```
 -4                             ; лист - ipv4 (по умолчанию)
@@ -1492,18 +1492,18 @@ nft delete table inet ztest
 --v4-threshold=mul/div         ; ipv4 : включать подсети, в которых заполнено по крайней мере mul/div адресов. например : 3/4
 --v6-threshold=N               ; ipv6 : минимальное количество ip для создания подсети
 ```
-В списке могут присутствовать записи вида ip/prefix и ip1-ip2. Такие записи выкидываются в stdout без изменений.
-Они принимаются командой ipset. ipset умеет для листов hash:net из ip1-ip2 делать оптимальное покрытие ip/prefix.
-ipfw из FreeBSD понимает ip/prefix, но не понимает ip1-ip2.
-ip2net фильтрует входные данные, выкидывая неправильные IP адреса.
+The list may contain entries of the form ip/prefix and ip1-ip2. Such records are thrown to stdout without changes.
+They are accepted by the ipset command. ipset can create optimal ip/prefix coverage for hash:net sheets from ip1-ip2.
+FreeBSD's ipfw understands ip/prefix, but does not understand ip1-ip2.
+ip2net filters input data, throwing out incorrect IP addresses.
 
-Выбирается подсеть, в которой присутствует указанный минимум адресов.
-Для ipv4 минимум задается как процент от размера подсети (mul/div. например, 3/4), для ipv6 минимум задается напрямую.
+A subnet is selected that contains the specified minimum of addresses.
+For ipv4, the minimum is set as a percentage of the subnet size (mul/div. for example, 3/4), for ipv6 the minimum is set directly.
 
-Размер подсети выбирается следующим алгоритмом:
-Сначала в указанном диапазоне длин префиксов ищутся подсети, в которых количество адресов - максимально.
-Если таких сетей найдено несколько, берется наименьшая сеть (префикс больше).
-Например, заданы параметры v6_threshold=2 prefix_length=32-64, имеются следующие ipv6 :
+The subnet size is selected using the following algorithm:
+First, in the specified range of prefix lengths, subnets are searched for in which the number of addresses is maximum.
+If several such networks are found, the smallest network is taken (the prefix is ​​larger).
+For example, the parameters v6_threshold=2 prefix_length=32-64 are set, the following ipv6 are available:
 ```
 1234:5678:aaaa::5
 1234:5678:aaaa::6
@@ -1511,30 +1511,30 @@ ip2net фильтрует входные данные, выкидывая неп
 Результат будет :
 1234:5678:aaa8::/45
 ```
-Эти адреса так же входят в подсеть /32. Однако, нет смысла проходиться ковровой бомбардировкой,
-когда те же самые адреса вполне влезают в /45 и их ровно столько же.
-Если изменить v6_threshold=4, то результат будет:
+These addresses are also included in the /32 subnet. However, there is no point in going through carpet bombing,
+when the same addresses fit into /45 and there are exactly the same number of them.
+If you change v6_threshold=4, the result will be:
 ```
 1234:5678:aaaa::5
 1234:5678:aaaa::6
 1234:5678:aaac::5
 ```
-То есть ip не объединятся в подсеть, потому что их слишком мало.
-Если изменить `prefix_length=56-64`, результат будет:
+That is, the IPs will not be combined into a subnet because there are too few of them.
+If you change `prefix_length=56-64` the result will be:
 ```
 1234:5678:aaaa::/64
 1234:5678:aaac::5
 ```
 
-Требуемое процессорное время для вычислений сильно зависит от ширины диапазона длин префиксов, размера искомых подсетей и длины листа.
-Если ip2net думает слишком долго, не используйте слишком большие подсети и уменьшите диапазон длин префиксов.
-Учтите, что арифметика mul/div - целочисленная. При превышении разрядной сетки 32 bit результат непредсказуем.
-Не надо делать такое: 5000000/10000000. 1/2 - гораздо лучше.
+The required CPU time for calculations depends heavily on the width of the range of prefix lengths, the size of the subnets being searched, and the length of the tile.
+If ip2net is taking too long, don't use too large subnets and reduce the range of prefix lengths.
+Please note that mul/div arithmetic is integer. If the bit grid exceeds 32 bit, the result is unpredictable.
+No need to do this: 5000000/10000000. 1/2 is much better.
 
 ## mdig
 
-Программа предназначена для многопоточного ресолвинга больших листов через системный DNS.
-Она берет из stdin список доменов и выводит в stdout результат ресолвинга. Ошибки выводятся в stderr.
+The program is designed for multi-threaded resolving of large sheets via system DNS.
+It takes a list of domains from stdin and outputs the result of the resolving to stdout. Errors are output to stderr.
 
 ```
 --threads=<threads_number>	; количество потоков. по умолчанию 1.
@@ -1547,267 +1547,267 @@ ip2net фильтрует входные данные, выкидывая неп
 --dns-parse-query              ; распарсить бинарный DNS ответ и выдать все ivp4 и ipv6 адреса из него в stdout
 ```
 
-Параметры `--dns-make-query` и `--dns-parse-query` позволяют провести ресолвинг одного домена через произвольный канал.
-Например, следующим образом можно выполнить DoH запрос, используя лишь mdig и curl :
+The `--dns-make-query` and `--dns-parse-query` parameters allow resolving one domain through an arbitrary channel.
+For example, this is how you can perform a DoH request using only mdig and curl :
 ```
 mdig --family=6 --dns-make-query=rutracker.org | curl --data-binary @- -H "Content-Type: application/dns-message" https://cloudflare-dns.com/dns-query | mdig --dns-parse-query
 ```
 
-## Способы получения списка заблокированных IP
+## Ways to get a list of blocked IPs
 
-!!! nftables не могут работать с ipset-ами. Собственный аналогичный механизм требует огромного количество RAM
-!!! для загрузки больших листов.  Например, для загона 100K записей в nfset не хватает даже 256 Mb.
-!!! Если вам нужны большие листы на домашних роутерах, откатывайтесь на iptables+ipset.
+!!! nftables cannot work with ipsets. Its own similar mechanism requires a huge amount of RAM
+!!! for loading large sheets.  For example, even 256 Mb is not enough to store 100K records in nfset.
+!!! If you need large sheets on home routers, roll back to iptables+ipset.
 
-1) Внесите заблокированные домены в `ipset/zapret-hosts-user.txt` и запустите `ipset/get_user.sh`
-   На выходе получите `ipset/zapret-ip-user.txt` с IP адресами.
+1) Add blocked domains to `ipset/zapret-hosts-user.txt` and run `ipset/get_user.sh`
+The output will be `ipset/zapret-ip-user.txt` with IP addresses.
 
-Cкрипты с названием get_reestr_* оперируют дампом реестра заблокированных сайтов :
+Scripts called get_reestr_* operate with a dump of the registry of blocked sites:
 
-2) `ipset/get_reestr_resolve.sh` получает список доменов от rublacklist и дальше их ресолвит в ip адреса
-   в файл ipset/zapret-ip.txt.gz. В этом списке есть готовые IP адреса, но судя во всему они там в точности в том виде,
-   что вносит в реестр РосКомПозор. Адреса могут меняться, позор не успевает их обновлять, а провайдеры редко
+2) `ipset/get_reestr_resolve.sh` receives a list of domains from rublacklist and then resolves them into IP addresses
+to the file ipset/zapret-ip.txt.gz. There are ready-made IP addresses in this list, but apparently they are there exactly in the form
+which is entered into the register by RosKomPozor. Addresses can change, it’s a shame they don’t have time to update them, and providers rarely
    банят по IP : вместо этого они банят http запросы с "нехорошим" заголовком "Host:" вне зависимости
-   от IP адреса. Поэтому скрипт ресолвит все сам, хотя это и занимает много времени.
-   Используется мультипоточный ресолвер mdig (собственная разработка).
+from IP address. Therefore, the script resolves everything itself, although it takes a lot of time.
+The multi-threaded resolver mdig (our own development) is used.
 
-3) `ipset/get_reestr_preresolved.sh`. то же самое, что и 2), только берется уже заресолвленый список
-   со стороннего ресурса.
+3) `ipset/get_reestr_preresolved.sh`. the same as 2), only the already resolved list is taken
+from a third party resource.
 
-4) `ipset/get_reestr_preresolved_smart.sh`. то же самое, что и 3), с добавлением всего диапазона некоторых
-   автономных систем (прыгающие IP адреса из cloudflare, facebook, ...) и некоторых поддоменов блокируемых сайтов
+4) `ipset/get_reestr_preresolved_smart.sh`. same as 3), with the addition of the full range of some
+autonomous systems (jumping IP addresses from cloudflare, facebook, ...) and some subdomains of blocked sites
 
-Cкрипты с названием `get_antifilter_*` оперируют списками адресов и масок подсетей с сайтов antifilter.network и antifilter.download :
+Scripts called `get_antifilter_*` operate with lists of addresses and subnet masks from the antifilter.network and antifilter.download sites:
 
 5) `ipset/get_antifilter_ip.sh`. получает лист https://antifilter.download/list/ip.lst.
 
 6) `ipset/get_antifilter_ipsmart.sh`. получает лист https://antifilter.network/download/ipsmart.lst.
-   умная суммаризация отдельных адресов из ip.lst по маскам от /32 до /22
+smart summarization of individual addresses from ip.lst using masks from /32 to /22
 
 7) `ipset/get_antifilter_ipsum.sh`. получает лист https://antifilter.download/list/ipsum.lst.
-   суммаризация отдельных адресов из ip.lst по маске /24
+summarization of individual addresses from ip.lst by mask /24
 
 8) `ipset/get_antifilter_ipresolve.sh`. получает лист https://antifilter.download/list/ipresolve.lst.
-   пре-ресолвленный список, аналогичный получаемый при помощи get_reestr_resolve. только ipv4.
+pre-resolved list, similar to that obtained with get_reestr_resolve. only ipv4.
 
 9) `ipset/get_antifilter_allyouneed.sh`. получает лист https://antifilter.download/list/allyouneed.lst.
-   Суммарный список префиксов, созданный из ipsum.lst и subnet.lst.
+A summary list of prefixes created from ipsum.lst and subnet.lst.
 
 10) `ipset/get_refilter_ipsum.sh`.
     Список берется отсюда : https://github.com/1andrevich/Re-filter-lists
 
-Все варианты рассмотренных скриптов автоматически создают и заполняют ipset.
-Варианты 2-10 дополнительно вызывают вариант 1.
+All variants of the considered scripts automatically create and fill in the ipset.
+Options 2-10 additionally call option 1.
 
-11) `ipset/get_config.sh`. этот скрипт вызывает то, что прописано в переменной GETLIST из файла config
-    Если переменная не определена, то ресолвятся лишь листы для ipset nozapret/nozapret6.
+11) `ipset/get_config.sh`. this script calls what is written in the GETLIST variable from the config file
+If the variable is not defined, then only the sheets for ipset nozapret/nozapret6 are resolved.
 
-Листы РКН все время изменяются. Возникают новые тенденции. Требования к RAM могут меняться.
-Поэтому необходима нечастая, но все же регулярная ревизия что же вообще у вас происходит на роутере.
-Или вы можете узнать о проблеме лишь когда у вас начнет постоянно пропадать wifi, и вам придется
-его перезагружать каждые 2 часа (метод кувалды).
+RKN sheets change all the time. New trends are emerging. RAM requirements may vary.
+Therefore, an infrequent, but still regular audit of what is going on on your router is necessary.
+Or you may only find out about the problem when your wifi starts to disappear constantly, and you have to
+reboot it every 2 hours (sledgehammer method).
 
-Самые щадящие варианты по RAM - `get_antifilter_allyouneed.sh`, `get_antifilter_ipsum.sh`, `get_refilter_*.sh`.
+The most RAM-friendly options are `get_antifilter_allyouneed.sh`, `get_antifilter_ipsum.sh`, `get_refilter_*.sh`.
 
-Листы `zapret-ip.txt` и `zapret-ipban.txt` сохраняются в сжатом виде в файлы .gz.
-Это позволяет снизить их размер во много раз и сэкономить место на роутере.
-Отключить сжатие листов можно параметром конфига GZIP_LISTS=0.
+The `zapret-ip.txt` and `zapret-ipban.txt` sheets are saved in compressed form into .gz files.
+This allows you to reduce their size many times and save space on the router.
+You can disable sheet compression using the config parameter GZIP_LISTS=0.
 
-На роутерах не рекомендуется вызывать эти скрипты чаще раза за 2 суток, поскольку сохранение идет
-либо во внутреннюю флэш память роутера, либо в случае extroot - на флэшку.
-В обоих случаях слишком частая запись может убить флэшку, но если это произойдет с внутренней
-флэш памятью, то вы просто убьете роутер.
+On routers, it is not recommended to call these scripts more than once every 2 days, since saving is in progress
+either to the internal flash memory of the router, or in the case of extroot - to a flash drive.
+In both cases, writing too frequently can kill the flash drive, but if this happens to the internal
+flash memory, then you will simply kill the router.
 
-Принудительное обновление `ipset` выполняет скрипт `ipset/create_ipset.sh`.
-Если передан параметр `no-update`, скрипт не обновляет `ipset`, а только создает его при его отсутствии и заполняет.
-Это полезно, когда могут случиться несколько последовательных вызовов скрипта. Нет смысла несколько раз перезаполнять
-`ipset`, это длительная операция на больших листах. Листы можно обновлять раз в несколько суток, и только тогда
-вызывать `create_ipset` без параметра `no-update`. Во всех остальных случаях стоит применять `no-update`.
+Forced updating of `ipset` is performed by the script `ipset/create_ipset.sh`.
+If the `no-update` parameter is passed, the script does not update the `ipset`, but only creates it if it is missing and fills it.
+This is useful when several consecutive script calls may occur. There is no point in refilling several times
+`ipset` is a time-consuming operation on large sheets. Sheets can be updated once every few days, and only then
+call `create_ipset` without the `no-update` parameter. In all other cases, you should use `no-update`.
 
-Список РКН уже достиг внушительных размеров в сотни тысяч IP адресов. Поэтому для оптимизации `ipset`
-применяется утилита `ip2net`. Она берет список отдельных IP адресов и пытается интеллектуально создать из него подсети для сокращения
-количества адресов. `ip2net` отсекает неправильные записи в листах, гарантируя отсутствие ошибок при их загрузке.
-`ip2net` написан на языке C, поскольку операция ресурсоемкая. Иные способы роутер может не потянуть.
+The RKN list has already reached an impressive size of hundreds of thousands of IP addresses. Therefore, to optimize `ipset`
+The `ip2net` utility is used. It takes a list of individual IP addresses and tries to intelligently create subnets from it to reduce
+number of addresses. `ip2net` prunes incorrect entries in sheets, ensuring that there are no errors when loading them.
+`ip2net` is written in C because the operation is resource intensive. The router may not support other methods.
 
-Можно внести список доменов в `ipset/zapret-hosts-user-ipban.txt`. Их ip адреса будут помещены
-в отдельный ipset `ipban`. Он может использоваться для принудительного завертывания всех
-соединений на прозрачный proxy `redsocks` или на VPN.
+You can list domains in `ipset/zapret-hosts-user-ipban.txt`. Their IP addresses will be placed
+into a separate ipset `ipban`. It can be used to force wrap all
+connections to a transparent proxy `redsocks` or to a VPN.
 
-**IPV6** : если включен ipv6, то дополнительно создаются листы с таким же именем, но с "6" на конце перед расширением.
+**IPV6** : If ipv6 is enabled, then additional sheets with the same name are created, but with a "6" at the end before the extension.
 `zapret-ip.txt` => `zapret-ip6.txt`
-Создаются ipset-ы zapret6 и ipban6.
-Листы с antifilter не содержат список ipv6 адресов.
+The zapret6 and ipban6 ipsets are created.
+Antifilter sheets do not contain a list of ipv6 addresses.
 
-**СИСТЕМА ИСКЛЮЧЕНИЯ IP**. Все скрипты ресолвят файл `zapret-hosts-user-exclude.txt`, создавая `zapret-ip-exclude.txt` и `zapret-ip-exclude6.txt`.
-Они загоняются в ipset-ы nozapret и nozapret6. Все правила, создаваемые init скриптами, создаются с учетом этих ipset.
-Помещенные в них IP не участвуют в процессе.
-`zapret-hosts-user-exclude.txt` может содержать домены, ipv4 и ipv6 адреса или подсети.
+**IP EXCLUSION SYSTEM**. All scripts resolve the `zapret-hosts-user-exclude.txt` file, creating `zapret-ip-exclude.txt` and `zapret-ip-exclude6.txt`.
+They are driven into the nozapret and nozapret6 ipsets. All rules created by init scripts are created taking into account these ipsets.
+The IPs placed in them do not participate in the process.
+`zapret-hosts-user-exclude.txt` can contain domains, ipv4 and ipv6 addresses or subnets.
 
-**FreeBSD**. Скрипты ipset/*.sh работают так же на FreeBSD. Вместо ipset они создают lookup таблицы ipfw с аналогичными именами.
-ipfw таблицы в отличие от ipset могут содержать как ipv4, так и ipv6 адреса и подсети в одной таблице, поэтому разделения нет.
+**FreeBSD**. The ipset/*.sh scripts work the same on FreeBSD. Instead of ipset, they create lookup tables ipfw with similar names.
+ipfw tables, unlike ipset, can contain both ipv4 and ipv6 addresses and subnets in one table, so there is no separation.
 
-Параметр конфига LISTS_RELOAD задает произвольную команду для перезагрузки листов.
-Это особенно полезно на BSD системах с PF.
-LISTS_RELOAD=-  отключает перезагрузку листов.
+The LISTS_RELOAD config parameter specifies an arbitrary command to reload sheets.
+This is especially useful on BSD systems with PF.
+LISTS_RELOAD=- disables sheet reloading.
 
-## Фильтрация по именам доменов
+## Filtering by domain names
 
-Альтернативой ipset является использование tpws или nfqws со списком доменов.
-Оба демона принимают неограниченное количество листов include (`--hostlist`) и exclude (`--hostlist-exclude`).
-Прежде всего проверяются exclude листы. При вхождении в них происходит отказ от дурения.
-Далее при наличии include листов проверяется домен на вхождение в них. При невхождении в список отказ от дурения.
-Если все include листы пустые, это приравнивается к отсутствию include листов. Ограничение перестает работать.
-В иных случаях происходит дурение.
-Нет ни одного списка - дурение всегда.
-Есть только exclude список - дурение всех, кроме.
-Есть только include список - дурение только их.
-Есть оба - дурение только include, кроме exclude.
+An alternative to ipset is to use tpws or nfqws with a list of domains.
+Both daemons accept an unlimited number of include (`--hostlist`) and exclude (`--hostlist-exclude`) sheets.
+The exclude sheets are checked first. When entering them, there is a renunciation of foolishness.
+Next, if there are include sheets, the domain is checked to see if it is included in them. If you are not on the list, stop fooling around.
+If all include sheets are empty, this is equivalent to the absence of include sheets. The restriction stops working.
+In other cases, foolishness occurs.
+There is not a single list - it’s always foolishness.
+There is only an exclude list - fooling everyone except.
+There is only an include list - fooling only them.
+There are both - foolishness is only include, except exclude.
 
-В системе запуска это обыграно следующим образом.
-Присутствуют 2 include списка :
-`ipset/zapret-hosts-user.txt.gz` или `ipset/zapret-hosts-user.txt`,
-`ipset/zapret-hosts.txt.gz` или `ipset/zapret-hosts.txt`
-и 1 exclude список
+In the launch system this is played out as follows.
+There are 2 include lists:
+`ipset/zapret-hosts-user.txt.gz` or `ipset/zapret-hosts-user.txt`,
+`ipset/zapret-hosts.txt.gz` or `ipset/zapret-hosts.txt`
+and 1 exclude list
 `ipset/zapret-hosts-user-exclude.txt.gz` или `ipset/zapret-hosts-user-exclude.txt`
 
-При режимах фильтрации `MODE_FILTER=hostlist` или `MODE_FILTER=autohostlist` система запуска передает **nfqws** или **tpws** все листы, файлы которых присутствуют.
-Передача происходит через замену маркеров `<HOSTLIST>` и `<HOSTLIST_NOAUTO>` на реальные параметры `--hostlist`, `--hostlist-exclude`, `--hostlist-auto`.
-Если вдруг листы include присутствуют, но все они пустые, то работа аналогична отсутствию include листа.
-Файл есть, но несмотря на это дурится все, кроме exclude.
-Если вам нужен именно такой режим - не обязательно удалять `zapret-hosts-users.txt`. Достаточно сделать его пустым.
+In the `MODE_FILTER=hostlist` or `MODE_FILTER=autohostlist` filtering modes, the launch system passes **nfqws** or **tpws** all sheets whose files are present.
+The transfer occurs by replacing the `<HOSTLIST>` and `<HOSTLIST_NOAUTO>` markers with real parameters `--hostlist`, `--hostlist-exclude`, `--hostlist-auto`.
+If suddenly the include sheets are present, but they are all empty, then the work is similar to the absence of an include sheet.
+The file is there, but despite this everything is fooled except exclude.
+If you need exactly this mode, it is not necessary to delete `zapret-hosts-users.txt`. It is enough to make it empty.
 
-Поддомены учитываются автоматически. Например, строчка "ru" вносит в список "\*.ru". Строчка "\*.ru" в списке не сработает.
-Можно использовать символ `^` в начале хоста, чтобы отказаться от автоматического учета поддоменов.
+Subdomains are taken into account automatically. For example, the line "ru" adds "\*.ru" to the list. The line "\*.ru" in the list will not work.
+You can use the `^` character at the beginning of the host to override automatic subdomain counting.
 
-Список доменов РКН может быть получен скриптами
+The list of RKN domains can be obtained by scripts
 ```
 ipset/get_reestr_hostlist.sh
 ipset/get_antizapret_domains.sh
 ipset/get_reestr_resolvable_domains.sh
 ipset/get_refilter_domains.sh
 ```
-Он кладется в `ipset/zapret-hosts.txt.gz`.
+It is placed in `ipset/zapret-hosts.txt.gz`.
 
-При изменении времени модификации или размера файлов списки перечитываются автоматически.
-После неатомарных операций изменения можно послать tpws/nfqws сигнал HUP для принудительной перечитки всех листов.
+When the modification time or file size changes, the lists are re-read automatically.
+After non-atomic change operations, you can send a HUP signal to tpws/nfqws to force a reread of all sheets.
 
-При фильтрации по именам доменов демон должен запускаться без фильтрации по ipset.
+When filtering by domain names, the daemon must be launched without filtering by ipset.
 tpws и nfqws решают нужно ли применять дурение в зависимости от хоста, полученного из протокола прикладного уровня (http, tls, quic).
-При использовании больших списков, в том числе списка РКН, оцените объем RAM на роутере !
-Если после запуска демона RAM под завязку или случаются oom, значит нужно отказаться от таких больших списков.
+When using large lists, including the RKN list, estimate the amount of RAM on the router!
+If after starting the daemon the RAM is full or ooms occur, then you need to abandon such large lists.
 
-## Режим фильтрации autohostlist
+## autohostlist filtering mode
 
-Этот режим позволяет проанализировать как запросы со стороны клиента, так и ответы от сервера.
-Если хост еще не находится ни в каких листах и обнаруживается ситуация, похожая на блокировку,
-происходит автоматическое добавление хоста в список `autohostlist` как в памяти, так и в файле.
-**nfqws** или **tpws** сами ведут этот файл.
-Чтобы какой-то хост не смог попась в `autohostlist` используйте `hostlist-exclude`.
-Если он все-же туда попал - удалите запись из файла вручную. Процессы автоматически перечитают файл.
-**tpws**/**nfqws** сами назначают владельцем файла юзера, под которым они работают после сброса привилегий,
-чтобы иметь возможность обновлять лист.
+This mode allows you to analyze both requests from the client and responses from the server.
+If the host is not yet in any leaves and a blocking-like situation is detected,
+the host is automatically added to the `autohostlist` list both in memory and in the file.
+**nfqws** or **tpws** maintain this file themselves.
+To prevent any host from getting caught in `autohostlist`, use `hostlist-exclude`.
+If it does get there, delete the entry from the file manually. The processes will automatically re-read the file.
+**tpws**/**nfqws** themselves assign the owner of the file to the user under which they work after resetting the privileges,
+to be able to update the sheet.
 
-В случае **nfqws** данный режим требует перенаправления в том числе и входящего трафика.
-Крайне рекомендовано использовать ограничитель `connbytes`, чтобы **nfqws** не обрабатывал гигабайты.
-По этой же причине не рекомендуется использование режима на BSD системах. Там нет фильтра `connbytes`.
+In the case of **nfqws**, this mode requires redirection of incoming traffic as well.
+It is highly recommended to use the `connbytes` limiter to prevent **nfqws** from handling gigabytes.
+For the same reason, using this mode on BSD systems is not recommended. There is no `connbytes` filter.
 
-На linux системах при использовании nfqws и фильтра connbytes может понадобиться :
+On Linux systems, when using nfqws and the connbytes filter, you may need:
 `sysctl net.netfilter.nf_conntrack_tcp_be_liberal=1`
-Было замечено, что некоторые DPI в России возвращают RST с неверным ACK. Это принимается tcp/ip стеком
-linux, но через раз приобретает статус INVALID в conntrack. Поэтому правила с `connbytes` срабатывают
-через раз, не пересылая RST пакет **nfqws**.
+It has been observed that some DPIs in Russia return RST with an incorrect ACK. This is accepted by the tcp/ip stack
+linux, but after a while it acquires the INVALID status in conntrack. That's why rules with `connbytes` work
+through time, not overdone RST package **nfqws*.
 
-Как вообще могут вести себя DPI, получив "плохой запрос" и приняв решение о блокировке:
+How can DPIs generally behave when they receive a “bad request” and decide to block:
 
-1) Зависание: просто отмораживается, блокируя прохождение пакетов по TCP каналу.
-2) RST: отправляет RST клиенту и/или серверу
+1) Freeze: it simply freezes, blocking the passage of packets over the TCP channel.
+2) RST: sends RST to client and/or server
 3) Редирект: (только для http) отправляет редирект на сайт-заглушку
 4) Подмена сертификата: (только для https) полный перехват TLS сеанса с попыткой всунуть что-то
-   свое клиенту. Применяется нечасто, поскольку броузеры на такое ругаются.
+your client. It is used infrequently, because browsers complain about it.
 
-**nfqws** и **tpws** могут сечь варианты 1-3, 4 они не распознают.
-В силу специфики работы с отдельными пакетами или с TCP каналом tpws и nfqws распознают эти ситуации
-по-разному.
-Что считается ситуацией, похожей на блокировку :
-1) **nfqws** Несколько ретрансмиссий первого запроса в TCP сеансе, в котором имеется host.
-2) **nfqws,tpws** RST, пришедший в ответ на первый запрос с хостом.
-3) **nfqws,tpws** HTTP редирект, пришедший в ответ на первый запрос с хостом, на глобальный адрес
-   с доменом 2 уровня, не совпадающим с доменом 2 уровня оригинального запроса.
-4) **tpws** закрытие соединения клиентом после отправки первого запроса с хостом, если не было на него
-   ответа со стороны сервера. Это обычно случается по таймауту, когда нет ответа (случай "зависание").
+**nfqws** and **tpws** can cut options 1-3, they do not recognize 4.
+Due to the specifics of working with individual packets or with a TCP channel, tpws and nfqws recognize these situations
+differently.
+What is considered a blocking-like situation:
+1) **nfqws** Several retransmissions of the first request in a TCP session in which there is a host.
+2) **nfqws,tpws** RST, which came in response to the first request with the host.
+3) **nfqws,tpws** HTTP redirect, which came in response to the first request with the host, to the global address
+with a 2nd level domain that does not match the 2nd level domain of the original request.
+4) **tpws** closing the connection by the client after sending the first request to the host, if there was no one to it
+response from the server. This usually happens due to a timeout when there is no response (a "hang" case).
 
-Чтобы снизить вероятность ложных срабатываний, имеется счетчик ситуаций, похожих на блокировку.
-Если за определенное время произойдет более определенного их количества, хост считается заблокированным
-и заносится в `autohostlist`. По нему сразу же начинает работать стратегия по обходу блокировки.
-Если в процессе счета вебсайт отвечает без признаков блокировки, счетчик сбрасывается.
-Вероятно, это был временный сбой сайта.
+To reduce the likelihood of false positives, there is a counter for situations similar to blocking.
+If more than a certain number of them occur within a certain time, the host is considered blocked
+and is entered into `autohostlist`. The strategy to bypass the blocking immediately begins to work.
+If during the counting process the website responds without signs of blocking, the counter is reset.
+This was probably a temporary site glitch.
 
-На практике работа с данным режимом выглядит так.
-Первый раз пользователь заходит на сайт и получает заглушку, сброс соединения или броузер подвисает,
-вываливаясь по таймауту с сообщением о невозможности загрузить страницу.
-Надо долбить F5, принуждая броузер повторять попытки. После некоторой попытки сайт
-начинает работать, и дальше он будет работать всегда.
+In practice, working with this mode looks like this.
+The first time the user visits the site and receives a stub, the connection is reset or the browser freezes,
+crashing out due to a timeout with a message about the impossibility of loading the page.
+You need to hit F5, forcing the browser to try again. After some try the site
+starts working, and then it will always work.
 
-С этим режимом можно использовать техники обхода, ломающие значительное количество сайтов.
-Если сайт не ведет себя как заблокированный, значит обход применен не будет.
-В противном случае терять все равно нечего.
-Однако, могут быть временные сбои сервера, приводящие к ситуации, аналогичной блокировке.
-Могут происходить ложные срабатывания. Если такое произошло, стратегия может начать ломать
-незаблокированный сайт. Эту ситуацию, увы, придется вам контролировать вручную.
-Заносите такие домены в `ipset/zapret-hosts-user-exclude.txt`, чтобы избежать повторения.
-Чтобы впоследствии разобраться почему домен был занесен в лист, можно включить `autohostlist debug log`.
-Он полезен тем, что работает без постоянного просмотра вывода **nfqws** в режиме debug.
-В лог заносятся только основные события, ведущие к занесению хоста в лист.
-По логу можно понять как избежать ложных срабатываний и подходит ли вообще вам этот режим.
+With this mode, you can use bypass techniques that break a significant number of sites.
+If the site does not behave as if it is blocked, then the bypass will not be applied.
+Otherwise, there is nothing to lose anyway.
+However, there may be temporary server failures leading to a situation similar to blocking.
+False positives may occur. If this happens, the strategy may begin to break down
+unblocked site. Unfortunately, you will have to control this situation manually.
+Add such domains to `ipset/zapret-hosts-user-exclude.txt` to avoid repetition.
+To later figure out why the domain was added to the list, you can enable `autohostlist debug log`.
+It is useful because it works without constantly viewing the output of **nfqws** in debug mode.
+Only the main events leading to the inclusion of a host in the list are recorded in the log.
+From the log you can understand how to avoid false positives and whether this mode is suitable for you at all.
 
-Можно использовать один `autohostlist` с множеством процессов. Все процессы проверяют время модификации файла.
-Если файл был изменен в другом процессе, происходит его перечитывание.
-Все процессы должны работать под одним uid, чтобы были права доступа на файл.
+It is possible to use one `autohostlist` with multiple processes. All processes check the file modification time.
+If the file was modified in another process, it is reread.
+All processes must run under the same uid to have access rights to the file.
 
-Скрипты `zapret` ведут `autohostlist` в `ipset/zapret-hosts-auto.txt`.
-`install_easy.sh` при апгрейде `zapret` сохраняет этот файл.
-Режим `autohostlist` включает в себя режим `hostlist`.
-Можно вести `ipset/zapret-hosts-user.txt`, `ipset/zapret-hosts-user-exclude.txt`.
+`zapret` scripts lead `autohostlist` to `ipset/zapret-hosts-auto.txt`.
+`install_easy.sh` saves this file when upgrading `zapret`.
+The `autohostlist` mode includes the `hostlist` mode.
+Possible news `ipset/zapret-hosts-user.txt`, `ipset/zapret-hosts-user-exclude.txt`.
 
-## Проверка провайдера
+## Provider check
 
-Перед настройкой нужно провести исследование какую бяку устроил вам ваш провайдер.
+Before setting up, you need to do research on what kind of trouble your provider has given you.
 
-Нужно выяснить не подменяет ли он DNS и какой метод обхода DPI работает.
-В этом вам поможет скрипт `blockcheck.sh`.
+You need to find out if it is replacing DNS and what DPI bypass method works.
+The `blockcheck.sh` script will help you with this.
 
-Если DNS подменяется, но провайдер не перехватывает обращения к сторонним DNS, поменяйте DNS на публичный.
-Например: 8.8.8.8, 8.8.4.4, 1.1.1.1, 1.0.0.1, 9.9.9.9
-Если DNS подменяется и провайдер перехватывает обращения к сторонним DNS, настройте `dnscrypt`.
-Еще один эффективный вариант - использовать ресолвер от yandex 77.88.8.88 на нестандартном порту 1253.
-Многие провайдеры не анализируют обращения к DNS на нестандартных портах.
-`blockcheck` если видит подмену DNS автоматически переключается на DoH сервера.
+If the DNS is changed, but the provider does not intercept calls to third-party DNS, change the DNS to public.
+For example: 8.8.8.8, 8.8.4.4, 1.1.1.1, 1.0.0.1, 9.9.9.9
+If the DNS is spoofed and the provider intercepts calls to third-party DNS, configure `dnscrypt`.
+Another effective option is to use the resolver from yandex 77.88.8.88 on a non-standard port 1253.
+Many providers do not analyze DNS requests on non-standard ports.
+`blockcheck` if it sees a DNS substitution, automatically switches to the DoH server.
 
-Следует прогнать `blockcheck` по нескольким заблокированным сайтам и выявить общий характер блокировок.
-Разные сайты могут быть заблокированы по-разному, нужно искать такую технику, которая работает на большинстве.
-Чтобы записать вывод `blockcheck.sh` в файл, выполните: `./blockcheck.sh | tee /tmp/blockcheck.txt`.
+You should run a `blockcheck` on several blocked sites and identify the general nature of the blocking.
+Different sites can be blocked in different ways, you need to look for a technique that works on most.
+To write the output of `blockcheck.sh` to a file, run: `./blockcheck.sh | tee /tmp/blockcheck.txt`.
 
 Проанализируйте какие методы дурения DPI работают, в соответствии с ними настройте `/opt/zapret/config`.
 
-Имейте в виду, что у провайдеров может быть несколько DPI или запросы могут идти через разные каналы
-по методу балансировки нагрузки. Балансировка может означать, что на разных ветках разные DPI или
-они находятся на разных хопах. Такая ситуация может выражаться в нестабильности работы обхода.
-Дернули несколько раз curl. То работает, то connection reset или редирект. `blockcheck.sh` выдает
-странноватые результаты. То split работает на 2-м. хопе, то на 4-м. Достоверность результата вызывает сомнения.
-В этом случае задайте несколько повторов одного и того же теста. Тест будет считаться успешным только,
-если все попытки пройдут успешно.
+Keep in mind that providers may have multiple DPIs or requests may go through different channels
+using the load balancing method. Balancing may mean that different branches have different DPIs or
+they are on different hops. This situation may result in unstable bypass operation.
+They pulled the curl several times. Either it works, then connection reset or redirect. `blockcheck.sh` outputs
+strange results. Then split works on the 2nd. hope, then on the 4th. The reliability of the result is questionable.
+In this case, set up multiple repetitions of the same test. The test will only be considered successful if
+if all attempts are successful.
 
-При использовании `autottl` следует протестировать как можно больше разных доменов. Эта техника
-может на одних провайдерах работать стабильно, на других потребуется выяснить при каких параметрах
-она стабильна, на третьих полный хаос, и проще отказаться.
+When using `autottl` you should test as many different domains as possible. This technique
+It may work stably on some providers, but on others you will need to find out under what parameters
+it is stable, in the third there is complete chaos, and it is easier to give up.
 
-`Blockcheck` имеет 3 уровня сканирования.
-* `quick` - максимально быстро найти хоть что-то работающее.
-* `standard` дает возможность провести исследование как и на что реагирует DPI в плане методов обхода.
-* `force` дает максимум проверок даже в случаях, когда ресурс работает без обхода или с более простыми стратегиями.
+`Blockcheck` has 3 scanning levels.
+* `quick` - find at least something working as quickly as possible.
+* `standard` makes it possible to conduct research into how and what DPI reacts to in terms of bypass methods.
+* `force` gives maximum checks even in cases where the resource works without bypass or with simpler strategies.
 
-Есть ряд других параметров, которые не будут спрашиваться в диалоге, но которые можно переопределить через
-переменные.
+There are a number of other parameters that will not be asked in the dialog, but which can be overridden via
+variables.
 
 ```
 CURL - замена программы curl
@@ -1846,42 +1846,42 @@ SIMULATE=1 - включить режим симуляции для отладк�
 SIM_SUCCESS_RATE=<percent> - вероятность успеха симуляции в процентах
 ```
 
-Пример запуска с переменными:\
+Running example with variables:\
 `SECURE_DNS=1 SKIP_TPWS=1 CURL_MAX_TIME=1 CURL=/tmp/curl ./blockcheck.sh`
 
-**СКАН ПОРТОВ**\
-Если в системе присутствует совместимый `netcat` (ncat от nmap или openbsd ncat. в OpenWrt по умолчанию нет),
+**PORT SCAN**\
+If a compatible `netcat` is present on the system (ncat from nmap or openbsd ncat. OpenWrt does not have one by default),
 то выполняется сканирование портов http или https всех IP адресов домена.
-Если ни один IP не отвечает, то результат очевиден. Можно останавливать сканирование.
-Автоматически оно не остановится, потому что netcat-ы недостаточно подробно информируют о причинах ошибки.
-Если доступна только часть IP, то можно ожидать хаотичных сбоев, т.к. подключение идет к случайному адресу
-из списка.
+If no IP responds, the result is obvious. You can stop scanning.
+It will not stop automatically because netcats do not provide sufficient detail about the causes of the error.
+If only part of the IP is available, then chaotic failures can be expected, because connection goes to a random address
+from the list.
 
-**ПРОВЕРКА НА ЧАСТИЧНЫЙ IP block**\
-Под частичным блоком подразумевается ситуация, когда коннект на порты есть, но по определенному транспортному
-или прикладному протоколу всегда идет реакция DPI вне зависимости от запрашиваемого домена.
-Эта проверка так же не выдаст автоматического вердикта/решения, потому что может быть очень много вариаций.
-Вместо этого анализ происходящего возложен на самого пользователя или тех, кто будет читать лог.
-Суть этой проверки в попытке дернуть неблокированный IP с блокированным доменом и наоборот, анализируя
-при этом реакцию DPI. Реакция DPI обычно проявляется в виде таймаута (зависание запроса), connection reset
+**CHECK FOR PARTIAL IP block**\
+A partial block means a situation where there is a connection to ports, but through a specific transport
+or the application protocol always receives a DPI response, regardless of the requested domain.
+This check will also not give an automatic verdict/decision, because there can be a lot of variations.
+Instead, the analysis of what is happening is entrusted to the user himself or those who will read the log.
+The essence of this check is to try to pull an unblocked IP with a blocked domain and vice versa, analyzing
+at the same time the DPI reaction. DPI response usually manifests itself in the form of a timeout (request hangup), connection reset
 или http redirect на заглушку. Любой другой вариант скорее всего говорит об отсутствии реакции DPI.
 В частности, любые http коды, кроме редиректа, ведущего именно на заглушку, а не куда-то еще.
-На TLS - ошибки handshake без задержек.
-Ошибка сертификата может говорить как о реакции DPI с MiTM атакой (подмена сертификата), так и
-о том, что принимающий сервер неблокированного домена все равно принимает ваш TLS `handshake` с чужим доменом,
-пытаясь при этом выдать сертификат без запрошенного домена. Требуется дополнительный анализ.
-Если на заблокированный домен есть реакция на всех IP адресах, значит есть блокировка по домену.
-Если на неблокированный домен есть реакция на IP адресах блокированного домена, значит имеет место блок по IP.
-Соответственно, если есть и то, и другое, значит есть и блок по IP, и блок по домену.
-Неблокированный домен первым делом проверяется на доступность на оригинальном адресе.
-При недоступности тест отменяется, поскольку он будет неинформативен.
+On TLS - handshake errors without delays.
+A certificate error can indicate either a DPI reaction with a MiTM attack (certificate substitution) or
+that the receiving server of an unblocked domain still accepts your TLS `handshake` with a foreign domain,
+trying to issue a certificate without the requested domain. Additional analysis is required.
+If there is a reaction to a blocked domain on all IP addresses, then there is a domain block.
+If there is a reaction to an unblocked domain on the IP addresses of a blocked domain, then there is an IP block.
+Accordingly, if there is both, then there is both a block by IP and a block by domain.
+An unblocked domain is first checked for availability at the original address.
+If unavailable, the test is canceled because it will not be informative.
 
-Если выяснено, что есть частичный блок по IP на DPI, то скорее всего все остальные тесты будут провалены
-вне зависимости от стратегий обхода. Но бывают и некоторые исключения. Например, пробитие через `ipv6
-option headers`. Или сделать так, чтобы он не мог распознать протокол прикладного уровня.
-Дальнейшие тесты могут быть не лишены смысла.
+If it is determined that there is a partial IP block on DPI, then most likely all other tests will fail
+regardless of traversal strategies. But there are some exceptions. For example, breaking through `ipv6
+option headers`. Or make it so that it cannot recognize the application layer protocol.
+Further tests may be worthwhile.
 
-**ПРИМЕРЫ БЛОКИРОВКИ ТОЛЬКО ПО ДОМЕНУ БЕЗ БЛОКА ПО IP**
+**EXAMPLES OF BLOCKING ONLY BY DOMAIN WITHOUT BLOCKING BY IP**
 
 ```
 > testing iana.org on it's original
@@ -1923,7 +1923,7 @@ curl: (35) OpenSSL/3.2.1: error:0A000410:SSL routines::ssl/tls alert handshake f
 ```
 
 
-**ПРИМЕР ПОЛНОГО IP БЛОКА ИЛИ БЛОКА TCP ПОРТА ПРИ ОТСУТСТВИИ БЛОКА ПО ДОМЕНУ**
+**EXAMPLE OF A FULL IP BLOCK OR TCP PORT BLOCK IN THE ABSENCE OF A DOMAIN BLOCK**
 
 ```
 * port block tests ipv4 startmail.com:80
@@ -1950,122 +1950,122 @@ curl: (28) Connection timed out after 2002 milliseconds
 curl: (28) Connection timed out after 2002 milliseconds
 ```
 
-## Выбор параметров
+## Selecting parameters
 
 Файл `/opt/zapret/config` используется различными компонентами системы и содержит основные настройки.
-Его нужно просмотреть и при необходимости отредактировать.
+It needs to be reviewed and edited if necessary.
 
-На linux системах можно выбрать использовать `iptables` или `nftables`.
-По умолчанию на традиционных linux выбирается `nftables`, если установлен nft.
-На OpenWrt по умолчанию выбирается `nftables` на новых версиях с firewall4.
+On Linux systems you can choose to use `iptables` or `nftables`.
+By default on traditional Linux, `nftables` is selected if nft is installed.
+On OpenWrt, `nftables` is selected by default on new versions with firewall4.
 
 `FWTYPE=iptables`
 
-На `nftables` можно отключить стандартную схему перехвата трафика после NAT и перейти на перехват до NAT.
-Это сделает невозможным применение некоторых методов дурения на проходящем трафике как в случае с `iptables`.
-nfqws начнет получать адреса пакетов из локальной сети и отображать их в логах.
+On `nftables` you can disable the standard scheme for intercepting traffic after NAT and switch to intercepting before NAT.
+This will make it impossible to use some methods of fooling on passing traffic, as is the case with `iptables`.
+nfqws will begin to receive packet addresses from the local network and display them in the logs.
 
 `POSTNAT=0`
 
-Существует 3 стандартных опции запуска, настраиваемых раздельно и независимо: `tpws-socks`, **tpws**, **nfqws**.
-Их можно использовать как по отдельности, так и вместе. Например, вам надо сделать комбинацию
-из методов, доступных только в **tpws** и только в **nfqws**. Их можно задействовать вместе.
-**tpws** будет прозрачно локализовывать трафик на системе и применять свое дурение, **nfqws** будет дурить трафик,
-исходящий с самой системы после обработки на **tpws**.
-А можно на эту же систему повесить без параметров socks proxy, чтобы получать доступ к обходу блокировок через прокси.
-Таким образом, все 3 режима вполне могут задействоваться вместе.
-Так же безусловно и независимо, в добавок к стандартным опциям, применяются все custom скрипты в `init.d/{sysv,openwrt,macos}/custom.d`.
+There are 3 standard launch options, configurable separately and independently: `tpws-socks`, **tpws**, **nfqws**.
+They can be used either separately or together. For example, you need to make a combination
+of the methods available only in **tpws** and only in **nfqws**. They can be used together.
+**tpws** will transparently localize traffic on the system and apply its foolishness, **nfqws** will fool the traffic,
+coming from the system itself after processing by **tpws**.
+Or you can install socks proxy on the same system without parameters in order to gain access to bypassing blocks through a proxy.
+Thus, all 3 modes may well be used together.
+Also unconditionally and independently, in addition to the standard options, all custom scripts in `init.d/{sysv,openwrt,macos}/custom.d` are applied.
 
-Однако, при комбинировании tpws и nfqws с пересечением по L3/L4 протоколам не все так просто , как может показаться на первый взгляд.
-Первым всегда работает tpws, за ним - nfqws. На nfqws попадает уже "задуренный" трафик от tpws.
-Получается, что дурилка дурит дурилку, и дурилка не срабатывает, потому что ее задурили.
-Вот такой веселый момент. nfqws перестает распознавать протоколы и применять методы.
-Некоторые методы дурения от tpws nfqws в состоянии распознать и отработать корректно, но большинство - нет.
-Решение - использование `--dpi-desync-any-protocol` в nfqws и работа как с неизвестным протоколом.
-Комбинирование tpws и nfqws является продвинутым вариантом, требующим глубокого понимания происходящего.
-Очень желательно проанализировать действия nfqws по `--debug` логу. Все ли так, как вы задумали.
+However, when combining tpws and nfqws with intersection via L3/L4 protocols, not everything is as simple as it might seem at first glance.
+tpws always works first, followed by nfqws. nfqws receives already “stupid” traffic from tpws.
+It turns out that the fool is fooling the fool, and the fool does not work because she was fooled.
+This is such a fun moment. nfqws stops recognizing protocols and applying methods.
+Some methods of fooling from tpws nfqws are able to recognize and work correctly, but most are not.
+The solution is to use `--dpi-desync-any-protocol` in nfqws and work as with an unknown protocol.
+Combining tpws and nfqws is an advanced option that requires a deep understanding of what is happening.
+It is highly advisable to analyze nfqws actions using the `--debug` log. Is everything as you planned?
 
-Одновременное использование tpws и nfqws без пересечения по L3/L4 (то есть nfqws - udp, tpws - tcp или nfqws - port 443, tpws - port 80 или nfqws - ipv4, tpws - ipv6) проблем не представляет.
+Simultaneous use of tpws and nfqws without crossing over L3/L4 (that is, nfqws - udp, tpws - tcp or nfqws - port 443, tpws - port 80 or nfqws - ipv4, tpws - ipv6) does not present any problems.
 
-`tpws-socks` требует настройки параметров **tpws**, но не требует перехвата трафика.
-Остальные опции требуют раздельно настройки перехвата трафика и опции самих демонов.
-Каждая опция предполагает запуск одного инстанса соответствующего демона. Все различия методов дурения
+`tpws-socks` requires configuration of **tpws** parameters, but does not require traffic interception.
+The remaining options require separate settings for traffic interception and options for the daemons themselves.
+Each option involves launching one instance of the corresponding daemon. All the differences in fooling methods
 для `http`, `https`, `quic` и т.д. должны быть отражены через схему мультистратегий.
-В этом смысле настройка похожа на вариант `winws` на Windows, а перенос конфигов не должен представлять больших сложностей.
+In this sense, the setup is similar to the `winws` option on Windows, and transferring configs should not be too difficult.
 
-Основное правило настройки перехвата - перехватывайте только необходимый минимум.
-Любой перехват лишнего - это бессмысленная нагрузка на вашу систему.
-Опции демонов `--ipset` использовать нужно с умом. Не стоит перехватывать весь трафик, чтобы потом по параметру --ipset
-выделить лишь горстку IP. Это будет работать, но очень неэффективно с точки зрения нагрузки на систему.
-Используйте `ipset`-ы режима ядра. При необходимости пишите и задействуйте `custom scripts`.
-Но если у вас и так идет работа по всем IP, и нужно написать небольшую специализацию по IP, то --ipset вполне уместен.
+The basic rule for setting up interception is to intercept only the minimum necessary.
+Any interception of unnecessary things is a pointless load on your system.
+The `--ipset` daemon options must be used wisely. You should not intercept all traffic so that later using the --ipset parameter
+select only a handful of IPs. This will work, but is very inefficient in terms of system load.
+Use kernel mode ipsets. If necessary, write and use `custom scripts`.
+But if you are already working on all IPs, and you need to write a small IP specialization, then --ipset is quite appropriate.
 
-Настройки демонов можно для удобства писать на нескольких строках, используя двойные или одинарные кавычки.
-Чтобы задействовать стандартные обновляемые хост-листы из каталога `ipset`, используйте маркер <HOSTLIST>.
-Он будет заменен на параметры, соответствующие режиму MODE_FILTER, и будут подставлены реально существующие файлы.
-Если MODE_FILTER не предполагает стандартного хостлиста, <HOSTLIST> будет заменен на пустую строку.
-Стандартные хостлисты следует вставлять в финальных стратегиях (стратегиях по умолчанию), закрывающих цепочки по
-группе параметров фильтра. Таких мест может быть несколько.
-Не нужно использовать <HOSTLIST> в узких специализациях и в тех профилях, по которым точно не будет проходить
+For convenience, daemon settings can be written on multiple lines using double or single quotes.
+To use the standard updatable hostlists from the `ipset` directory, use the <HOSTLIST> token.
+It will be replaced with parameters corresponding to the MODE_FILTER mode, and real existing files will be substituted.
+If MODE_FILTER does not assume a standard hostlist, <HOSTLIST> will be replaced with the empty string.
+Standard hostlists should be inserted in the final strategies (default strategies) that close the chains by
+group of filter parameters. There may be several such places.
+There is no need to use <HOSTLIST> in narrow specializations and in those profiles that will definitely not be accessed
 трафик с известными протоколами, откуда поддерживается извлечение имени хоста (`http`, `tls`, `quic`).
 <HOSTLIST_NOAUTO> - это вариация, при которой стандартный автолист используется как обычный.
-То есть на этом профиле не происходит автоматическое добавление заблокированных доменов.
-Но если на другом профиле что-то будет добавлено, то этот профиль примет изменения автоматически.
+That is, blocked domains are not automatically added to this profile.
+But if something is added on another profile, then this profile will accept the changes automatically.
 
-***Изменение бита mark для предотвращения зацикливания***\
+***Change mark bit to prevent looping***\
 `DESYNC_MARK=0x40000000`
 
-***Изменение бита mark для пометки пакетов, проходящих по POSTNAT схеме (только nftables)***\
+***Changing the mark bit to mark packets passing through the POSTNAT scheme (nftables only)***\
 `DESYNC_MARK_POSTNAT=0x20000000`
 
-***Если раскоментировано, пометка пакетов, которые должны быть обработаны zapret.***\
+***If uncommented, marks packages that should be processed as zapret.***\
 `#FILTER_MARK=0x10000000`
 
-Бит должен быть установлен вашими собственными правилами.
-* Для iptables - в цепочках mangle PREROUTING и mangle OUTPUT перед правилами zapret (iptables -I _после_ применения правил zapret).
-* Для nftables - в хуках output и prerouting с приоритетом -102 или ниже.
+The bit must be set by your own rules.
+* For iptables - in the mangle PREROUTING and mangle OUTPUT chains before the zapret rules (iptables -I _after_ applying the zapret rules).
+* For nftables - in the output and prerouting hooks with priority -102 or lower.
 
-Критерии пометки любые. Например, IP адрес или интерфейс источника. Это ответ на вопрос "как мне сделать, чтобы телик не ходил через zapret или чтобы через него ходил только мой комп".
+Any marking criteria. For example, IP address or source interface. This is the answer to the question “how can I make sure that the TV does not go through the zapret or so that only my computer goes through it.”
 
-***Включение стандартной опции tpws в режиме socks***\
+***Enabling the standard tpws option in socks mode***\
 `TPWS_SOCKS_ENABLE=0`
 
-***На каком порту будет слушать tpws socks. прослушивается только localhost и LAN***\
+***What port will tpws socks listen on. only localhost and LAN***\ are listened to
 `TPPORT_SOCKS=987`
 
-***Параметры tpws для режима socks***
+***tpws parameters for socks mode***
 ```
 TPWS_SOCKS_OPT="
 --filter-tcp=80 --methodeol <HOSTLIST> --new
 --filter-tcp=443 --split-pos=1,midsld --disorder <HOSTLIST>"
 ```
 
-***Включение стандартной опции tpws в прозрачном режиме***\
+***Enabling the standard tpws option in transparent mode***\
 `TPWS_ENABLE=0`
 
-***Какие tcp порты следует перенаправлять на tpws***\
+***Which tcp ports should be forwarded to tpws***\
 `TPWS_PORTS=80,443`
 
-***Параметры tpws для прозрачного режима***
+***tpws parameters for transparent mode***
 ```
 TPWS_OPT="
 --filter-tcp=80 --methodeol <HOSTLIST> --new
 --filter-tcp=443 --split-pos=1,midsld --disorder <HOSTLIST>"
 ```
 
-***Включение стандартной опции nfqws***\
+***Enabling the standard nfqws option***\
 `NFQWS_ENABLE=0`
 
-***Какие tcp и udp порты следует перенаправлять на nfqws с использованием connbytes ограничителя***
+***Which tcp and udp ports should be forwarded to nfqws using the connbytes limiter***
 
-connbytes позволяет из каждого соединения перенаправить только заданное количество начальных пакетов по каждому направлению - на вход и на выход.
-Это более эффективная kernel-mode замена параметра nfqws `--dpi-desync-cutoff=nX`.
+connbytes allows you to redirect only a specified number of initial packets from each connection in each direction - ingress and egress.
+This is a more efficient kernel-mode replacement for the nfqws `--dpi-desync-cutoff=nX` option.
 ```
 NFQWS_PORTS_TCP=80,443
 NFQWS_PORTS_UDP=443
 ```
 
-***Сколько начальных входящих и исходящих пакетов нужно перенаправлять на nfqws по каждому направлению***
+***How ​​many initial incoming and outgoing packets need to be forwarded to nfqws in each direction***
 ```
 NFQWS_TCP_PKT_OUT=$((6+$AUTOHOSTLIST_RETRANS_THRESHOLD))
 NFQWS_TCP_PKT_IN=3
@@ -2073,18 +2073,18 @@ NFQWS_UDP_PKT_OUT=$((6+$AUTOHOSTLIST_RETRANS_THRESHOLD))
 NFQWS_UDP_PKT_IN=0
 ```
 
-***Задать порты для перенаправления на nfqws без connbytes ограничителя***\
-Есть трафик, исходящий сеанс для которого необходимо перенаправлять весь без ограничителей.
+***Set ports to redirect to nfqws without connbytes limiter***\
+There is traffic for which the entire outgoing session must be redirected without restrictions.
 Типичное применение - поддержка http keepalives на stateless DPI.
-Это существенно нагружает процессор. Использовать только если понимаете зачем. Чаще всего это не нужно.
-Входящий трафик ограничивается по connbytes через параметры PKT_IN.
-Если указываете здесь какие-то порты, желательно их убрать из версии с connbytes ограничителем
+This puts a significant load on the processor. Use only if you understand why. Most often this is not necessary.
+Incoming traffic is limited by connbytes through the PKT_IN parameters.
+If you specify any ports here, it is advisable to remove them from the version with the connbytes limiter
 ```
 NFQWS_PORTS_TCP_KEEPALIVE=80
 NFQWS_PORTS_UDP_KEEPALIVE=
 ```
 
-***Параметры nfqws***
+***nfqws parameters***
 ```
 NFQWS_OPT="
 --filter-tcp=80 --dpi-desync=fake,multisplit --dpi-desync-split-pos=method+2 --dpi-desync-fooling=md5sig <HOSTLIST> --new
@@ -2092,7 +2092,7 @@ NFQWS_OPT="
 --filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 <HOSTLIST_NOAUTO>
 ```
 
-***Режим фильтрации хостов:***
+***Host filtering mode:***
 ```
 none - применять дурение ко всем хостам
 ipset - ограничить дурение ipset-ом zapret/zapret6
@@ -2101,7 +2101,7 @@ autohostlist - режим hostlist + распознавание блокиров
 ```
 `MODE_FILTER=none`
 
-***Настройка системы управления выборочным traffic offload (только если поддерживается)***
+***Setting up a selective traffic offload management system (only if supported)***
 ```
 donttouch: выборочное управление отключено, используется системная настройка, простой инсталлятор выключает системную настройку, если она не совместима с выбранным режимом
 none: выборочное управление отключено, простой инсталлятор выключает системную настройку
@@ -2110,59 +2110,59 @@ hardware: выборочное управление включено в режи
 ```
 `FLOWOFFLOAD=donttouch`
 
-Параметр `GETLIST` указывает инсталлятору `install_easy.sh` какой скрипт дергать
-для обновления списка заблокированных ip или хостов.
-Он же вызывается через `get_config.sh` из запланированных заданий (crontab или systemd timer).
-Поместите сюда название скрипта, который будете использовать для обновления листов.
-Если не нужно, то параметр следует закомментировать.
+The `GETLIST` parameter tells the `install_easy.sh` installer which script to run
+to update the list of blocked ips or hosts.
+It is also called via `get_config.sh` from scheduled jobs (crontab or systemd timer).
+Place here the name of the script that you will use to update the sheets.
+If not needed, the parameter should be commented out.
 
-Можно индивидуально отключить ipv4 или ipv6. Если параметр закомментирован или не равен "1",
-использование протокола разрешено.
+You can individually disable ipv4 or ipv6. If the parameter is commented out or not equal to "1",
+use of the protocol is permitted.
 ```
 DISABLE_IPV4=1
 DISABLE_IPV6=1
 ```
 
-Количество потоков для многопоточного DNS ресолвера mdig (1..100).
-Чем их больше, тем быстрее, но не обидится ли на долбежку ваш DNS сервер?\
+Number of threads for multi-threaded DNS resolver mdig (1..100).
+The more there are, the faster, but won’t your DNS server be offended by the slugging?\
 `MDIG_THREADS=30`
 
-Место для хранения временных файлов. При скачивании огромных реестров в `/tmp` места может не хватить.
-Если файловая система на нормальном носителе (не встроенная память роутера), то можно
-указать место на флэшке или диске.
+A place to store temporary files. When downloading huge registries, `/tmp` may not have enough space.
+If the file system is on normal media (not the router’s built-in memory), then you can
+indicate the location on the flash drive or disk.
 `TMPDIR=/opt/zapret/tmp`
 
-***Опции для создания ipset-ов и nfset-ов***
+***Options for creating ipsets and nfsets***
 
 ```
 SET_MAXELEM=262144
 IPSET_OPT="hashsize 262144 maxelem 2097152"
 ```
 
-Хук, позволяющий внести ip адреса динамически. $1 = имя таблицы\
-Адреса выводятся в stdout. В случае nfset автоматически решается проблема возможного пересечения интервалов.\
+A hook that allows you to enter IP addresses dynamically. $1 = table name\
+Addresses are printed to stdout. In the case of nfset, the problem of possible intersection of intervals is automatically solved.\
 `IPSET_HOOK="/etc/zapret.ipset.hook"`
 
-***ПРО РУГАНЬ в dmesg по поводу нехватки памяти.***
+***About swearing in dmesg due to lack of memory.***
 
-Может так случиться, что памяти в системе достаточно, но при попытке заполнить огромный `ipset`
-ядро начинает громко ругаться, `ipset` заполняется не полностью.\
-Вероятная причина в том, что превышается `hashsize`, заданный при создании `ipset` (create_ipset.sh).
-Происходит переаллокация списка, не находится непрерывных фрагментов памяти нужной длины.
-Это лечится увеличением `hashsize`. Но чем больше `hashsize`, тем больше занимает `ipset` в памяти.
-Задавать слишком большой `hashsize` для недостаточно больших списков нецелесообразно.
+It may happen that there is enough memory in the system, but when trying to fill a huge `ipset`
+The kernel begins to swear loudly, `ipset` is not completely filled.\
+The likely cause is that the `hashsize` specified when creating `ipset` (create_ipset.sh) is exceeded.
+The list is re-allocated and no continuous memory fragments of the required length are found.
+This can be treated by increasing `hashsize`. But the larger the `hashsize`, the more `ipset` takes up in memory.
+Setting `hashsize` too large for lists that are not large enough is not practical.
 
-***Опции для вызова ip2net. Отдельно для листов ipv4 и ipv6.***
+***Options for calling ip2net. Separately for ipv4 and ipv6 sheets.***
 
 ```
 IP2NET_OPT4="--prefix-length=22-30 --v4-threshold=3/4"
 IP2NET_OPT6="--prefix-length=56-64 --v6-threshold=5"
 ```
 
-***Настройка режима autohostlist.***
+***Set autohostlist mode.***
 
-При увеличении AUTOHOSTLIST_RETRANS_THRESHOLD и использовании nfqws следует пересмотреть значения параметров
-NFQWS_TCP_PKT_OUT и NFQWS_UDP_PKT_OUT. Все ретрансмиссии должны быть получены nfqws, иначе триггер "зависание запроса" не сработает.
+When increasing AUTOHOSTLIST_RETRANS_THRESHOLD and using nfqws, you should reconsider the parameter values
+NFQWS_TCP_PKT_OUT and NFQWS_UDP_PKT_OUT. All retransmissions must be received by nfqws, otherwise the "request stuck" trigger will not fire.
 
 ```
 AUTOHOSTLIST_RETRANS_THRESHOLD=3
@@ -2171,69 +2171,69 @@ AUTOHOSTLIST_FAIL_TIME=60
 AUTOHOSTLIST_DEBUG=0
 ```
 
-***Включить или выключить сжатие больших листов в скриптах ipset/\*.sh.***
+***Enable or disable compression of large sheets in ipset/\*.sh scripts.***
 
 `GZIP_LISTS=1`
 
-***Команда для перезагрузки ip таблиц фаервола.***
+***Command for reloading firewall IP tables.***
 
-Если не указано или пустое, выбирается автоматически ipset или ipfw при их наличии.
-На BSD системах с PF нет автоматической загрузки. Там нужно указать команду явно: `pfctl -f /etc/pf.conf`
-На более новых pfctl (есть в новых FreeBSD, нет в OpenBSD 6.8) можно дать команду загрузки только таблиц: `pfctl -Tl -f /etc/pf.conf`
-"-" означает отключение загрузки листов даже при наличии поддерживаемого backend.
+If not specified or empty, ipset or ipfw is automatically selected if available.
+On BSD systems with PF there is no automatic loading. There you need to specify the command explicitly: `pfctl -f /etc/pf.conf`
+On newer pfctls (available in new FreeBSDs, not in OpenBSD 6.8), you can give the command to load only tables: `pfctl -Tl -f /etc/pf.conf`
+"-" means disabling sheet loading even if there is a supported backend.
 ```
 LISTS_RELOAD="pfctl -f /etc/pf.conf"
 LISTS_RELOAD=-
 ```
 
-В OpenWrt существует сеть по умолчанию 'lan'. Только трафик с этой сети будет перенаправлен на tpws.
-Но возможно задать другие сети или список сетей:\
+OpenWrt has a default network 'lan'. Only traffic from this network will be forwarded to tpws.
+But it is possible to specify other networks or a list of networks:\
 `OPENWRT_LAN="lan lan2 lan3"`
 
-В OpenWrt в качестве wan берутся интерфейсы, имеющие default route. Отдельно для ipv4 и ipv6.
-Это можно переопределить:
+In OpenWrt, interfaces with a default route are taken as wan. Separately for ipv4 and ipv6.
+This can be overridden:
 ```
 OPENWRT_WAN4="wan4 vpn"
 OPENWRT_WAN6="wan6 vpn6"
 ```
 
-Параметр `INIT_APPLY_FW=1` разрешает init скрипту самостоятельно применять правила iptables.\
-При иных значениях или если параметр закомментирован, правила применены не будут.\
-Это полезно, если у вас есть система управления фаерволом, в настройки которой и следует прикрутить правила.\
-На OpenWrt неприменимо при использовании firewall3+iptables.
+The `INIT_APPLY_FW=1` parameter allows the init script to independently apply iptables rules.\
+With other values ​​or if the parameter is commented out, the rules will not be applied.\
+This is useful if you have a firewall management system, in the settings of which you should add rules.\
+Not applicable on OpenWrt when using firewall3+iptables.
 
-`FILTER_TTL_EXPIRED_ICMP=1` включает механизмы блокировки пакетов icmp time exceeded, высылаемые роутерами по пути следования пакета в ответ на исчерпание TTL/HL.
-В linux соединение обрывается системой, если в ответ на первый пакет (для tcp - SYN) пришел такой icmp. Аналогичная схема имеется и в datagram сокетах.
-Блокировка icmp идет исключительно за счет средств iptables/nftables.
-Чтобы не трогать весь трафик, в режиме PRENAT используется connmark для пометки сеансов, над которыми поработал nfqws. В режиме POSTNAT так сделать нельзя,
-поэтому помечаются все сеансы, заворачиваемые на nfqws.
-Настройку лучше отключить, если вы не ожидаете проблем от icmp, тк в этом случае будет меньше ненужных вмешательств в трафик.
+`FILTER_TTL_EXPIRED_ICMP=1` enables mechanisms for blocking icmp time exceeded packets, sent by routers along the packet path in response to TTL/HL exhaustion.
+In Linux, the connection is terminated by the system if the following icmp is received in response to the first packet (for tcp - SYN). A similar scheme exists in datagram sockets.
+icmp blocking is carried out exclusively by iptables/nftables.
+To avoid touching all traffic, PRENAT mode uses connmark to mark sessions that nfqws has worked on. This cannot be done in POSTNAT mode.
+therefore, all sessions wrapped on nfqws are flagged.
+It is better to disable the setting if you do not expect problems from icmp, as in this case there will be less unnecessary interference in traffic.
 
-***Следующие настройки не актуальны для openwrt:***
+***The following settings are not relevant for openwrt:***
 
-Если ваша система работает как роутер, то нужно вписать названия внутренних и внешних интерфейсов:
+If your system works as a router, then you need to enter the names of the internal and external interfaces:
 ```
 IFACE_LAN=eth0
 IFACE_WAN=eth1
 IFACE_WAN6="henet ipsec0"
 ```
-Несколько интерфейсов могут быть вписаны через пробел.
-Если IFACE_WAN6 не задан, то берется значение IFACE_WAN.
+Multiple interfaces can be entered separated by a space.
+If IFACE_WAN6 is not specified, then the value of IFACE_WAN is taken.
 
 > [!IMPORTANT]
-> Настройка маршрутизации, маскарада и т.д. не входит в задачу zapret.
-> Включаются только режимы, обеспечивающие перехват транзитного трафика.
-> Возможно определить несколько интерфейсов следующим образом:
+> Setting up routing, masquerade, etc. is not included in the task of ban.
+> Only modes that provide interception of transit traffic are enabled.
+> It is possible to define multiple interfaces like this:
 
 `IFACE_LAN="eth0 eth1 eth2"`
 
-## Прикручивание к системе управления фаерволом или своей системе запуска
+## Screwing to a firewall management system or your launch system
 
-Если вы используете какую-то систему управления фаерволом, то она может вступать в конфликт
-с имеющимся скриптом запуска. При повторном применении правил она могла бы поломать настройки iptables от zapret.
-В этом случае правила для iptables должны быть прикручены к вашему фаерволу отдельно от запуска tpws или nfqws.
+If you are using some kind of firewall management system, then it may conflict
+with the existing launch script. If the rules were applied again, it could break the iptables settings from zapret.
+In this case, the rules for iptables must be attached to your firewall separately from running tpws or nfqws.
 
-_Следующие вызовы позволяют применить или убрать правила iptables отдельно:_
+_The following calls allow you to apply or remove iptables rules individually:_
 
 ```
 /opt/zapret/init.d/sysv/zapret start_fw
@@ -2241,7 +2241,7 @@ _Следующие вызовы позволяют применить или у
 /opt/zapret/init.d/sysv/zapret restart_fw
 ```
 
-_А так можно запустить или остановить демоны отдельно от фаервола:_
+_And this is how you can start or stop daemons separately from the firewall:_
 
 ```
 /opt/zapret/init.d/sysv/zapret start_daemons
@@ -2249,26 +2249,26 @@ _А так можно запустить или остановить демон�
 /opt/zapret/init.d/sysv/zapret restart_daemons
 ```
 
-`nftables` сводят практически на нет конфликты между разными системами управления, поскольку позволяют
-использовать независимые таблицы и хуки. Используется отдельная nf-таблица "zapret".
-Если ваша система ее не будет трогать, скорее всего все будет нормально.
+`nftables` virtually eliminate conflicts between different control systems, since they allow
+use independent tables and hooks. A separate nf table "zapret" is used.
+If your system doesn't touch it, most likely everything will be fine.
 
-_Для `nftables` предусмотрено несколько дополнительных вызовов:_
+_For `nftables` there are several additional calls:_
 
-Посмотреть set-ы интерфейсов, относящихся к lan, wan и wan6. По ним идет завертывание трафика.
-А так же таблицу flow table с именами интерфейсов ingress hook.\
+View sets of interfaces related to lan, wan and wan6. Traffic is being turned off along them.
+And also the flow table with the names of the ingress hook interfaces.\
 `/opt/zapret/init.d/sysv/zapret list_ifsets`
 
-Обновить set-ы интерфейсов, относящихся к lan, wan и wan6.
-Для традиционных linux список интерфейсов берется из переменных конфига IFACE_LAN, IFACE_WAN.
-Для OpenWrt определяется автоматически. Множество lanif может быть расширено параметром OPENWRT_LAN.
-Все интерфейсы lan и wan так же добавляются в ingress hook от flow table.\
+Update interface sets related to lan, wan and wan6.
+For traditional Linux, the list of interfaces is taken from the config variables IFACE_LAN, IFACE_WAN.
+For OpenWrt it is determined automatically. The lanif set can be extended with the OPENWRT_LAN parameter.
+All lan and wan interfaces are also added to the ingress hook from the flow table.\
 `/opt/zapret/init.d/sysv/zapret reload_ifsets`
 
-Просмотр таблицы без содержимого set-ов. Вызывает `nft -t list table inet zapret`\
+Viewing a table without set contents. Calls `nft -t list table inet zapret`\
 `/opt/zapret/init.d/sysv/zapret list_table`
 
-_Так же возможно прицепиться своим скриптом к любой стадии применения и снятия фаервола со стороны zapret скриптов:_
+_It is also possible to attach your script to any stage of applying and removing the firewall from zapret scripts:_
 ```
 INIT_FW_PRE_UP_HOOK="/etc/firewall.zapret.hook.pre_up"
 INIT_FW_POST_UP_HOOK="/etc/firewall.zapret.hook.post_up"
@@ -2276,27 +2276,27 @@ INIT_FW_PRE_DOWN_HOOK="/etc/firewall.zapret.hook.pre_down"
 INIT_FW_POST_DOWN_HOOK="/etc/firewall.zapret.hook.post_down"
 ```
 
-Эти настройки доступны в config.
-Может быть полезно, если вам нужно использовать nftables set-ы, например `ipban`/`ipban6`.
-nfset-ы принадлежат только одной таблице, следовательно вам придется писать правила для таблицы zapret,
-а значит нужно синхронизироваться с применением/снятием правил со стороны zapret скриптов.
+These settings are available in config.
+May be useful if you need to use nftables sets, for example `ipban`/`ipban6`.
+nfsets belong to only one table, so you will have to write rules for the zapret table,
+which means you need to synchronize with the application/removal of rules by zapret scripts.
 
-## Вариант custom
+## Option custom
 
-custom скрипты - это маленькие shell программы, управляющие нестандартными режимами применения zapret
-или частными случаями, которые не могут быть интегрированы в основную часть без загромождения и замусоривания кода.
-Для применения custom следует помещать файлы в следующие директории в зависимости от вашей системы:
+custom scripts are small shell programs that control non-standard modes of using zapret
+or special cases that cannot be integrated into the main part without cluttering and littering the code.
+To use custom, you should place the files in the following directories depending on your system:
 ```
 /opt/zapret/init.d/sysv/custom.d
 /opt/zapret/init.d/openwrt/custom.d
 /opt/zapret/init.d/macos/custom.d
 ```
-Директория будет просканирована в алфавитном порядке, и каждый скрипт будет применен.
+The directory will be scanned in alphabetical order and each script will be applied.
 
-В `init.d` имеется `custom.d.examples.linux`, в `init.d/macos` - `custom.d.examples`.
-Это готовые скрипты, которые можно копировать в `custom.d`. Их можно взять за основу для написания собственных.
+In `init.d` there is `custom.d.examples.linux`, in `init.d/macos` there is `custom.d.examples`.
+These are ready-made scripts that can be copied to `custom.d`. You can use them as a basis for writing your own.
 
-***Для linux пишется код в функции***
+***For Linux the code is written in a function***
 ```
 zapret_custom_daemons
 zapret_custom_firewall
@@ -2304,165 +2304,165 @@ zapret_custom_firewall_nft
 zapret_custom_firewall_nft_flush
 ```
 
-***Для macos***
+***For macos***
 ```
 zapret_custom_daemons
 zapret_custom_firewall_v4
 zapret_custom_firewall_v6
 ```
 
-zapret_custom_daemons поднимает демоны **nfqws**/**tpws** в нужном вам количестве и с нужными вам параметрами.
-В первом параметре передается код операции: 1 = запуск, 0 = останов.
-Схема запуска демонов в OpenWrt отличается - используется procd.
-Поэтому логика останова отсутствует за ненадобностью, останов никогда не вызывается.
+zapret_custom_daemons raises **nfqws**/**tpws** daemons in the quantity you need and with the parameters you need.
+The first parameter contains the operation code: 1 = start, 0 = stop.
+The scheme for launching daemons in OpenWrt is different - procd is used.
+Therefore, there is no stop logic as it is unnecessary; the stop is never called.
 
-zapret_custom_firewall поднимает и убирает правила `iptables`.
-В первом параметре передается код операции: 1 = запуск, 0 = останов.
+zapret_custom_firewall raises and removes `iptables` rules.
+The first parameter contains the operation code: 1 = start, 0 = stop.
 
-zapret_custom_firewall_nft поднимает правила nftables.
-Логика останова отсутствует за ненадобностью. Стандартные цепочки zapret удаляются автоматически.
-Однако, sets и правила из ваших собственных цепочек не удаляются.
-Их нужно подчистить в zapret_custom_firewall_nft_flush.
-Если set-ов и собственных цепочек у вас нет, функцию можно не определять или оставить пустой.
+zapret_custom_firewall_nft raises nftables rules.
+The stop logic is absent as unnecessary. Standard zapret chains are deleted automatically.
+However, sets and rules from your own chains are not removed.
+They need to be cleaned up in zapret_custom_firewall_nft_flush.
+If you don’t have sets or your own chains, you don’t have to define the function or leave it empty.
 
-Если вам не нужны iptables или nftables - можете не писать соответствующую функцию.
+If you don't need iptables or nftables, you don't have to write the corresponding function.
 
-В linux можно использовать локальные переменные `FW_EXTRA_PRE` и `FW_EXTRA_POST`.\
-`FW_EXTRA_PRE` добавляет код к правилам ip/nf tables до кода, генерируемого функциями-хелперами.\
-`FW_EXTRA_POST` добавляет код после.
+On linux you can use the local variables `FW_EXTRA_PRE` and `FW_EXTRA_POST`.\
+`FW_EXTRA_PRE` adds code to the ip/nf tables rules before the code generated by the helper functions.\
+`FW_EXTRA_POST` adds code after.
 
-В linux функции-хелперы добавляют правило в начало цепочек, то есть перед уже имеющимися.
-Поэтому специализации должны идти после более общих вариантов.
-Для macos правило обратное. Там правила добавляются в конец.
-По этой же причине фаервол в Linux сначала применяется в стандартном режиме, потом custom,
-а в MacOS сначала custom, потом стандартный режим.
+In Linux, helper functions add a rule to the beginning of chains, that is, before existing ones.
+Therefore, specializations should come after more general options.
+For macos the rule is the opposite. There the rules are added at the end.
+For the same reason, the firewall in Linux is first applied in standard mode, then custom,
+and in MacOS first custom, then standard mode.
 
-В macos firewall-функции ничего сами никуда не заносят. Их задача - лишь выдать текст в stdout,
-содержащий правила для pf-якоря. Остальное сделает обертка.
+In macos firewall functions do not enter anything themselves. Their task is only to output text to stdout,
+containing rules for the pf anchor. The wrapper will do the rest.
 
-Особо обратите внимание на номер демона в функциях `run_daemon` , `do_daemon`, `do_tpws`, `do_tpws_socks`, `do_nfqws` ,
-номера портов **tpws** и очередей **nfqueue**.
-Они должны быть уникальными во всех скриптах. При накладке будет ошибка.
-Поэтому используйте функции динамического получения этих значений из пула.
+Pay special attention to the daemon number in the functions `run_daemon`, `do_daemon`, `do_tpws`, `do_tpws_socks`, `do_nfqws`,
+port numbers **tpws** and queues **nfqueue**.
+They must be unique in all scripts. There will be an error when overlaying.
+Therefore, use functions to dynamically obtain these values ​​from the pool.
 
-`custom` скрипты могут использовать переменные из `config`. Можно помещать в `config` свои переменные
-и задействовать их в скриптах.
-Можно использовать функции-хелперы. Они являются частью общего пространства функций shell.
-Полезные функции можно взять из примеров скриптов. Так же смотрите `common/*.sh`.
-Используя хелпер функции, вы избавитесь от необходимости учитывать все возможные случаи
-типа наличия/отсутствия ipv6, является ли система роутером, имена интерфейсов, ...Хелперы это учитывают. Вам нужно сосредоточиться лишь на фильтрах `{ip,nf}tables` и параметрах демонов.
+`custom` scripts can use variables from `config`. You can put your own variables in `config`
+and use them in scripts.
+You can use helper functions. They are part of the general shell function space.
+Useful functions can be taken from example scripts. Also see `common/*.sh`.
+By using a helper function, you eliminate the need to consider all possible cases
+type of presence/absence of ipv6, whether the system is a router, interface names, ...Helpers take this into account. You only need to focus on the `{ip,nf}tables` filters and daemon parameters.
 
-## Простая установка
+## Easy installation
 
-`install_easy.sh` автоматизирует ручные варианты процедур установки.
-Он поддерживает OpenWrt, linux системы на базе systemd или openrc и MacOS.
+`install_easy.sh` automates manual versions of installation procedures.
+It supports OpenWrt, Linux systems based on systemd or openrc and MacOS.
 
-Для более гибкой настройки перед запуском инсталлятора следует выполнить раздел "Выбор параметров".
+For more flexible configuration, before starting the installer, you should complete the “Selecting parameters” section.
 
-Если система запуска поддерживается, но используется не поддерживаемый инсталлятором менеджер пакетов
-или названия пакетов не соответствуют прописанным в инсталлятор, пакеты нужно установить вручную.
-Всегда требуется curl. `ipset` - только для режима `iptables`, для `nftables` - не нужен.
+If the launch system is supported, but a package manager that is not supported by the installer is used
+or the names of the packages do not match those specified in the installer, the packages must be installed manually.
+curl is always required. `ipset` - only for `iptables` mode, for `nftables` - not needed.
 
-Для совсем обрезанных дистрибутивов (alpine) требуется отдельно установить `iptables` и `ip6tables`, либо `nftables`.
+For completely cut-off distributions (alpine), you need to separately install `iptables` and `ip6tables`, or `nftables`.
 
-В комплекте идут статические бинарники для большинства архитектур. Какой-то из них подойдет
-с вероятностью 99%. Но если у вас экзотическая система, инсталлятор попробует собрать бинарники сам
-через make. Для этого нужны gcc, make и необходимые **-dev** пакеты. Можно форсировать режим
-компиляции следующим вызовом:
+The kit includes static binaries for most architectures. One of them will do
+with a probability of 99%. But if you have an exotic system, the installer will try to build the binaries itself
+via make. This requires gcc, make and the necessary **-dev** packages. You can force the mode
+compilation with the following call:
 
 `install_easy.sh make`
 
-Под OpenWrt все уже сразу готово для использования системы в качестве роутера.
-Имена интерфейсов WAN и LAN известны из настроек системы.
-Под другими системами роутер вы настраиваете самостоятельно. Инсталлятор в это не вмешивается.
-Инсталлятор в зависимости от выбранного режима может спросить LAN и WAN интерфейсы.
-Нужно понимать, что заворот проходящего трафика на **tpws** в прозрачном режиме происходит до выполнения маршрутизации,
-следовательно возможна фильтрация по LAN и невозможна по WAN.
-Решение о завороте на **tpws** локального исходящего трафика принимается после выполнения маршрутизации,
-следовательно ситуация обратная: LAN не имеет смысла, фильтрация по WAN возможна.
-Заворот на **nfqws** происходит всегда после маршрутизации, поэтому к нему применима только фильтрация по WAN.
-Возможность прохождения трафика в том или ином направлении настраивается вами в процессе конфигурации роутера.
+Under OpenWrt, everything is immediately ready to use the system as a router.
+The names of the WAN and LAN interfaces are known from the system settings.
+Under other systems, you configure the router yourself. The installer does not interfere with this.
+Depending on the selected mode, the installer may ask for LAN and WAN interfaces.
+You need to understand that passing traffic is turned over to **tpws** in transparent mode before routing is performed,
+Therefore, filtering is possible over the LAN but not over the WAN.
+The decision to divert local outgoing traffic to **tpws** is made after routing has been completed,
+Therefore, the situation is the opposite: LAN does not make sense, filtering via WAN is possible.
+Reversal to **nfqws** always occurs after routing, so only WAN filtering is applicable to it.
+The ability for traffic to pass in one direction or another is configured by you during the router configuration process.
 
 Деинсталляция выполняется через `uninstall_easy.sh`. После выполнения деинсталляции можно удалить каталог `/opt/zapret`.
 
-## Установка под systemd
+## Installation under systemd
 
-Если вам нравится systemd и хочется максимально под него заточиться, можно отказаться от скриптов запуска zapret
-и поднимать инстансы `tpws` и `nfqws` как отдельные юниты systemd. При этом вам придется вручную написать правила iptables/nftables
-и каким-то образом их поднимать. Например, написать дополнительный systemd unit для этого.
-Так же требуется собрать бинарники особым образом через `make systemd`.
+If you like systemd and want to get as close to it as possible, you can abandon the zapret startup scripts
+and raise `tpws` and `nfqws` instances as separate systemd units. In this case, you will have to manually write the iptables/nftables rules
+and somehow raise them. For example, write an additional systemd unit for this.
+You also need to build the binaries in a special way using `make systemd`.
 
-В комплекте zapret есть шаблоны `init.d/systemd/{nfqws@.service,tpws@.service}`.
-Краткий перечень команд для их использования приведен в комментариях в этих файлах.
+The zapret package includes templates `init.d/systemd/{nfqws@.service,tpws@.service}`.
+A short list of commands for their use is given in the comments in these files.
 
-## Простая установка на openwrt
+## The simple installation of openwrt
 
-Работает только если у вас на роутере достаточно места.
+It only works if you have enough space on your router.
 
-Копируем zapret на роутер в `/tmp`.
+Copy zapret to the router in `/tmp`.
 
-Запускаем установщик:\
+Run the installer:\
 `sh /tmp/zapret/install_easy.sh`
 
 Он скопирует в `/opt/zapret` только необходимый минимум файлов.
 
-После успешной установки можно удалить zapret из tmp для освобождения RAM:\
+After successful installation, you can remove zapret from tmp to free up RAM:\
 `rm -r /tmp/zapret`
 
-Для более гибкой настройки перед запуском инсталлятора следует выполнить раздел "Выбор параметров".
+For more flexible configuration, before starting the installer, you should complete the “Selecting parameters” section.
 
-Система простой инсталяции заточена на любое умышленное или неумышленное изменение прав доступа на файлы.
-Устойчива к репаку под windows. После копирования в `/opt` права будут принудительно восстановлены.
+The simple installation system is designed for any intentional or unintentional change in access rights to files.
+Resistant to repack under Windows. After copying to `/opt` the rights will be forcibly restored.
 
 
-## Установка на openwrt в режиме острой нехватки места на диске
+## Installation on openwrt in severely low disk space mode
 
-Требуется около 120-200 кб на диске. Придется отказаться от всего, кроме **tpws**.
+Requires about 120-200 kb on disk. I'll have to give up everything except **tpws**.
 
-**Инструкция для openwrt 22 и выше с nftables**
+**Instructions for openwrt 22 and higher with nftables**
 
-Никаких зависимостей устанавливать не нужно.
+There are no dependencies to install.
 
-***Установка:***
+***Installation:***
 
-1) Скопируйте все из `init.d/openwrt-minimal/tpws/*` в корень openwrt.
-2) Скопируйте бинарник **tpws** подходящей архитектуры в `/usr/bin/tpws`.
-3) Установите права на файлы: `chmod 755 /etc/init.d/tpws /usr/bin/tpws`
-4) Отредактируйте `/etc/config/tpws`
-* Если не нужен ipv6, отредактируйте `/etc/nftables.d/90-tpws.nft` и закомментируйте строки с редиректом ipv6.
+1) Copy everything from `init.d/openwrt-minimal/tpws/*` to the openwrt root.
+2) Copy the **tpws** binary of the appropriate architecture to `/usr/bin/tpws`.
+3) Set file permissions: `chmod 755 /etc/init.d/tpws /usr/bin/tpws`
+4) Edit `/etc/config/tpws`
+* If ipv6 is not needed, edit `/etc/nftables.d/90-tpws.nft` and comment out the lines with the ipv6 redirect.
 5) `/etc/init.d/tpws enable`
 6) `/etc/init.d/tpws start`
 7) `fw4 restart`
 
-***Полное удаление:***
+***Complete removal:***
 
 1) `/etc/init.d/tpws disable`
 2) `/etc/init.d/tpws stop`
 3) `rm -f /etc/nftables.d/90-tpws.nft /etc/firewall.user /etc/init.d/tpws /usr/bin/tpws`
 4) `fw4 restart`
 
-**Инструкция для openwrt 21 и ниже с iptables**
+**Instructions for openwrt 21 and lower with iptables**
 
-***Установите зависимости:***
+***Install dependencies:***
 1) `opkg update`
 2) `opkg install iptables-mod-extra`
-* только для IPV6: `opkg install ip6tables-mod-nat`
+* only for IPV6: `opkg install ip6tables-mod-nat`
 
-Убедитесь, что в `/etc/firewall.user` нет ничего значимого.
-Если есть - не следуйте слепо инструкции. Объедините код или создайте свой `firewall include` в `/etc/config/firewall`.
+Make sure there is nothing significant in `/etc/firewall.user`.
+If there is, do not blindly follow the instructions. Combine the code or create your own `firewall include` in `/etc/config/firewall`.
 
-***Установка:***
+***Installation:***
 
-1) Скопируйте все из `init.d/openwrt-minimal/tpws/*` в корень openwrt.
-2) Скопируйте бинарник **tpws** подходящей архитектуры в `/usr/bin/tpws`.
-3) Установите права на файлы: `chmod 755 /etc/init.d/tpws /usr/bin/tpws`
-4) Отредактируйте `/etc/config/tpws`
-* Если не нужен ipv6, отредактируйте /etc/firewall.user и установите там DISABLE_IPV6=1.
+1) Copy everything from `init.d/openwrt-minimal/tpws/*` to the openwrt root.
+2) Copy the **tpws** binary of the appropriate architecture to `/usr/bin/tpws`.
+3) Set file permissions: `chmod 755 /etc/init.d/tpws /usr/bin/tpws`
+4) Edit `/etc/config/tpws`
+* If you don't need ipv6, edit /etc/firewall.user and set DISABLE_IPV6=1 there.
 5) `/etc/init.d/tpws enable`
 6) `/etc/init.d/tpws start`
 7) `fw3 restart`
 
-***Полное удаление:***
+***Complete removal:***
 
 1) `/etc/init.d/tpws disable`
 2) `/etc/init.d/tpws stop`
@@ -2473,51 +2473,51 @@ zapret_custom_firewall_nft поднимает правила nftables.
 
 ## Android
 
-Без рута забудьте про nfqws и tpws в режиме transparent proxy. tpws будет работать только в режиме `--socks`.
+Without root, forget about nfqws and tpws in transparent proxy mode. tpws will only work in `--socks` mode.
 
-Ядра Android имеют поддержку NFQUEUE. nfqws работает.
+Android kernels have NFQUEUE support. nfqws works.
 
-В стоковых ядрах нет поддержки ipset. В общем случае сложность задачи по поднятию ipset варьируется от
-"не просто" до "почти невозможно". Если только вы не найдете готовое собранное ядро под ваш девайс.
+Stock kernels do not have ipset support. In general, the complexity of the task of raising ipset varies from
+“not easy” to “almost impossible.” Unless you find a ready-made assembled kernel for your device.
 
-tpws будет работать в любом случае, он не требует чего-либо особенного.
+tpws will work anyway, it doesn't require anything special.
 
-Хотя linux варианты под Android работают, рекомендуется использовать специально собранные под bionic бинарники.
-У них не будет проблем с DNS, с локальным временем и именами юзеров и групп.\
-Рекомендуется использовать gid 3003 (AID_INET). Иначе можете получить permission denied на создание сокета.
-Например: `--uid 1:3003`\
-В iptables укажите: `! --uid-owner 1` вместо `! --uid-owner tpws`.\
-Напишите шелл скрипт с iptables и tpws, запускайте его средствами вашего рут менеджера.
-Скрипты автозапуска лежат тут:\
+Although Linux versions work for Android, it is recommended to use binaries specially compiled for bionic.
+They will not have problems with DNS, local time and user and group names.\
+It is recommended to use gid 3003 (AID_INET). Otherwise, you may get permission denied to create a socket.
+For example: `--uid 1:3003`\
+In iptables, specify: `! --uid-owner 1` instead of `! --uid-owner tpws`.\
+Write a shell script with iptables and tpws, run it using your root manager.
+Autorun scripts are here:\
 magisk : /data/adb/service.d\
 supersu: /system/su.d
 
-**nfqws** может иметь такой глюк. При запуске с uid по умолчанию (0x7FFFFFFF) при условии работы на сотовом интерфейсе
-и отключенном кабеле внешнего питания система может частично виснуть. Перестает работать тач и кнопки,
-но анимация на экране может продолжаться. Если экран был погашен, то включить его кнопкой power невозможно.
-Изменение UID на низкий (--uid 1 подойдет) позволяет решить эту проблему.
-Глюк был замечен на android 8.1 на девайсе, основанном на платформе mediatek.
+**nfqws** may have such a glitch. When starting with the default uid (0x7FFFFFFF) and running on a cellular interface
+and the external power cable is disconnected, the system may partially hang. The touchscreen and buttons stop working,
+but the animation on the screen can continue. If the screen has been turned off, it is impossible to turn it on with the power button.
+Changing the UID to a low one (--uid 1 will do) solves this problem.
+The glitch was noticed on Android 8.1 on a device based on the mediatek platform.
 
-Ответ на вопрос куда поместить tpws на android без рута, чтобы потом его запускать из приложений.
-Файл заливаем через adb shell в /data/local/tmp/, лучше всего в субфолдер.
+The answer to the question of where to put tpws on Android without root, so that you can then launch it from applications.
+Upload the file via adb shell to /data/local/tmp/, preferably to a subfolder.
 ```
 mkdir /data/local/tmp/zapret
 adb push tpws /data/local/tmp/zapret
 chmod 755 /data/local/tmp/zapret /data/local/tmp/zapret/tpws
 chcon u:object_r:system_file:s0 /data/local/tmp/zapret/tpws
 ```
-Как найти стратегию обхода сотового оператора: проще всего раздать инет на комп.
-Для этого подойдет любая поддерживаемая ОС. Подключите android через USB кабель к компу и включите режим модема.
-Прогоните стандартную процедуру blockcheck. При переносе правил на телефон уменьшить TTL на 1,
-если правила с TTL присутствуют в стратегии. Если проверялось на windows, убрать параметры `--wf-*`.
+How to find a strategy to bypass a cellular operator: the easiest way is to distribute the Internet to a computer.
+Any supported OS will do this. Connect Android via USB cable to your computer and enable modem mode.
+Run the standard blockcheck procedure. When transferring rules to a phone, reduce TTL by 1,
+if rules with TTL are present in the strategy. If tested on Windows, remove the `--wf-*` parameters.
 
-Работа blockcheck в android shell не поддерживается, но имея рута можно развернуть rootfs какого-нибудь дистрибутива linux.
-Это лучше всего делать с компа через adb shell.
-Если компа нет, то развертка chroot - единственный вариант, хотя и неудобный.
-Подойдет что-то легковесное, например, alpine или даже OpenWrt.
-Если это не эмулятор android, то универсальная архитектура - arm (любой вариант).
-Если вы точно знаете, что ОС у вас 64-разрядная, то лучше вместо arm - arm64.
-Выяснить архитектуру можно командой `uname -a`.
+Blockcheck is not supported in the android shell, but if you have root, you can deploy the rootfs of some Linux distribution.
+This is best done from a computer via adb shell.
+If there is no computer, then chrooting is the only option, although it is inconvenient.
+Something lightweight will do, like alpine or even OpenWrt.
+If this is not an android emulator, then the universal architecture is arm (any option).
+If you know for sure that your OS is 64-bit, then it is better to use arm64 instead of arm.
+You can find out the architecture with the command `uname -a`.
 
 ```
 mount --bind /dev /data/linux/dev
@@ -2526,204 +2526,204 @@ mount --bind /sys /data/linux/sys
 chroot /data/linux
 ```
 
-Первым делом вам нужно будет один раз настроить DNS. Сам он не заведется.
+The first thing you will need to do is configure DNS once. It won't start on its own.
 
 `echo nameserver 1.1.1.1 >/etc/resolv.conf`
 
-Далее нужно средствами пакетного менеджера установить iptables-legacy. Обязательно **НЕ** iptables-nft,
-который, как правило, присутствует по умолчанию. В ядре android нет nftables.\
+Next, you need to install iptables-legacy using the package manager. Required **NOT** iptables-nft,
+which is usually present by default. There is no nftables in the android kernel.\
 `ls -la $(which iptables)`\
-Линк должен указывать на legacy вариант.
-Если нет, значит устанавливайте нужные пакеты вашего дистрибутива, и убеждайтесь в правильности ссылок.\
+The link must point to the legacy option.
+If not, then install the necessary packages for your distribution, and make sure the links are correct.\
 `iptables -S`\
-Так можно проверить, что ваш `iptables` увидел то, что туда насовал android. `iptables-nft` выдаст ошибку.
+This way you can check that your `iptables` saw what android put there. `iptables-nft` will throw an error.
 Далее качаем zapret в `/opt/zapret`. Обычные действия с `install_prereq.sh`, `install_bin.sh`, `blockcheck.sh`.
 
-Учтите, что стратегии обхода сотового оператора и домашнего wifi вероятно будут разные.
-Выделить сотового оператора легко через параметр iptables `-o <имя интерфейса>`. Имя может быть, например, `ccmni0`.
-Его легко увидеть через `ifconfig`.
-Wifi сеть - обычно `wlan0`.
+Please note that the strategies for bypassing a cellular operator and home wifi will likely be different.
+It is easy to select a cellular operator using the iptables parameter `-o <interface name>`. The name could be, for example, `ccmni0`.
+It's easy to see via `ifconfig`.
+Wifi network - usually `wlan0`.
 
-Переключать blockcheck между оператором и wifi можно вместе со всем инетом - включив или выключив wifi.
-Если найдете стратегию для wifi и впишите ее в автостарт, то при подключении к другому wifi
-она может не сработать или вовсе что-то поломать, потому подумайте стоит ли.
-Может быть лучше сделать скрипты типа "запустить обход домашнего wifi", "снять обход домашнего wifi",
-и пользоваться ими по необходимости из терминала.
-Но домашний wifi лучше все-же обходить на роутере.
+You can switch blockcheck between the operator and wifi along with the entire Internet - by turning wifi on or off.
+If you find a strategy for wifi and enter it into autostart, then when connecting to another wifi
+it may not work or even break something, so think about whether it’s worth it.
+It might be better to make scripts like “start home wifi bypass”, “remove home wifi bypass”,
+and use them as needed from the terminal.
+But it’s better to bypass home wifi on a router.
 
 
-## Мобильные модемы и роутеры huawei
+## Huawei mobile modems and routers
 
-Устройства типа E3372, E8372, E5770 разделяют общую идеологию построения системы.
-Имеются 2 вычислительных ядра. Одно ядро выполняет vxworks, другое - linux.
-На 4pda имеются модифицированные прошивки с telnet и adb. Их и нужно использовать.
+Devices such as E3372, E8372, E5770 share a common system ideology.
+There are 2 computing cores. One kernel runs vxworks, the other runs linux.
+4pda has modified firmware with telnet and adb. They should be used.
 
-Дальнейшие утверждения проверены на E8372. На других может быть аналогично или похоже.
-Присутствуют дополнительные аппаратные блоки для offload-а сетевых функций.
-Не весь трафик идет через linux. Исходящий трафик с самого модема проходит
-цепочку OUTPUT нормально, на FORWARD =>wan часть пакетов выпадает из tcpdump.
+Further statements are tested on E8372. It may be similar or similar to others.
+There are additional hardware units for offload network functions.
+Not all traffic goes through Linux. Outgoing traffic from the modem itself passes
+the OUTPUT chain is normal, on FORWARD =>wan some packets fall out of tcpdump.
 
-tpws работает обычным образом.
+tpws works as usual.
 
 `nfqueue` поломан, можно собрать фиксящий модуль https://github.com/im-0/unfuck-nfqueue-on-e3372h,
-используя исходники с huawei open source. Исходники содержат тулчейн и полусобирающееся,
-неактуальное ядро. Конфиг можно взять с рабочего модема из `/proc/config.gz`.
-С помощью этих исходников умельцы могут собрать модуль `unfuck_nfqueue.ko`.
-После его применения NFQUEUE и nfqws для arm работают нормально.
+using sources from Huawei open source. The sources contain the toolchain and semi-assembled,
+irrelevant kernel. The config can be taken from the working modem from `/proc/config.gz`.
+Using these sources, craftsmen can build the `unfuck_nfqueue.ko` module.
+After using it, NFQUEUE and nfqws for arm work fine.
 
-Чтобы избежать проблемы с offload-ом при использовании nfqws, следует комбинировать tpws в режиме tcp proxy и nfqws.
-Правила NFQUEUE пишутся для цепочки OUTPUT.
-connbytes придется опускать, поскольку модуля в ядре нет. Но это не смертельно.
+To avoid the problem with offload when using nfqws, you should combine tpws in tcp proxy and nfqws mode.
+NFQUEUE rules are written for the OUTPUT chain.
+connbytes will have to be omitted since there is no module in the kernel. But it's not fatal.
 
-Скрипт автозапуска - `/system/etc/autorun.sh`. Создайте свой скрипт настройки zapret,
-запускайте из конца autorun.sh через "&". Скрипт должен в начале делать sleep 5, чтобы дождаться
-поднятия сети и iptables от huawei.
+Autorun script - `/system/etc/autorun.sh`. Create your own zapret configuration script,
+run from the end of autorun.sh via "&". The script should do sleep 5 at the beginning to wait
+raising the network and iptables from Huawei.
 
 > [!WARNING]
-> На этом модеме происходят хаотические сбросы соединений tcp по непонятным причинам.
-> Выглядит это так, если запускать curl с самого модема:
+> This modem is experiencing chaotic resets of tcp connections for unknown reasons.
+> It looks like this if you run curl from the modem itself:
 ```
 curl www.ru
 curl: (7) Failed to connect to www.ru port 80: Host is unreachable
 ```
-Возникает ошибка сокета EHOSTUNREACH (errno -113). То же самое видно в tpws.
-В броузере не подгружаются части веб страниц, картинки, стили.
-В tcpdump на внешнем интерфейсе eth_x виден только единственный и безответный SYN пакет, без сообщений ICMP.
-ОС каким-то образом узнает о невозможности установить TCP соединение и выдает ошибку.
-Если выполнять подключение с клиента, то SYN пропадают, соединение не устанавливается.
-ОС клиента проводит ретрансмиссию, и с какого-то раза подключение удается.
-Поэтому без tcp проксирования в этой ситуации сайты тупят, но загружаются, а с проксированием
-подключение выполняется, но вскоре сбрасывается без каких-либо данных, и броузеры не пытаются установить
-его заново. Поэтому качество броузинга с tpws может быть хуже, но дело не в tpws.
-Частота сбросов заметно возрастает, если запущен торент клиент, имеется много tcp соединений.
-Однако, причина не в переполнении таблицы conntrack. Увеличение лимитов и очистка conntrack не помогают.
-Предположительно эта особенность связана с обработкой пакетов сброса соединения в hardware offload.
-Точного ответа на вопрос у меня нет. Если вы знаете - поделитесь, пожалуйста.
-Чтобы не ухудшать качество броузинга, можно фильтровать заворот на tpws по ip фильтру.
-Поддержка ipset отсутствует. Значит, все, что можно сделать - создать индивидуальные правила
-на небольшое количество хостов.
+A socket error EHOSTUNREACH (errno -113) occurs. The same can be seen in tpws.
+The browser does not load parts of web pages, images, styles.
+In tcpdump on the external interface eth_x, only a single and unresponsive SYN packet is visible, without ICMP messages.
+The OS somehow finds out that it is impossible to establish a TCP connection and throws an error.
+If you connect from a client, the SYNs disappear and the connection is not established.
+The client OS performs retransmission, and after some time the connection is successful.
+Therefore, without tcp proxying in this situation, sites are slow, but they load, but with proxying
+the connection is made, but soon resets without any data, and browsers do not attempt to establish
+him again. Therefore, the quality of browsing with tpws may be worse, but the problem is not with tpws.
+The frequency of resets increases noticeably if the torrent client is running and there are many TCP connections.
+However, the reason is not that the conntrack table is full. Increasing limits and clearing conntrack does not help.
+Presumably this feature is related to the processing of connection reset packets in hardware offload.
+I don't have an exact answer to the question. If you know, please share.
+In order not to degrade the quality of browsing, you can filter the turn on tpws using an IP filter.
+There is no ipset support. This means that all you can do is create individual rules
+for a small number of hosts.
 
-Некоторые наброски скриптов присутствуют в [files/huawei](./../files/huawei/). _Не готовое решение!_ Смотрите, изучайте, приспосабливайте.\
+Some draft scripts are present in [files/huawei](./../files/huawei/). _Not a ready-made solution!_ Look, study, adapt.\
 Здесь можно скачать готовые полезные статические бинарники для arm, включая curl : https://github.com/bol-van/bins
 
 
 ## FreeBSD, OpenBSD, MacOS
 
-Описано в [документации BSD](./bsd.md)
+Described in [BSD documentation](./bsd.md)
 
 ## Windows
 
-Описано в [документации Windows](./windows.md)
+Described in [Windows documentation](./windows.md)
 
 
-## Другие прошивки
+## Other firmware
 
-Для статических бинарников не имеет значения на чем они запущены: PC, android, приставка, роутер, любой другой девайс.
-Подойдет любая прошивка, дистрибутив linux. Статические бинарники запустятся на всем.
-Им нужно только ядро с необходимыми опциями сборки или модулями.
-Но кроме бинарников в проекте используются еще и скрипты, в которых задействуются некоторые
-стандартные программы.
+For static binaries, it doesn’t matter what they are running on: PC, Android, set-top box, router, any other device.
+Any firmware or Linux distribution will do. Static binaries will run on everything.
+They only need a kernel with the necessary build options or modules.
+But in addition to binaries, the project also uses scripts that involve some
+standard programs.
 
-Основные причины почему нельзя просто так взять и установить эту систему на что угодно:
-* отсутствие доступа к девайсу через shell
-* отсутствие рута
-* отсутствие раздела r/w для записи и энергонезависимого хранения файлов
-* отсутствие возможности поставить что-то в автозапуск
-* отсутствие cron
-* неотключаемый flow offload или другая проприетарщина в netfilter
-* недостаток модулей ядра или опций его сборки
-* недостаток модулей iptables (/usr/lib/iptables/lib*.so)
-* недостаток стандартных программ (типа ipset, curl) или их кастрированность (облегченная замена)
-* кастрированный или нестандартный шелл sh
+The main reasons why you can’t just go and install this system on anything:
+* lack of access to the device via shell
+* no root
+* lack of r/w partition for recording and non-volatile storage of files
+* inability to set something to autorun
+* no cron
+* non-disabled flow offload or other proprietary stuff in netfilter
+* lack of kernel modules or kernel build options
+* lack of iptables modules (/usr/lib/iptables/lib*.so)
+* lack of standard programs (such as ipset, curl) or their castration (easy replacement)
+* castrated or custom shell sh
 
-Если в вашей прошивке есть все необходимое, то вы можете адаптировать zapret под ваш девайс в той или иной степени.
-Может быть у вас не получится поднять все части системы, однако вы можете хотя бы попытаться
-поднять tpws и завернуть на него через -j REDIRECT весь трафик на порт 80.
-Если вам есть куда записать tpws, есть возможность выполнять команды при старте, то как минимум
-это вы сделать сможете. Скорее всего поддержка REDIRECT в ядре есть. Она точно есть на любом роутере,
-на других устройствах под вопросом. NFQUEUE, ipset на большинстве прошивок отсутствуют из-за ненужности.
+If your firmware has everything you need, then you can adapt zapret to your device to one degree or another.
+You may not be able to lift all parts of the system, but you can at least try
+raise tpws and send all traffic to port 80 to it via -j REDIRECT.
+If you have somewhere to write tpws, it is possible to execute commands at startup, then at least
+you can do this. Most likely there is support for REDIRECT in the kernel. It is definitely available on any router,
+on other devices it is questionable. NFQUEUE, ipset are missing on most firmwares due to their uselessness.
 
-Пересобрать ядро или модули для него будет скорее всего достаточно трудно.
-Для этого вам необходимо будет по крайней мере получить исходники вашей прошивки.
-User mode компоненты могут быть привнесены относительно безболезненно, если есть место куда их записать.
-Специально для девайсов, имеющих область r/w, существует проект entware.
-Некоторые прошивки даже имеют возможность его облегченной установки через веб интерфейс.
-entware содержит репозиторий user-mode компонент, которые устанавливаются в /opt.
-С их помощью можно компенсировать недостаток ПО основной прошивки, за исключением ядра.
+Rebuilding the kernel or modules for it will most likely be quite difficult.
+To do this, you will need to at least obtain the sources of your firmware.
+User mode components can be introduced relatively painlessly if there is a place to write them down.
+Especially for devices with an r/w area, there is an entware project.
+Some firmware even have the ability to easily install it via a web interface.
+entware contains a repository of user-mode components that are installed in /opt.
+With their help, you can compensate for the lack of software in the main firmware, with the exception of the kernel.
 
-Можно попытаться использовать sysv init script таким образом, как это описано в разделе
-"Прикручивание к системе управления фаерволом или своей системе запуска".
-В случае ругани на отсутствие каких-то базовых программ, их следует восполнить посредством entware.
-Перед запуском скрипта путь к дополнительным программам должен быть помещен в PATH.
+You can try to use the sysv init script in the same way as described in the section
+"Screwing it to the firewall control system or your launch system."
+If you complain about the lack of some basic programs, they should be replenished through entware.
+Before running the script, the path to additional programs must be placed in PATH.
 
-_Подробное описание настроек для других прошивок выходит за рамки данного проекта._
+_A detailed description of settings for other firmware is beyond the scope of this project._
 
-OpenWrt является одной из немногих относительно полноценных linux систем для embedded devices.
-Она характеризуется следующими вещами, которые и послужили основой выбора именно этой прошивки:
-* полный root доступ к девайсу через shell. на заводских прошивках чаще всего отсутствует, на многих альтернативных есть
-* корень r/w. это практически уникальная особенность OpenWrt. заводские и большинство альтернативных прошивок
-  построены на базе squashfs root (r/o), а конфигурация хранится в специально отформатированной области
-  встроенной памяти, называемой nvram.  не имеющие r/w корня системы сильно кастрированы. они не имеют
-  возможности доустановки ПО из репозитория без специальных вывертов и заточены в основном
-  на чуть более продвинутого, чем обычно, пользователя и управление имеющимся функционалом через веб интерфейс,
-  но функционал фиксированно ограничен. альтернативные прошивки, как правило, могут монтировать r/w раздел
-  в какую-то область файловой системы, заводские обычно могут монтировать лишь флэшки, подключенные к USB,
-  и не факт, что есть поддержка unix файловых системы. может быть поддержка только fat и ntfs.
-* возможность выноса корневой файловой системы на внешний носитель (extroot) или создания на нем оверлея (overlay)
-* наличие менеджера пакетов opkg и репозитория софта
-* flow offload предсказуемо, стандартно и выборочно управляем, а так же отключаем
-* в репозитории есть все модули ядра, их можно доустановить через opkg. ядро пересобирать не нужно.
-* в репозитории есть все модули iptables, их можно доустановить через opkg
-* в репозитории есть огромное количество стандартных программ и дополнительного софта
-* наличие SDK, позволяющего собрать недостающее
-
-
-## Обход блокировки через сторонний хост
-
-Если не работает автономный обход, приходится перенаправлять трафик через сторонний хост.
-Предлагается использовать прозрачный редирект через socks5 посредством `iptables+redsocks`, либо `iptables+iproute+vpn`.
-Настройка варианта с redsocks на OpenWrt описана в [redsocks.txt](./redsocks.txt).
-Настройка варианта с `iproute+wireguard` - в [wireguard_iproute_openwrt.txt](./wireguard_iproute_openwrt.txt).
+OpenWrt is one of the few relatively full-fledged Linux systems for embedded devices.
+It is characterized by the following things, which served as the basis for choosing this particular firmware:
+* full root access to the device via shell. On factory firmware it is most often absent, on many alternative ones there is
+* root r/w. this is almost a unique feature of OpenWrt. factory and most alternative firmware
+built on top of squashfs root (r/o), and the configuration is stored in a specially formatted area
+built-in memory called nvram.  systems without r/w roots are strongly castrated. they don't have
+Possibility of additional installation of software from the repository without any special tricks and is mainly sharpened
+for a slightly more advanced user than usual and control of existing functionality via a web interface,
+but the functionality is fixedly limited. alternative firmwares can usually mount r/w partition
+in some area of ​​the file system, factory ones can usually mount only flash drives connected to USB,
+and it’s not a fact that there is support for unix file systems. May only support fat and ntfs.
+* the ability to move the root file system to external media (extroot) or create an overlay on it (overlay)
+* availability of opkg package manager and software repository
+* flow offload is predictable, standard and selectively controlled, as well as disabled
+* The repository contains all the kernel modules; they can be additionally installed via opkg. There is no need to rebuild the kernel.
+* The repository contains all iptables modules, they can be additionally installed via opkg
+* the repository has a huge number of standard programs and additional software
+* the presence of an SDK that allows you to collect the missing
 
 
-## Почему стоит вложиться в покупку VPS
+## Bypassing blocking through a third-party host
 
-VPS — это виртуальный сервер. Существует огромное множество датацентров, предлагающих данную услугу.
-На VPS могут выполняться какие угодно задачи. От простого веб-сайта до навороченной системы собственной разработки.
-Можно использовать VPS и для поднятия собственного VPN или прокси.
-Сама широта возможных способов применения и распространенность услуги сводят к минимуму возможности
-регуляторов по бану сервисов такого типа. Да, если введут белые списки, то решение загнется, но это будет уже другая
-реальность, в которой придется изобретать иные решения.
-Пока этого не сделали, никто не будет банить хостинги просто потому, что они предоставляют хостинг услуги.
-Вы, как индивидуум, скорее всего, никому не нужны. Подумайте чем вы отличаетесь от известного VPN провайдера.
-VPN-провайдер предоставляет _простую_ и _доступную_ услугу по обходу блокировок для масс.
-Этот факт делает его первоочередной целью блокировки. РКН направит уведомление, после отказа сотрудничать
-заблокирует VPN. Предоплаченная сумма пропадет.
-У регуляторов нет и никогда не будет ресурсов для тотальной проверки каждого сервера в сети.
-Возможен китайский расклад, при котором DPI выявляет VPN-протоколы и динамически банит IP серверов,
-предоставляющих нелицензированный VPN. Но имея знания, голову, вы всегда можете обфусцировать
-VPN трафик или применить другие типы VPN, более устойчивые к анализу на DPI, или просто менее широкоизвестные,
-а следовательно с меньшей вероятностью обнаруживаемые регулятором.
-У вас есть свобода делать на вашем VPS все что вы захотите, адаптируясь к новым условиям.
-Да, это потребует знаний. Вам выбирать учиться и держать ситуацию под контролем, когда вам ничего запретить
-не могут, или покориться системе.
+If offline bypass does not work, you have to redirect traffic through a third-party host.
+It is proposed to use a transparent redirect via socks5 using `iptables+redsocks`, or `iptables+iproute+vpn`.
+Setting up the redsocks version of OpenWrt described in [redsocks.txt](./redsocks.txt).
+Setting the variant with `iproute+wireguard` - in [wireguard_iproute_openwrt.txt](./wireguard_iproute_openwrt.txt).
 
-VPS можно приобрести в множестве мест. Существуют специализированные на поиске предложений VPS порталы.\
+
+## Why is it worth investing in a VPS?
+
+VPS is a virtual server. There are a huge number of data centers offering this service.
+Any task can be performed on a VPS. From a simple website to a sophisticated proprietary system.
+You can also use VPS to create your own VPN or proxy.
+The sheer breadth of possible uses and the prevalence of the service minimize the possibilities
+regulators to ban services of this type. Yes, if white lists are introduced, the solution will be abandoned, but it will be a different story
+a reality in which other solutions will have to be invented.
+Until this is done, no one will ban hosting companies simply because they provide hosting services.
+You, as an individual, most likely are not needed by anyone. Think about how you differ from a well-known VPN provider.
+The VPN provider provides a _simple_ and _affordable_ block bypass service for the masses.
+This fact makes it a prime target for blocking. RKN will send a notification after refusal to cooperate
+will block the VPN. The prepaid amount will be lost.
+Regulators do not and never will have the resources to conduct a complete inspection of every server on the network.
+A Chinese scenario is possible, in which DPI detects VPN protocols and dynamically bans IP servers,
+providing unlicensed VPN. But with knowledge and head, you can always obfuscate
+VPN traffic or use other types of VPN that are more resistant to DPI analysis, or simply less well-known,
+and therefore less likely to be detected by the regulator.
+You have the freedom to do whatever you want on your VPS, adapting to new conditions.
+Yes, this will require knowledge. You choose to learn and keep the situation under control when nothing is forbidden to you
+cannot, or submit to the system.
+
+VPS can be purchased from many places. There are portals specialized in searching for VPS offers.\
 Например, [вот этот](https://vps.today).
-Для персонального VPN сервера обычно достаточно самой минимальной конфигурации, но с безлимитным трафиком или
-с большим лимитом по трафику (терабайты). Важен и тип VPS. OpenVZ подойдёт для OpenVPN, но
-вы не поднимете на нем WireGuard, IPsec, то есть все, что требует kernel mode.
-Для kernel mode требуется тип виртуализации, предполагающий запуск полноценного экземпляра ОС linux
-вместе с ядром. Подойдут KVM, Xen, Hyper-V, VMware.
+For a personal VPN server, the most minimal configuration is usually sufficient, but with unlimited traffic or
+with a large traffic limit (terabytes). The type of VPS is also important. OpenVZ is suitable for OpenVPN, but
+you won’t be able to install WireGuard or IPsec on it, that is, everything that requires kernel mode.
+Kernel mode requires a type of virtualization that involves running a full-fledged instance of the Linux OS
+along with the core. KVM, Xen, Hyper-V, VMware are suitable.
 
-По цене можно найти предложения, которые будут дешевле готовой VPN услуги, но при этом вы сам хозяин в своей лавке
-и не рискуете попасть под бан регулятора, разве что «заодно» — под ковровую бомбардировку с баном миллионов IP.
-Кроме того, если вам совсем все кажется сложным, прочитанное вызывает ступор и вы точно знаете, что ничего
-из описанного сделать не сможете, то вы сможете хотя бы использовать динамическое перенаправление портов SSH
-для получения шифрованного SOCKS-прокси и прописать его в браузер. Знания linux не нужны совсем.
-Это вариант наименее напряжный для чайников, хотя и не самый удобный в использовании.
+In terms of price, you can find offers that will be cheaper than a ready-made VPN service, but at the same time you are the boss of your own shop
+and you don’t risk getting banned by the regulator, unless “at the same time” - carpet bombing with a ban on millions of IPs.
+In addition, if everything seems completely complicated to you, what you read causes stupor and you know for sure that nothing
+If you can’t do anything described above, you can at least use dynamic SSH port forwarding
+to receive an encrypted SOCKS proxy and register it in the browser. Linux knowledge is not needed at all.
+This option is the least stressful for dummies, although not the most convenient to use.
 
-## Поддержать разработчика
+## Support the developer
 
 USDT `0x3d52Ce15B7Be734c53fc9526ECbAB8267b63d66E`
 

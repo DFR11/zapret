@@ -1,152 +1,152 @@
-# Быстрая настройка Windows
+# Windows Quick Setup
 
-Специально для тех, кто хочет побыстрее начать, но не хочет слишком углубляться в простыню [readme.md](./readme.md).
+Especially for those who want to get started quickly, but don’t want to go too deep into the sheet [readme.md](./readme.md).
 > [!CAUTION]  
-> Как обычно, компьютерная грамотность ложится полностью на вас.
-> Вы должны уметь работать с консолью windows и иметь минимальные навыки обращения с командными файлами `bat`, `cmd`.
-> Если грамотность отсутствует и возникает куча _"как?"_ на базовых вещах, значит эта программа не для вас.
-> Разработчик не будет отвечать на вопросы из серии школы компьютерной грамотности.
-> Если вы все-таки хотите продолжать, задавайте вопросы в дискуссиях на github или на форумах.
-> Возможно, кто-то вам поможет. Но не надо писать issue на github. Они будут закрываться сразу.
+> As always, computer literacy falls entirely on you.
+> You must be able to work with the Windows console and have minimal skills in handling `bat`, `cmd` command files.
+> If there is no literacy and a lot of _"how?"_ arises on basic things, then this program is not for you.
+> The developer will not answer questions from the computer literacy school series.
+> If you still want to continue, ask questions in the github discussions or forums.
+> Perhaps someone will help you. But there is no need to write an issue on github. They will close immediately.
 
-## Немного разъяснений
+## A little clarification
 
-Обход DPI является хакерской методикой. Под этим словом понимается метод, которому оказывается активное противодействие и поэтому
-автоматически не гарантирована работоспособность в любых условиях и на любых ресурсах,
-требуется настройка под специфические условия у вашего провайдера. Условия могут меняться со временем,
-и методика может начинать или переставать работать, может потребоваться повторный анализ ситуации.
-Могут обнаруживаться отдельные ресурсы, которые заблокированы иначе, и которые не работают или перестали работать.
-Могут и сломаться отдельные незаблокированные ресурсы.
-Поэтому очень желательно иметь знания в области сетей, чтобы иметь возможность проанализировать техническую ситуацию.
-Не будет лишним иметь обходные каналы проксирования трафика на случай, если обход DPI не помогает.
+DPI bypass is a hacking technique. This word means a method that is actively opposed and therefore
+performance is not automatically guaranteed under any conditions and on any resources,
+requires configuration for specific conditions from your provider. Conditions may change over time,
+and the technique may begin or stop working, a re-analysis of the situation may be required.
+Individual resources that are otherwise blocked may be discovered that are not working or have stopped working.
+Some unblocked resources may also break.
+Therefore, it is very desirable to have knowledge in the field of networks in order to be able to analyze the technical situation.
+It would be a good idea to have traffic proxy bypass channels in case DPI bypass does not help.
 
-Вариант, когда вы нашли стратегию где-то в интернете и пытаетесь ее приспособить к своему случаю - заведомо проблемный.
-Нет универсальной таблетки. Везде ситуация разная. В сети гуляют написанные кем-то откровенные глупости, которые тиражируются массово ничего не понимающей публикой.
-Такие варианты чаще всего работают нестабильно, только на части ресурсов, только на части провайдеров, не работают вообще или ломают другие ресурсы. В худших случаях еще и устраивают флуд в сети.
-Если даже вариант когда-то и работал неплохо, завтра он может перестать, а в сети останется устаревшая информация.
+The option when you found a strategy somewhere on the Internet and are trying to adapt it to your case is obviously problematic.
+There is no universal pill. Everywhere the situation is different. There are outright nonsense written by someone floating around the Internet, which is being replicated en masse by a public that does not understand anything.
+Such options most often work unstable, only on some resources, only on some providers, do not work at all or break other resources. In the worst cases, they also flood the network.
+Even if an option once worked well, tomorrow it may stop, and outdated information will remain on the network.
 
-Особо осторожным нужно быть со сторонними сборками. Там могут быть вирусы. Не в каждой сборке, но уже были замечены скаммеры.
-Видео на ютубе как просто обойти блокировку, прилагающийся архив, в котором какая-то ерунда, написанная на питоне, скачивающая зловред.
+You need to be especially careful with third-party assemblies. There may be viruses in there. Not in every build, but scammers have already been noticed.
+Video on YouTube on how to easily bypass the blocking, attached archive, in which some nonsense written in Python downloads the malware.
 
-Будем считать, что у вас есть windows 7 или выше. Задача - обойти блокировки с самой системы.
+We will assume that you have Windows 7 or higher. The task is to bypass blockages from the system itself.
 
-## Я ЧТО-ТО ДЕЛАЛ, НЕ ПОМОГЛО, КАК ТЕПЕРЬ ЭТО УДАЛИТЬ
+## I DID SOMETHING, IT DIDN’T WORK, HOW TO DELETE IT NOW
 
-Если вы не устанавливали zapret как службу или запланированную задачу (а это требует редактирования cmd файлов),
-достаточно закрыть окно с winws и запустить windivert_delete.cmd.
-Альтернатива - перезагрузить компьютер.
-После чего можно удалить папку с zapret. На этом деинсталляция закончена.
-Если же вы устанавливали zapret как службу, то вы наверняка знаете как ее удалить.
+If you did not install zapret as a service or scheduled task (and this requires editing cmd files),
+Just close the winws window and run windivert_delete.cmd.
+An alternative is to restart your computer.
+After which you can delete the folder with zapret. This completes the uninstallation.
+If you installed zapret as a service, then you probably know how to remove it.
 
-Если вдруг среди того, на что вы нажимали, есть слова "general", "alt", ".bat", "автозапуск", или же есть файлы, которые отсутствуют
-в оригинальных репозиториях, то это сборка. Вы не получите ответа как ее удалить от разработчика zapret.
-Спрашивайте самих сборщиков. Разработчик не предоставляет простого решения, этим занимаются сборщики, но они и сами отвечают за свои продукты.
+If suddenly among what you clicked on there are the words “general”, “alt”, “.bat”, “autorun”, or there are files that are missing
+in the original repositories, then this is a build. You will not receive an answer on how to remove it from the developer zapret.
+Ask the collectors themselves. The developer does not provide a simple solution, the assemblers do this, but they themselves are responsible for their products.
 
-## Настройка
+## Setup
 
 1. Скачайте и распакуйте архив https://github.com/bol-van/zapret-win-bundle/archive/refs/heads/master.zip.
 
-2. Если у вас Windows 7 x64, однократно запустите `win7/install_win7.cmd`. Батник заменит файлы windivert на совместимую с Windows 7 версию.
+2. If you have Windows 7 x64, run `win7/install_win7.cmd` once. The batch file will replace the windivert files with a version compatible with Windows 7.
 
-   > Для 32-битных систем Windows нет готового полного варианта.
+   > There is no ready-made complete option for 32-bit Windows systems.
 
-   > На windows 11 arm64 выполните `arm64/install_arm64.cmd` от имени администратора и перезагрузите компьютер.
-   > Читайте [docs/windows.md](./windows.md)
+   > On windows 11 arm64, run `arm64/install_arm64.cmd` as administrator and restart your computer.
+   > Read [docs/windows.md](./windows.md)
    >
-   > Имейте в виду, что антивирусы могут плохо реагировать на windivert.
-   > cygwin так же имеет внушительный список несовместимостей с антивирусами, хотя современные антивирусы
-   > более-менее научились с ним дружить.
-   > Если проблема имеет место , используйте исключения. Если не помогает - отключайте антивирус совсем.
+   > Please be aware that antivirus programs may not respond well to windivert.
+   > cygwin also has an impressive list of incompatibilities with antiviruses, although modern antiviruses
+   > more or less learned to be friends with him.
+   > If the problem occurs, use exceptions. If it doesn't help, disable your antivirus completely.
 
-3. Убедитесь, что у вас отключены все средства обхода блокировок, в том числе и сам zapret.
+3. Make sure that you have disabled all means of bypassing locks, including zapret itself.
 
-4. Если вы работаете в виртуальной машине, необходимо использовать соединение с сетью в режиме bridge. nat не подходит
+4. If you are working in a virtual machine, you must use a network connection in bridge mode. nat doesn't work
 
-5. Запустите `blockcheck\blockcheck.cmd`.  blockcheck в начале проверяет **DNS**.
-   Если выводятся сообщения о подмене адресов, то нужно будет решить проблему с **DNS**.
-   blockcheck перейдет в этом случае на **DoH** _(DNS over HTTPS)_ и будет пытаться получить и использовать реальные IP адреса.
-   Но если вы не настроите решение этой проблемы, обход будет работать только для тех программ,
-   которые сами реализуют механизмы SecureDNS. Для других программ обход работать не будет.
+5. Run `blockcheck\blockcheck.cmd`.  blockcheck checks **DNS** first.
+If messages about address spoofing are displayed, then you will need to solve the problem with **DNS**.
+blockcheck will switch to **DoH** _(DNS over HTTPS)_ in this case and will try to obtain and use real IP addresses.
+But unless you configure a solution to this problem, the workaround will only work for those programs
+which themselves implement SecureDNS mechanisms. The bypass will not work for other programs.
 
-   > Решение проблемы DNS выходит за рамки проекта. Обычно она решается либо заменой DNS серверов
-   > от провайдера на публичные (`1.1.1.1`, `8.8.8.8`), либо в случае перехвата провайдером обращений
+   > Solving the DNS problem is beyond the scope of the project. Usually it can be solved either by replacing DNS servers
+   > from the provider to public (`1.1.1.1`, `8.8.8.8`), or in case of interception of requests by the provider
    > к сторонним серверам - через специальные средства шифрования DNS запросов, такие как [dnscrypt](https://www.dnscrypt.org/), **DoT** _(DNS over TLS)_, **DoH**.
-   > В современных броузерах чаще всего DoH включен по умолчанию, но curl будет использовать обычный системный DNS.
-   > win11 поддерживает системные DoH из коробки. Они не настроены по умолчанию.
-   > В последних билдах win10 существует неофициальный обходной путь для включения DoH.
-   > Для остальных систем нужно стороннее решение, работающие по принципу DNS proxy.
+   > In modern browsers, DoH is most often enabled by default, but curl will use the normal system DNS.
+   > win11 supports system DoH out of the box. They are not configured by default.
+   > There is an unofficial workaround to enable DoH in the latest win10 builds.
+   > For other systems, you need a third-party solution that works on the DNS proxy principle.
    >
    > Тут все разжевано как и где это включается : https://hackware.ru/?p=13707
 
-6. blockcheck позволяет выявить рабочую стратегию обхода блокировок.
-   Лог скрипта будет сохранен в `blockcheck\blockcheck.log`.
-   Запомните/перепишите найденные стратегии.
+6. blockcheck allows you to identify a working strategy for bypassing blocking.
+The script log will be saved in `blockcheck\blockcheck.log`.
+Remember/rewrite the strategies you find.
 
-   Следует понимать, что скрипт проверяет доступность только конкретного
-   домена, который вы вводите в начале, конкретной программой curl.
-   У разных клиентов есть свой фингерпринт. У броузеров один, у curl другой.
-   Может применяться или не применяться многопакетный TLS с постквантовой криптографией (kyber).
-   От этого может зависеть работоспособность стратегий.
-   Обычно остальные домены блокированы подобным образом, **но не факт**.
-   Бывают специальные блокировки. Некоторые параметры требуют тюнинга под "общий знаменатель".
-   В большинстве случаев можно объединить несколько стратегий в одну универсальную, и это **крайне
-   желательно**, но это требует понимания как работают стратегии. zapret **не может
-   пробить блокировку по IP адресу**. Для проверки нескольких доменов вводите их через пробел.
+It should be understood that the script checks the availability of only a specific
+domain you enter at the beginning with a specific curl program.
+Different clients have their own fingerprint. Browsers have one, curl has another.
+May or may not use multi-packet TLS with post-quantum cryptography (kyber).
+The effectiveness of strategies may depend on this.
+Usually other domains are blocked in a similar way, **but not a fact**.
+There are special locks. Some parameters require tuning to suit the “common denominator”.
+In most cases, you can combine several strategies into one universal one, and this is **extremely
+desirable**, but it requires an understanding of how strategies work. prohibited **cannot
+break through blocking by IP address**. To check multiple domains, enter them separated by a space.
 
-   > Сейчас блокираторы ставят на магистральных каналах. В сложных случаях у
-   > вас может быть несколько маршрутов с различной длиной по ХОПам, с DPI на
-   > разных хопах. Приходится преодолевать целый зоопарк DPI, которые еще и
-   > включаются в работу хаотичным образом или образом, зависящим от
-   > направления (IP сервера). скрипт не всегда может выдать вам в итогах
-   > оптимальную стратегию, которую надо просто переписать в настройки. В
-   > некоторых случаях надо реально думать что происходит, анализируя результат
-   > на разных стратегиях.
+   > Nowadays, blockers are installed on main canals. In difficult cases
+   > you may have several routes with different lengths along the HOPs, with DPI on
+   > different hops. You have to overcome a whole zoo of DPIs, which also
+   > are included in the work in a chaotic manner or in a manner dependent on
+   > directions (server IP). the script may not always give you the results
+   > the optimal strategy, which you simply need to rewrite in the settings. IN
+   > in some cases you need to really think about what is happening when analyzing the result
+   > on different strategies.
    >
    > Далее, имея понимание что работает на http, https, quic, нужно сконструировать параметры запуска winws
-   > с использованием мультистратегии. Как работают мультистратегии описано в [readme.md](./readme.md#множественные-стратегии).
+   > using multi-strategy. How multi-strategies work is described in [readme.md](./readme.md#multiple-strategies).
    >
-   > Прежде всего вам нужно собрать фильтр перехватываемого трафика. Это делается через параметры
+   > First of all, you need to assemble a filter for intercepted traffic. This is done through parameters
    > `--wf-l3`, `--wf-tcp`, `--wf-udp`.
-   > `--wf-l3` относится к версии ip протокола - ipv4 или ipv6.
-   > `--wf-tcp` и `--wf-udp` содержат перечень портов или диапазонов портов через запятую.
+   > `--wf-l3` refers to the version of the IP protocol - ipv4 or ipv6.
+   > `--wf-tcp` and `--wf-udp` contain a comma-separated list of ports or port ranges.
    > 
    > Пример стандартного фильтра для перехвата http, https, quic : `--wf-tcp=80,443` `--wf-udp=443`
    > 
-   > Фильтр должен быть минимально необходимым. Перехват лишнего трафика приведет только к бессмысленному расходованию ресурсов процессора и замедлению интернета.
+   > The filter should be the minimum required. Intercepting unnecessary traffic will only waste CPU resources and slow down the Internet.
    >
-   > Если кратко по мультистратегии, то обычно параметры конструируются так :
+   > Briefly about multi-strategy, the parameters are usually constructed like this:
    > ```
-   > --filter-udp=443 'параметры для quic' --new
+   > --filter-udp=443 'parameters for quic' --new
    > --filter-tcp=80,443 'обьединенные параметры для http и https'
    > ```
    >
-   > Или так :
+   > Or like this:
    > ```
-   > --filter-udp=443 'параметры для quic' --new
+   > --filter-udp=443 'parameters for quic' --new
    > --filter-tcp=80 'параметры для http' --new
    > --filter-tcp=443 'параметры для https'
    > ```
    >
-   > Если стратегии отличаются по версии ip протокола, и вы не можете их обьединить, фильтр пишется так :
+   > If the strategies differ in IP protocol version and you cannot combine them, the filter is written like this:
    > ```
-   > --filter-l3=ipv4 --filter-udp=443 "параметры для quic ipv4" --new
+   > --filter-l3=ipv4 --filter-udp=443 "parameters for quic ipv4" --new
    > --filter-l3=ipv4 --filter-tcp=80 'параметры для http ipv4' --new
    > --filter-l3=ipv4 --filter-tcp=443 'параметры для https ipv4' --new
-   > --filter-l3=ipv6 --filter-udp=443 "параметры для quic ipv6" --new
+   > --filter-l3=ipv6 --filter-udp=443 "parameters for quic ipv6" --new
    > --filter-l3=ipv6 --filter-tcp=80 "параметры для http ipv6" --new
    > --filter-l3=ipv6 --filter-tcp=443 "параметры для https ipv6"
    > ```
    >
-   > Но здесь совсем _"копи-пастный"_ вариант.
-   > Чем больше вы обьедините стратегий и сократите их общее количество, тем будет лучше.
+   > But this is a completely copy-and-paste option.
+   > The more strategies you combine and reduce their total number, the better it will be.
    >
-   > Если вам не нужно дурение отдельных протоколов, лучше всего будет их убрать из системы перехвата трафика через
-   > параметры `--wf-*` и убрать соответствующие им профили мультистратегии.
+   > If you do not need to fool individual protocols, it would be best to remove them from the traffic interception system via
+   > parameters `--wf-*` and remove the corresponding multi-strategy profiles.
    > tcp 80 - http, tcp 443 - https, udp 443 - quic.
    >
-   > Если используются методы нулевой фазы десинхронизации (`--mss`, `--wssize`, `--dpi-desync=syndata`) и фильтрация hostlist,
-   > то все параметры, относящиеся к этим методам, следует помещать в отдельные профили мультистратегии, которые получат
-   > управление до определения имени хоста. Необходимо понимать алгоритм работы мультистратегий.
+   > If phase zero desynchronization methods are used (`--mss`, `--wssize`, `--dpi-desync=syndata`) and hostlist filtering,
+   > then all parameters related to these methods should be placed in separate multi-strategy profiles, which will receive
+   > control until the hostname is determined. It is necessary to understand the algorithm of how multi-strategies work.
    >
    > ```
    > --filter-tcp=80 'параметры для http' --new
@@ -154,52 +154,52 @@
    > --filter-tcp=443 --wssize 1:6
    > ```
    >
-   > autohostlist профиль приоритетен, поэтому wssize нужно писать туда :
+   > The autohostlist profile has priority, so wssize needs to be written there:
    >
    > ```
    > --filter-tcp=80 'параметры для http' --new
    > --filter-tcp=443 'параметры для https' --wssize 1:6 --hostlist-auto=d:/users/user/temp/autolist.txt
    > ```
    >
-   > В этих примерах wssize будет применяться всегда к порту tcp 443, а хостлист будет игнорироваться.
+   > In these examples, wssize will always be applied to tcp port 443 and the hostlist will be ignored.
    > К http применять wssize вредно и бессмысленно.
    >
-   > Иногда требуется дописать к стратегиям свои собственные параметры.
-   > Например, нужно изменить количество повторов фейков или задать свой фейк.
-   > Это делается через шелл-переменные `PKTWS_EXTRA`, `TPWS_EXTRA`. Пользуйтесь шеллом `cygwin/cygwin-admin.cmd`.
+   > Sometimes you need to add your own parameters to strategies.
+   > For example, you need to change the number of repetitions of fakes or set your own fake.
+   > This is done through the shell variables `PKTWS_EXTRA`, `TPWS_EXTRA`. Use the `cygwin/cygwin-admin.cmd` shell.
    >
    > ```PKTWS_EXTRA="--dpi-desync-repeats=10 --dpi-desync-fake-tls=/tmp/tls.bin" blockcheck```
    >
-   > Перебор всех комбинаций может привести к ожиданию неделями, поэтому выбран разумный
-   > костяк проверки, на который вы можете навешивать свои кустомизации.
+   > Trying all the combinations can lead to waiting for weeks, so a reasonable one was chosen
+   > the backbone of the check on which you can hang your customizations.
 
-7. Протестируйте найденные стратегии на winws. Winws следует брать из zapret-winws.
-   Для этого откройте командную строку windows от имени администратора в директории zapret-winws.
-   Проще всего это сделать через `_CMD_ADMIN.cmd`. Он сам поднимет права и зайдет в нужную директорию.
+7. Test the found strategies on winws. Winws should be taken from zapret-winws.
+To do this, open a windows command prompt as an administrator in the zapret-winws directory.
+The easiest way to do this is through `_CMD_ADMIN.cmd`. He will raise the rights himself and go to the desired directory.
 
-8. Обеспечьте удобную загрузку обхода блокировок.
+8. Provide convenient download bypass locks.
 
-   > Есть 2 варианта. Ручной запуск через ярлык или автоматический при старте системы, вне контекста текущего пользователя.
-   > Последний вариант разделяется на запуск через планировщик задач и через службы windows.
+   > There are 2 options. Manual launch via a shortcut or automatic launch at system startup, outside the context of the current user.
+   > The last option is divided into launching through the task scheduler and through windows services.
    >
-   > Если хотите ручной запуск, скопируйте `preset_russia.cmd` в `preset_my.cmd` (`<ваше_название>.cmd`) и адаптируйте его под ваши параметра запуска.
-   > Потом можно создать ярлык на рабочем столе на `preset_my.cmd`. Не забудьте, что требуется запускать от имени администратора.
+   > If you want a manual launch, copy `preset_russia.cmd` to `preset_my.cmd` (`<your_name>.cmd`) and adapt it to your launch parameters.
+   > Then you can create a shortcut on your desktop to `preset_my.cmd`. Don't forget that you need to run as administrator.
    >
-   > Но лучше будет сделать неинтерактивный автоматический запуск вместе с системой.
-   > В zapret-winws есть командные файлы `task_*`, предназначенные для управления задачами планировщика.
-   > Там следует поменять содержимое переменной `WINWS1` на свои параметры запуска winws. Пути с пробелами нужно экранировать кавычками с обратным слэшем : `\"`.
-   > После создания задач запустите их. Проверьте, что обход встает после перезагрузки windows.
+   > But it would be better to do a non-interactive automatic launch along with the system.
+   > zapret-winws has `task_*` batch files for managing scheduler tasks.
+   > There you should change the contents of the `WINWS1` variable to your winws launch parameters. Paths with spaces must be escaped with quotes followed by a backslash: `\"`.
+   > After creating tasks, run them. Check that the bypass occurs after restarting windows.
    >
-   > Аналогично настраиваются и службы windows. Смотрите `service_*.cmd`
+   > Windows services are configured in the same way. See `service_*.cmd`
 
-9. Если ломаются отдельные незаблокированные ресурсы, нужно пользоваться ограничивающим
-   ipset или хост листом. Читайте основной талмуд [readme.md](./readme.md) ради подробностей.
-   Но еще лучше будет подбирать такие стратегии, которые ломают минимум.
-   Есть стратегии довольно безобидные, а есть сильно ломающие, которые подходят только для точечного пробития отдельных ресурсов,
-   когда ничего лучше нет. Хорошая стратегия может сильно ломать из-за плохо подобранных ограничителей для фейков - ttl, fooling.
+9. If individual unblocked resources break down, you need to use a restrictive
+ipset or host sheet. Read the main Talmud [readme.md](./readme.md) for details.
+But it would be even better to select strategies that break the minimum.
+There are strategies that are quite harmless, and there are very damaging ones that are only suitable for targeted penetration of individual resources,
+when there is nothing better. A good strategy can be very disruptive due to poorly chosen limiters for fakes - ttl, fooling.
 
 > [!CAUTION]  
-> Это минимальная инструкция, чтобы соориентироваться с чего начать. Однако, это - не панацея.
-> В некоторых случаях вы не обойдетесь без знаний и основного "талмуда".
+> This is the minimum instruction to help you figure out where to start. However, this is not a panacea.
+> In some cases, you will not be able to do without knowledge and the basic “Talmud”.
 
-Подробности и полное техническое описание расписаны в [readme.md](./readme.md)
+Details and full technical description are described in [readme.md](./readme.md)

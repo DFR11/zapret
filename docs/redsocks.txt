@@ -6,7 +6,7 @@
 
 Прозрачный выборочный заворот tcp соединений на роутере через socks
 
-Tor поддерживает "из коробки" режим transparent proxy. Это можно использовать в теории, но практически - только на роутерах с 128 мб памяти и выше. И тор еще и тормозной.
+Tor поддерживает "out of the box" режим transparent proxy. Это можно использовать в теории, но практически - только на роутерах с 128 мб памяти и выше. И тор еще и тормозной.
 Другой вариант напрашивается, если у вас есть доступ к какой-нибудь unix системе с SSH, где сайты не блокируются. Например, у вас есть VPS вне России.
 Понятийно требуются следующие шаги :
 1) Выделять IP, на которые надо проксировать трафик. У нас уже имеется ipset "zapret", технология создания которого отработана.
@@ -187,8 +187,8 @@ EOF
 Все, теперь можно проверять :
 /etc/init.d/redsocks stop
 curl -4 https://rutracker.org
-# должно обломаться с надписью "Connection refused". если не обламывается - значит ip адрес rutracker.org не в ipset,
-# либо не сработали правила фаервола. например, из-за не установленных модулей ipt
+# should break off with the inscription "Connection refused". if it doesn’t break off, it means the ip address of rutracker.org is not in ipset,
+# or the firewall rules did not work. for example, due to not installed ipt modules
 /etc/init.d/redsocks start
 curl -4 https://rutracker.org
-# должно выдать страницу
+# should display the page

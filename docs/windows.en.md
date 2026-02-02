@@ -107,7 +107,7 @@ There are several options :
 
 1. Take `windivert64.sys` and `windivert.dll` version `2.2.0-C` or `2.2.0-D` from [here](https://reqrypt.org/download).
 Replace these 2 files in every location they are present.
-In `zapret-win-bundle` they are in `zapret-winws` и `blockcheck/zapret/nfq` folders.
+In `zapret-win-bundle` they are in `zapret-winws` and `blockcheck/zapret/nfq` folders.
 However this option still requires 10+ year old patch that enables SHA256 signatures.
 If you're using win bundle you can simply run `win7\install_win7.cmd`
 

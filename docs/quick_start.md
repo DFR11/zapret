@@ -1,115 +1,115 @@
-# Быстрая настройка Linux/OpenWrt
+# Quick Linux/OpenWrt setup
 
 > [!CAUTION]  
-> Не пишите в issue вопросы типа "как скопировать файл", "как скачать", "как
-> запустить" и т.п. То есть все, что касается базовых навыков обращения с ОС
-> Linux. Эти вопросы будут закрывать сразу. Если у вас подобные вопросы
-> возникают, рекомендую не использовать данный софт или искать помощь где-то в
-> другом месте. То же самое могу сказать тем, кто хочет нажать 1 кнопку, чтобы
-> все заработало, и совсем не хочет читать и изучать. Увы, такое не подвезли и
-> не подвезут. Ищите другие более простые методы обхода. Этот метод **не для
-> рядового пользователя**.
+> Do not write in issue questions like “how to copy a file”, “how to download”, “how
+> run", etc. That is, everything related to basic skills in handling the OS
+> Linux. These questions will be closed immediately. If you have similar questions
+> arise, I recommend not using this software or looking for help somewhere in
+> another place. I can say the same thing to those who want to press 1 button to
+> everything worked, and does not want to read and study at all. Alas, this was not delivered and
+> they won't give you a ride. Look for other easier workarounds. This method **is not for
+> ordinary user**.
 
 
-## Вступление
-Специально для тех, кто хочет побыстрее начать, но не хочет слишком углубляться
-в простыню [readme.md](readme.md).
+## Introduction
+Especially for those who want to get started quickly, but don't want to go too deep
+into the sheet [readme.md](readme.md).
 
-Обход DPI является хакерской методикой. Под этим словом понимается метод,
-которому оказывается активное противодействие и поэтому автоматически не
-гарантирована работоспособность в любых условиях и на любых ресурсах, требуется
-настройка под специфические условия у вашего провайдера. Условия могут меняться
-со временем, и методика может начинать или переставать работать, может
-потребоваться повторный анализ ситуации. Могут обнаруживаться отдельные
-ресурсы, которые заблокированы иначе, и которые не работают или перестали
-работать. Могут и сломаться отдельные не заблокированные ресурсы. Поэтому очень
-желательно иметь знания в области сетей, чтобы иметь возможность
-проанализировать техническую ситуацию. Не будет лишним иметь обходные каналы
-проксирования трафика на случай, если обход DPI не помогает.
+DPI bypass is a hacking technique. This word means a method
+which is actively opposed and therefore is not automatically
+Guaranteed performance in any conditions and on any resources, required
+customization for specific conditions of your provider. Conditions may vary
+over time, and the technique may begin or stop working, may
+a re-analysis of the situation will be required. Individuals may be found
+resources that are otherwise blocked and that do not work or have stopped
+work. Some non-blocked resources may also break. Therefore very
+It is advisable to have knowledge in the field of networks in order to be able to
+analyze the technical situation. It wouldn't hurt to have bypass channels
+proxying traffic in case DPI bypass does not help.
 
-Вариант, когда вы нашли стратегию где-то в интернете и пытаетесь ее приспособить к своему случаю - заведомо проблемный.
-Нет универсальной таблетки. Везде ситуация разная. В сети гуляют написанные кем-то откровенные глупости, которые тиражируются массово ничего не понимающей публикой.
-Такие варианты чаще всего работают нестабильно, только на части ресурсов, только на части провайдеров, не работают вообще или ломают другие ресурсы. В худших случаях еще и устраивают флуд в сети.
-Если даже вариант когда-то и работал неплохо, завтра он может перестать, а в сети останется устаревшая информация.
+The option when you found a strategy somewhere on the Internet and are trying to adapt it to your case is obviously problematic.
+There is no universal pill. Everywhere the situation is different. There are outright nonsense written by someone floating around the Internet, which is being replicated en masse by a public that does not understand anything.
+Such options most often work unstable, only on some resources, only on some providers, do not work at all or break other resources. In the worst cases, they also flood the network.
+Even if an option once worked well, tomorrow it may stop, and outdated information will remain on the network.
 
-Будем считать, что у вас есть система на базе традиционного **linux** или
-**openwrt**. Если у вас традиционный linux - задача обойти блокировки только на
-этой системе, если openwrt - обойти блокировки для подключенных устройств. Это
-наиболее распространенный случай.
+We will assume that you have a system based on traditional **linux** or
+**openwrt**. If you have traditional Linux, the task is to bypass locks only on
+this system, if openwrt - bypass blocking for connected devices. This
+the most common case.
 
 
-## Настройка
+## Setup
 > [!TIP]  
-> Чтобы процедура установки сработала в штатном режиме на openwrt, нужно
-> рассчитывать на свободное место около 1-2 Mb для установки самого zapret и
-> необходимых дополнительных пакетов. Если места мало и нет возможности его
-> увеличить за счет `extroot`, возможно придется отказаться от варианта простой
-> установки и прикручивать в ручном режиме без имеющихся скриптов запуска.
-> Можно использовать [облегченный `tpws` вариант](../init.d/openwrt-minimal),
-> либо попробовать засунуть требуемые zapret дополнительные пакеты в сжатый
-> образ `squashfs` с помощью `image builder` и перешить этим вариантом роутер.
+> For the installation procedure to work normally on openwrt, you need
+> count on about 1-2 Mb of free space to install zapret itself and
+> necessary additional packages. If there is little space and it is not possible
+> increase using `extroot`, you may have to abandon the simple option
+> installation and screw it on manually without existing launch scripts.
+> You can use [lightweight `tpws` option](../init.d/openwrt-minimal),
+> or try to put the required zapret additional packages into a compressed
+> image `squashfs` using `image builder` and update the router with this option.
 
 1. Скачайте последний [tar.gz релиз](https://github.com/bol-van/zapret/releases) в /tmp, распакуйте его, затем удалите архив.
-   Для openwrt и прошивок используйте вариант `openwrt-embedded`.
-   Для экономия места в /tmp можно качать через curl в stdout и сразу распаковывать.
-   Пример под openwrt для версии zapret 71.4 (для других URL отличается) :
+For openwrt and firmware, use the `openwrt-embedded` option.
+To save space in /tmp, you can download it via curl to stdout and immediately unpack it.
+Example for openwrt for version zapret 71.4 (different for other URLs):
    ```
    $ curl -Lo - https://github.com/bol-van/zapret/releases/download/v71.4/zapret-v71.4-openwrt-embedded.tar.gz | tar -zx
    $ wget -O - https://github.com/bol-van/zapret/releases/download/v71.4/zapret-v71.4-openwrt-embedded.tar.gz | tar -zx
    ```
-   Пример под традиционный linux для версии zapret 71.4 (для других URL отличается) :
+Example for traditional Linux for version zapret 71.4 (different for other URLs):
    ```
    $ curl -Lo - https://github.com/bol-van/zapret/releases/download/v71.4/zapret-v71.4.tar.gz | tar -zx
    $ wget -O - https://github.com/bol-van/zapret/releases/download/v71.4/zapret-v71.4.tar.gz | tar -zx
    ```
-   curl должен быть предварительно установлен. Но он в любом случае понадобится далее.
+curl must be pre-installed. But in any case, it will be needed further.
    Вариант с wget будет работать только если установленный wget поддерживает https.
 
-2. Убедитесь, что у вас отключены все средства обхода блокировок, в том числе и
-   сам zapret. Гарантированно уберет zapret скрипт `uninstall_easy.sh`.
+2. Make sure that you have disabled all means of bypassing blocking, including
+himself is prohibited. The `uninstall_easy.sh` script is guaranteed to remove zapret.
 
-3. Если вы работаете в виртуальной машине, необходимо использовать соединение с
-   сетью в режиме bridge. NAT **не** подходит.
+3. If you are working in a virtual machine, you must use a connection to
+network in bridge mode. NAT is **not** suitable.
 
-4. Выполните однократные действия по установке требуемых пакетов в ОС и
-   настройке исполняемых файлов правильной архитектуры:
+4. Perform one-time steps to install the required packages in the OS and
+setting up executable files of the correct architecture:
    ```sh
    $ install_bin.sh
    $ install_prereq.sh
    ```
 
-   > Вас могут спросить о типе фаервола (iptables/nftables) и использовании
-   > ipv6. Это нужно для установки правильных пакетов в ОС, чтобы не
-   > устанавливать лишнее.
+   > You may be asked about the type of firewall (iptables/nftables) and use
+   > ipv6. This is necessary to install the correct packages in the OS so that
+   > install unnecessary things.
 
-5. Запустите `blockcheck.sh`. Скрипт вначале проверяет DNS. Если выводятся
-   сообщения о подмене адресов, то нужно будет решить проблему с DNS.
-   `blockcheck.sh` перейдет в этом случае на DoH и будет пытаться получить и
-   использовать реальные IP адреса. Но если вы не настроите решение этой
-   проблемы, обход будет работать только для тех программ или ОС, которые сами
-   реализуют механизмы SecureDNS. Для других программ обход работать не будет.
+5. Run `blockcheck.sh`. The script first checks DNS. If they are displayed
+messages about address spoofing, then you will need to solve the problem with DNS.
+`blockcheck.sh` will switch to DoH in this case and will try to get and
+use real IP addresses. But if you don't set up a solution to this
+problems, the workaround will only work for those programs or OS that themselves
+implement SecureDNS mechanisms. The bypass will not work for other programs.
 
-   > Решение проблемы DNS выходит за рамки проекта. Обычно она решается либо
-   > заменой DNS серверов от провайдера на публичные (`1.1.1.1`, `8.8.8.8`),
-   > либо в случае перехвата провайдером обращений к сторонним серверам - через
-   > специальные средства шифрования DNS запросов, такие как `dnscrypt`, `DoT`,
+   > Solving the DNS problem is beyond the scope of the project. Usually it is resolved either
+   > replacing DNS servers from the provider with public ones (`1.1.1.1`, `8.8.8.8`),
+   > or in case of interception by the provider of calls to third-party servers - through
+   > special means of encrypting DNS requests, such as `dnscrypt`, `DoT`,
    > `DoH`.
    >
-   > Еще один эффективный вариант - использовать ресолвер от yandex
-   > (`77.88.8.88`) на нестандартном порту `1253`. Многие провайдеры не
-   > анализируют обращения к DNS на нестандартных портах.
+   > Another effective option is to use a resolver from yandex
+   > (`77.88.8.88`) on non-standard port `1253`. Many providers do not
+   > analyze DNS calls on non-standard ports.
    >
-   > Проверить работает ли этот вариант можно так:
+   > You can check if this option works like this:
    > ```sh
    > $ dig -p 53 @77.88.8.88 rutracker.org
    > $ dig -p 1253 @77.88.8.88 rutracker.org
    > ```
    >
-   > Если DNS действительно подменяется, и ответ на эти 2 команды разный,
-   > значит метод вероятно работает.
+   > If the DNS is indeed spoofed and the response to these 2 commands is different,
+   > This means the method probably works.
    >
-   > В openwrt DNS на нестандартном порту можно прописать в `/etc/config/dhcp`
-   > таким способом:
+   > In openwrt DNS on a non-standard port can be specified in `/etc/config/dhcp`
+   > in this way:
    >
    > ```
    > config dnsmasq
@@ -117,8 +117,8 @@
    > 	list server '77.88.8.88#1253'
    > ```
    >
-   > Если настройки IP и DNS получаются автоматически от провайдера, в
-   > `/etc/config/network` найдите секцию интерфейса `wan` и сделайте так:
+   > If the IP and DNS settings are obtained automatically from the provider, in
+   > `/etc/config/network` find the `wan` interface section and do this:
    >
    > ```
    > config interface 'wan'
@@ -131,99 +131,99 @@
    > $ /etc/init.d/dnsmasq restart
    > ```
    >
-   > Если это не подходит, можно перенаправлять обращения на UDP и TCP порты
-   > `53` вашего DNS сервера на `77.88.8.88:1253` средствами
-   > `iptables`/`nftables`. В `/etc/resolv.conf` нельзя прописать DNS на
-   > нестандартном порту.
+   > If this is not suitable, you can redirect calls to UDP and TCP ports
+   > `53` your DNS server to `77.88.8.88:1253` means
+   > `iptables`/`nftables`. In `/etc/resolv.conf` you cannot set DNS to
+   > non-standard port.
 
-6. `blockcheck.sh` позволяет выявить рабочую стратегию обхода блокировок. По
-   результатам скрипта нужно понять какой вариант будете использовать : `nfqws`
-   или `tpws` и запомнить найденные стратегии для дальнейшего применения.
+6. `blockcheck.sh` allows you to identify a working strategy for bypassing blocking. By
+the results of the script need to understand which option you will use: `nfqws`
+or `tpws` and remember the found strategies for future use.
 
-   Следует понимать, что скрипт проверяет доступность только конкретного
-   домена, который вы вводите в начале, конкретной программой curl.
-   У разных клиентов есть свой фингерпринт. У броузеров один, у curl другой.
-   Может применяться или не применяться многопакетный TLS с постквантовой криптографией (kyber).
-   От этого может зависеть работоспособность стратегий.
-   Обычно остальные домены блокированы подобным образом, **но не факт**.
-   Бывают специальные блокировки. Некоторые параметры требуют тюнинга под "общий знаменатель".
-   В большинстве случаев можно объединить несколько стратегий в одну универсальную, и это **крайне
-   желательно**, но это требует понимания как работают стратегии. zapret **не может
-   пробить блокировку по IP адресу**. Для проверки нескольких доменов вводите
-   их через пробел.
+It should be understood that the script checks the availability of only a specific
+domain you enter at the beginning with a specific curl program.
+Different clients have their own fingerprint. Browsers have one, curl has another.
+May or may not use multi-packet TLS with post-quantum cryptography (kyber).
+The effectiveness of strategies may depend on this.
+Usually other domains are blocked in a similar way, **but not a fact**.
+There are special locks. Some parameters require tuning to suit the “common denominator”.
+In most cases, you can combine several strategies into one universal one, and this is **extremely
+desirable**, but it requires an understanding of how strategies work. prohibited **cannot
+break through blocking by IP address**. To check multiple domains, enter
+them separated by a space.
 
-   > Сейчас блокираторы ставят на магистральных каналах. В сложных случаях у
-   > вас может быть несколько маршрутов с различной длиной по ХОПам, с DPI на
-   > разных хопах. Приходится преодолевать целый зоопарк DPI, которые еще и
-   > включаются в работу хаотичным образом или образом, зависящим от
-   > направления (IP сервера). скрипт не всегда может выдать вам в итогах
-   > оптимальную стратегию, которую надо просто переписать в настройки. В
-   > некоторых случаях надо реально думать что происходит, анализируя результат
-   > на разных стратегиях.
+   > Nowadays, blockers are installed on main canals. In difficult cases
+   > you may have several routes with different lengths along the HOPs, with DPI on
+   > different hops. You have to overcome a whole zoo of DPIs, which also
+   > are included in the work in a chaotic manner or in a manner dependent on
+   > directions (server IP). the script may not always give you the results
+   > the optimal strategy, which you simply need to rewrite in the settings. IN
+   > in some cases you need to really think about what is happening when analyzing the result
+   > on different strategies.
    >
    > Далее, имея понимание что работает на http, https, quic нужно
-   > сконструировать параметры запуска `tpws` и/или `nfqws` с использованием
-   > мультистратегии. Как работают мультистратегии описано в [readme.md](./readme.md#множественные-стратегии).
+   > construct launch options `tpws` and/or `nfqws` using
+   > multistrategy. How multi-strategies work is described in [readme.md](./readme.md#multiple-strategies).
    >
-   > Если кратко, то обычно параметры конструируются так:
+   > In short, parameters are usually constructed like this:
    > ```sh
-   > "--filter-udp=443 'параметры для quic' <HOSTLIST_NOAUTO> --new
+   > "--filter-udp=443 'parameters for quic' <HOSTLIST_NOAUTO> --new
    > --filter-tcp=80,443 'объединенные параметры для http и https' <HOSTLIST>"
    > ```
    >
-   > Или так:
+   > Or like this:
    > ```sh
-   > "--filter-udp=443 'параметры для quic' <HOSTLIST_NOAUTO> --new
+   > "--filter-udp=443 'parameters for quic' <HOSTLIST_NOAUTO> --new
    > --filter-tcp=80 'параметры для http' <HOSTLIST> --new
    > --filter-tcp=443 'параметры для https' <HOSTLIST>"
    > ```
    >
-   > `<HOSTLIST>` и `<HOSTLIST_NOAUTO>` так и пишутся. Их не надо на что-то
-   > заменять. Это сделают скрипты запуска, если вы выбрали режим фильтрации по
-   > хостлистам, и уберут в противном случае. Если для какого-то протокола надо
-   > дурить все без стандартного хостлиста - просто уберите оттуда `<HOSTLIST>`
-   > и `<HOSTLIST_NOAUTO>`. Можно писать свои параметры `--hostlist` и
-   > `--hostlist-exclude` для дополнительных хостлистов или в профилях
-   > специализаций под конкретный ресурс. В последнем случае стандартный
-   > хостлист там не нужен. Следует избегать указания собственных параметров
-   > `--hostlist` на листы из директории ipset. Эта логика включена в
-   > `<HOSTLIST>` и `<HOSTLIST_NOAUTO>`. Отличие `<HOSTLIST_NOAUTO>` в том, что
-   > стандартный автолист по этому профилю используется как обычный, то есть
-   > без автоматического добавления доменов. Однако, добавления в других
-   > профилях автоматически отражаются во всех остальных.
+   > `<HOSTLIST>` and `<HOSTLIST_NOAUTO>` are written like this. They are not needed for anything
+   > replace. Launch scripts will do this if you have selected the filtering mode by
+   > hostlists, and will be removed otherwise. If for some protocol it is necessary
+   > fool around with everything without a standard hostlist - just remove `<HOSTLIST>` from there
+   > and `<HOSTLIST_NOAUTO>`. You can write your own parameters `--hostlist` and
+   > `--hostlist-exclude` for additional hostlists or in profiles
+   > specializations for a specific resource. In the latter case, the standard
+   > There is no need for a hostlist there. You should avoid specifying your own parameters
+   > `--hostlist` to sheets from the ipset directory. This logic is included in
+   > `<HOSTLIST>` and `<HOSTLIST_NOAUTO>`. The difference with `<HOSTLIST_NOAUTO>` is that
+   > the standard autosheet for this profile is used as usual, that is
+   > without automatic addition of domains. However, additions in other
+   > profiles are automatically reflected in all others.
    >
-   > Если стратегии отличаются по версии ip протокола, и вы не можете их
-   > обьединить, фильтр пишется так:
+   > If the strategies differ in IP protocol version and you cannot
+   > combine, the filter is written like this:
    > ```sh
-   > "--filter-l3=ipv4 --filter-udp=443 lпараметры для quic ipv4' <HOSTLIST_NOAUTO> --new
+   > "--filter-l3=ipv4 --filter-udp=443 lparameters for quic ipv4' <HOSTLIST_NOAUTO> --new
    > --filter-l3=ipv4 --filter-tcp=80 'параметры для http ipv4' <HOSTLIST> --new
    > --filter-l3=ipv4 --filter-tcp=443 'параметры для https ipv4' <HOSTLIST> --new
-   > --filter-l3=ipv6 --filter-udp=443 'параметры для quic ipv6' <HOSTLIST_NOAUTO> --new
+   > --filter-l3=ipv6 --filter-udp=443 'parameters for quic ipv6' <HOSTLIST_NOAUTO> --new
    > --filter-l3=ipv6 --filter-tcp=80 'параметры для http ipv6' <HOSTLIST> --new
    > --filter-l3=ipv6 --filter-tcp=443 'параметры для https ipv6' <HOSTLIST>"
    > ```
    >
-   > Но здесь совсем "копи-пастный" вариант. Чем больше вы объедините стратегий и
-   > сократите их общее количество, тем будет лучше.
+   > But this is a completely copy-paste option. The more you combine strategies and
+   > reduce their total number, the better.
    >
-   > Если вам не нужно дурение отдельных протоколов, лучше всего будет убрать
-   > лишние порты из системы перехвата трафика через параметры `TPWS_PORTS`,
-   > `NFQWS_PORTS_TCP`, `NFQWS_PORTS_UDP` и убрать соответствующие им профили
-   > мультистратегии.
+   > If you don't need to fool individual protocols, it would be best to remove
+   > extra ports from the traffic interception system through the `TPWS_PORTS` parameters,
+   > `NFQWS_PORTS_TCP`, `NFQWS_PORTS_UDP` and remove the corresponding profiles
+   > multistrategy.
    >
-   > | Протокол | Порт | Примечание |
+   > | Protocol | Port | Note |
    > |---|---|---|
    > | `tcp` | `80` | `http` соединение |
    > | `tcp` | `443` | `https` соединение |
-   > | `udp` | `443` | `quic` соединение |
+   > | `udp` | `443` | `quic` connection |
    >
-   > Если используются методы нулевой фазы десинхронизации (`--mss`,
-   > `--wssize`, `--dpi-desync=syndata`) и режим фильтрации `hostlist`, то все
-   > параметры, относящиеся к этим методам, следует помещать в отдельные
-   > профили мультистратегии, которые получат управление до определения имени
-   > хоста. Необходимо понимать алгоритм работы мультистратегий. Самым надежным
-   > вариантом будет дублирование этих параметров на 2 профиля. Какой-нибудь
-   > сработает в зависимости от параметра `MODE_FILTER`.
+   > If phase zero desynchronization methods are used (`--mss`,
+   > `--wssize`, `--dpi-desync=syndata`) and the `hostlist` filtering mode, then that’s it
+   > parameters related to these methods should be placed in separate
+   > multi-strategy profiles that will receive control before the name is determined
+   > hosta It is necessary to understand the algorithm of how multi-strategies work. The most reliable
+   > An option would be to duplicate these parameters into 2 profiles. Some
+   > will work depending on the `MODE_FILTER` parameter.
    >
    > ```sh
    > "--filter-tcp=80 'параметры для http' <HOSTLIST> --new
@@ -231,44 +231,44 @@
    > --filter-tcp=443 --wssize 1:6"
    > ```
    >
-   > В этом примере `wssize` будет применяться всегда к порту tcp `443` вне
-   > зависимости от параметра `MODE_FILTER`. Хостлист будет игнорироваться,
+   > In this example, `wssize` will always be applied to the tcp port `443` outside
+   > depending on the `MODE_FILTER` parameter. The hostlist will be ignored,
    > если таковой имеется. К http применять `wssize` вредно и бессмысленно.
    >
-   > Иногда требуется дописать к стратегиям свои собственные параметры.
-   > Например, нужно изменить количество повторов фейков или задать свой фейк.
-   > Это делается через шелл-переменные `PKTWS_EXTRA`, `TPWS_EXTRA`.
+   > Sometimes you need to add your own parameters to strategies.
+   > For example, you need to change the number of repetitions of fakes or set your own fake.
+   > This is done through the shell variables `PKTWS_EXTRA`, `TPWS_EXTRA`.
    >
    > ```PKTWS_EXTRA="--dpi-desync-repeats=10 --dpi-desync-fake-tls=/tmp/tls.bin" ./blockcheck.sh```
    >
-   > Перебор всех комбинаций может привести к ожиданию неделями, поэтому выбран разумный
-   > костяк проверки, на который вы можете навешивать свои кустомизации.
+   > Trying all the combinations can lead to waiting for weeks, so a reasonable one was chosen
+   > the backbone of the check on which you can hang your customizations.
 
-7. Запустите скрипт облегченной установки - `install_easy.sh` Выберите `nfqws`
-   и/или `tpws`, затем согласитесь на редактирование параметров. Откроется
-   редактор, куда впишите созданную на предыдущем этапе стратегию.
+7. Run the easy installation script - `install_easy.sh` Select `nfqws`
+and/or `tpws`, then agree to edit the parameters. Will open
+editor, where you enter the strategy created at the previous stage.
 
-8. На все остальные вопросы `install_easy.sh` отвечайте согласно выводимой
-   аннотации.
+8. Answer all other questions in `install_easy.sh` according to the output
+annotations.
 
-9. Удалите директорию из /tmp, откуда производилась установка.
+9. Remove the directory from /tmp from which the installation was performed.
 
-## Полное удаление
+## Complete removal
 
 1. Прогоните `/opt/zapret/uninstall_easy.sh`.
-2. Cогласитесь на удаление зависимостей в openwrt.
+2. Agree to remove dependencies in openwrt.
 3. Удалите каталог `/opt/zapret`.
 
-## Итог
-Это минимальная инструкция, чтобы быстро сориентироваться с чего начать.
-Однако, это не гарантированное решение и в некоторых случаях вы не обойдетесь
-без знаний и основного "талмуда". Подробности и полное техническое описание
-расписаны в [README](readme.md).
+## Bottom line
+This is the minimum instruction to quickly figure out where to start.
+However, this is not a guaranteed solution and in some cases you will not be able to
+without knowledge and basic "Talmud". Details and full technical description
+are described in [README](readme.md).
 
-Если ломаются отдельные **не заблокированные** ресурсы, следует вносить их в
-исключения, либо пользоваться ограничивающим `ipset` или хост листом. Лучше
-подбирать такие стратегии, которые вызывают минимальные поломки. Есть стратегии
-довольно безобидные, а есть сильно ломающие, которые подходят только для
-точечного пробития отдельных ресурсов, когда ничего лучше нет. Хорошая
-стратегия может сильно ломать из-за плохо подобранных ограничителей для фейков
+If individual **not blocked** resources break, you should add them to
+exceptions, or use a restrictive `ipset` or host list. Better
+select strategies that cause minimal damage. There are strategies
+are quite harmless, but there are very damaging ones that are only suitable for
+targeted penetration of individual resources when there is nothing better. good
+the strategy can be very disruptive due to poorly selected limiters for fakes
 \- ttl, fooling.

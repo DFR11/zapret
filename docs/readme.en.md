@@ -6,7 +6,7 @@ This software is free and open source under [MIT license](./LICENSE.txt).
 If anyone demands you to download this software only from their webpage, telegram channel, forces you to delete links, videos, makes copyright claims, you are dealing with scammers.
 However, [donations](#donations) are welcome.
 
-# Multilanguage/Мультиязычный README
+# Multilanguage/Multilingual README
 ___
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/bol-van/zapret/tree/master/docs/readme.en.md)
 [![ru](https://img.shields.io/badge/lang-ru-green.svg)](https://github.com/bol-van/zapret/tree/master/docs/readme.md)
